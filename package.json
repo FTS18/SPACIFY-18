@@ -1,0 +1,57 @@
+{
+
+    "name": "FTS",
+
+    "version": "0.0.1",
+
+    "description": "FTS",
+
+    "homepage": "index.html",
+
+    "license": "UNLICENSED",
+
+    "os": [
+
+        "linux",
+
+        "win32",
+
+        "apple"
+
+    ],
+
+    "private": true,
+
+    "engines": {
+
+        "node": ">= 0.4.1"
+
+    },
+
+    "bugs": {
+
+        "url": "https://fts-18.netlify.app",
+
+        "email": "anandsagardubey71568@gmail.com"
+
+    },
+
+    "author": {
+
+        "name": "FTS",
+
+        "email": "anandsagardubey71568@gmail.com",
+
+        "url": "https://fts-18.netlify.app"
+
+    },
+
+    "repository": {
+
+        "type": "git",
+
+        "url": "https://github.com/FTS18/fts19"
+
+    }
+
+}
