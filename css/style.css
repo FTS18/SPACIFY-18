@@ -618,46 +618,10 @@ input[type="checkbox"]:checked~* {
 
     margin-top: 35px;
 
-    transform: scaleX(0);
-
-}
-
-.about .title[data-scroll="in"]{
-
     transform: scaleX(1);
-
 }
-
-.about .title[data-scroll="in"]:before{
-
-    transform: scaleX(0);
-
-    transition-delay: 0.5s;
-
-}
-
-.about .title:before{
-
-    content: '';
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background: #e02bff;
-
-    transform-origin: right;
-
-    transition: 0.5s;
-
-}
-
+	
+	
 .about .title span {
 
     font-size: 55px;
