@@ -1,5 +1,9 @@
 Not intended to be copied!!!🙂
-# Foobar
+# Made by Ananay Dubey
+# Of class 9thA
+
+For queries contact me @ fts71568@gmail.com
+Visit the website@https://github.://fts-18.netlify.app/
 
 Foobar is a Python library for dealing with word pluralization.
 
