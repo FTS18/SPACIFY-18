@@ -29,7 +29,8 @@ Not intended to be copied!!!🙂
 
 <a href="https://twitter.com/fts26628060" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="fts26628060" height="30" width="40" /> Twitter</a>
 
-<a href="https://fb.com/fts1807" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="fts1807" height="30" width="40" />< Facebook/a>
+<a href="https://fb.com/fts1807" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="fts1807" height="30" width="40" /> Facebook
+</a>
 
 <a href="https://instagram.com/fts1818" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="fts1818" height="30" width="40" /> Instagram</a>
 
