@@ -44,9 +44,9 @@ Not intended to be copied!!!🙂
 
 <h3 align="left">Support:</h3>
 
-<p><a href="https://www.buymeacoffee.com/https://www.buymeacoffee.com/fts18"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="https://www.buymeacoffee.com/fts18" /></a></p><br><br>
+<p><a href="https://www.buymeacoffee.com/https://www.buymeacoffee.com/fts18"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="180" alt="https://www.buymeacoffee.com/fts18" /></a></p><br><br>
 
-<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=fts18&show_icons=true&theme=dark&title_color=ffffff&text_color=ffffff&hide_border=true&locale=en&layout=compact" alt="fts18" /></p>
+<p><img src="https://github-readme-stats.vercel.app/api/top-langs?username=fts18&show_icons=true&theme=dark&title_color=ffffff&text_color=ffffff&hide_border=true&locale=en&layout=compact" alt="fts18" /></p>
 
 
 
