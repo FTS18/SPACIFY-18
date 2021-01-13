@@ -17,10 +17,8 @@
  * =================================================================== 
 
  */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Righteous'}html{scroll-behavior:smooth;width:100%}.
 
-@import url("fonts.css");
-
-@import url("font-awesome/css/font-awesome.min.css");
 
 /** 
 
