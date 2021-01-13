@@ -18,7 +18,7 @@ ErrorDocument 404 /404.html
 
 ErrorDocument 403 /403.html
 
-Redirect 301 /youtube https://youtube.com/c/FTS-18/
+Redirect 301 /youtube.html https://youtube.com/c/FTS-18/
 
 Redirect 301 /facebook https://www.facebook.com/FTS1807/
 
