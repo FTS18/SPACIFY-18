@@ -17,3 +17,11 @@ RewriteRule ^(.*)$ $1.php [NC,L]
 ErrorDocument 404 /404
 
 ErrorDocument 403 /403
+
+Redirect 301 /youtube https://youtube.com/c/FTS-18/
+
+Redirect 301 /facebook https://www.facebook.com/FTS1807/
+
+Redirect 301 /instagram https://www.instagram.com/fts1818/
+
+Redirect 301 /twitter https://twitter.com/fts26628060/
