@@ -17,6 +17,14 @@
 body {
 
 	height: 100vh;
+	
+	
+
+	
+  color: white;
+	
+
+	
 
 	display: flex;
 
@@ -54,7 +62,7 @@ a { color: white; display: inline; }
 
   letter-spacing: 0.075em;
 
-  color: #c94d4d;
+  color: #f00;
 
   -webkit-animation: pulse 4s infinite alternate;
 
