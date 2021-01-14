@@ -16,6 +16,8 @@ RewriteRule ^(.*)$ $1.php [NC,L]
 
 ErrorDocument 404 /404
 
+ErrorDocument 500 /500
+
 ErrorDocument 403 /403
 
 Redirect 301 /youtube https://youtube.com/c/FTS-18/
