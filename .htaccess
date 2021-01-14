@@ -28,7 +28,19 @@ Redirect 301 /instagram https://www.instagram.com/fts1818/
 
 Redirect 301 /twitter https://twitter.com/fts26628060/
 
-Options -Indexes
+Options All -Indexes
+
+<Files .htaccess>
+
+order allow,deny
+
+deny from all
+
+</Files>
+
+DirectoryIndex 403.html
+
+IndexIgnore *
 
 <Files ~ "^.*\.([Hh][Tt][Aa])">
 
