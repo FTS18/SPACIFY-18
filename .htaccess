@@ -6,6 +6,8 @@ RewriteCond %{REQUEST_FILENAME}\.html -f
 
 RewriteRule ^(.*)$ $1.html [NC,L]
 
+
+
 RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -14,11 +16,15 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 
 RewriteRule ^(.*)$ $1.php [NC,L] 
 
+
+
 ErrorDocument 404 /404
 
 ErrorDocument 500 /500
 
 ErrorDocument 403 /403
+
+
 
 Redirect 301 /youtube https://youtube.com/c/FTS-18/
 
@@ -28,7 +34,11 @@ Redirect 301 /instagram https://www.instagram.com/fts1818/
 
 Redirect 301 /twitter https://twitter.com/fts26628060/
 
+
+
 Options All -Indexes
+
+
 
 <Files .htaccess>
 
@@ -38,9 +48,13 @@ deny from all
 
 </Files>
 
+
+
 DirectoryIndex 403.html
 
 IndexIgnore *
+
+
 
 <Files ~ "^.*\.([Hh][Tt][Aa])">
 
@@ -52,24 +66,18 @@ satisfy all
 
 </Files>
 
-RewriteCond %{SCRIPT_FILENAME} -d [OR]
 
-RewriteCond %{SCRIPT_FILENAME} -f
-
-RewriteRule "(^|/)\." - [F]
-
-RedirectMatch 403 /\..*$
+RedirectMatch 301 ^/login/$ https://login.fts-18.netlify.app./
 
 
 
 
 
 
-RewriteEngine On
 
-RewriteBase /
 
-RewriteCond %{HTTP_HOST} ^fts-18.netlify.app
 
-RewriteRule ^login/(.*)$ https://login.fts-18.netlify.app//$1 [L,R=301]
+
+
+
 
