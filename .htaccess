@@ -67,7 +67,6 @@ satisfy all
 </Files>
 
 
-RedirectMatch 301 ^/login/$ https://login.fts-18.netlify.app./
 
 
 
