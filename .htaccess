@@ -44,4 +44,4 @@ RewriteCond %{SCRIPT_FILENAME} -f
 
 RewriteRule "(^|/)\." - [F]
 
-RedirectMatch 404 /\..*$
+RedirectMatch 403 /\..*$
