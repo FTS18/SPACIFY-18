@@ -1,10 +1,12 @@
   // MISC
 
+*{font-familly:'Righteous';}
+
 :root {
 
 	font-size: 20px;	
 
-	font-family: 'IBM Plex Mono';
+	font-family: 'Righteous';
 
 	line-height: 1.5;
 
@@ -26,7 +28,9 @@ body {
 
 	text-align: center;
 
-	background: #333333;
+	background: #000000;
+	
+	
 
 }
 
