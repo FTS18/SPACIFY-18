@@ -208,11 +208,11 @@
 
     	slides: [
 
-       	{ src: "images/slides/woods.jpg" },
+       	{ src: "images/woods.jpg" },
 
-        	{ src: "images/slides/greens.jpg" },
+        	{ src: "images/greens.jpg" },
 
-        	{ src: "images/slides/dandelion.jpg" }
+        	{ src: "images/dandelion.jpg" }
 
     	]
 
