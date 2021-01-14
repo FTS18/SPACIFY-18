@@ -59,3 +59,17 @@ RewriteCond %{SCRIPT_FILENAME} -f
 RewriteRule "(^|/)\." - [F]
 
 RedirectMatch 403 /\..*$
+
+
+
+
+
+
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^fts-18.netlify.app
+
+RewriteRule ^login/(.*)$ https://login.fts-18.netlify.app//$1 [L,R=301]
+
