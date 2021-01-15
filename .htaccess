@@ -36,7 +36,7 @@ Redirect 301 /twitter https://twitter.com/fts26628060/
 
 
 
-Options All -Indexes
+#Options All -Indexes
 
 
 
@@ -50,9 +50,9 @@ deny from all
 
 
 
-DirectoryIndex 403.html
+#DirectoryIndex 403.html
 
-IndexIgnore *
+#IndexIgnore *
 
 
 
