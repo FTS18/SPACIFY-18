@@ -1613,7 +1613,10 @@ footer p {
   }
   
   .bottom_menu{
-    displ
+    
+    display: flex;
+    
+    }
 
 
 }
