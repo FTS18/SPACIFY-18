@@ -62,11 +62,11 @@ order allow,deny
 
 deny from all
 
-satisfy all
+satisfy all 
 
 </Files>
 
-AuthUserFile fts-18.netlify.app/.htpasswd
+AuthUserFile /css/htpasswd
 
 AuthType Basic
 
