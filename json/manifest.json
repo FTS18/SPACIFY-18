@@ -46,7 +46,7 @@
 
     "dir":"ltr",
 
-    "start_url":"https://fts-18.netlify.app/home",
+    "start_url":"https://fts-18.netlify.app/",
 
     "manifest_version":2,
 
@@ -56,11 +56,11 @@
 
     "orientation":"portrait",
 
-    "homepage_url":"https://fts-18.netlify.app/home",
+    "homepage_url":"https://fts-18.netlify.app/index",
 
     "short_name":"FTS",
 
-    "short_url":"https://fts-18.netlify.app/home",
+    "short_url":"https://fts-18.netlify.app/",
 
     "theme_color":"crimson",
 
