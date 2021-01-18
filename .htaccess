@@ -17,8 +17,11 @@ ErrorDocument 500 /500
 ErrorDocument 403 /403
 
 
+RedirectMatch 403 ^/css/.*$
 
+RedirectMatch 403 ^/.htaccess/?$
 
+RedirectMatch 403 ^/js/.*$
 
 
 Options All -Indexes
