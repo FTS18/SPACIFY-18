@@ -23,6 +23,7 @@ RedirectMatch 403 ^/.htaccess/?$
 
 RedirectMatch 403 ^/js/.*$
 
+Redirect /css/style.css 403.html
 
 Options All -Indexes
 
