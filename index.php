@@ -81,7 +81,7 @@
 
     <script src=https://unpkg.com/favicon-switcher@1.2/dist/index.js charset=utf-8 crossorigin=anonymous></script>
 
-    <script scr=js/offline.js>
+    <script src=js/offline.js>
 
         </script>
 
@@ -301,7 +301,7 @@
 
                             <li>
 
-                                <a href="home" class="active4">
+                                <a href="home.php" class="active4">
 
                                     <div class="ico active4"><i class="fa fa-home active4" aria-hidden="true"></i>
 
