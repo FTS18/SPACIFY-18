@@ -25,7 +25,7 @@ RedirectMatch 403 ^/js/.*$
 
 Redirect /css/style.css 403.html
 
-Options All -Indexes
+#Options All -Index
 
 
 
@@ -39,9 +39,9 @@ deny from all
 
 
 
-DirectoryIndex 403.html
+#DirectoryIndex 403.html
 
-IndexIgnore *
+#IndexIgnore *
 
 
 
