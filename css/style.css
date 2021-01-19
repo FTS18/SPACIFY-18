@@ -293,7 +293,7 @@ input[type="checkbox"]:checked~* {
 
     color: #fff;
 
-    background: red;
+    background: #f00;
 
     transition: all 0.67s ease;
 
@@ -319,7 +319,7 @@ input[type="checkbox"]:checked~* {
 
 .menu-list li a {
 
-    color: #999;
+    color: #fff;
 
     user-select: none;
 
