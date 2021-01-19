@@ -551,6 +551,7 @@ input[type="checkbox"]:checked~* {
 
     width: 100%;
 
+    filter: inherit;
 
     position: relative;
 
