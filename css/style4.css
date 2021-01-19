@@ -1,6 +1,7 @@
   // MISC
 
-*{font-familly:'Righteous';user-select:none;}
+*{font-familly:'Josefin Sans', sans-serif;
+	user-select:none;}
 
 :root {
 
