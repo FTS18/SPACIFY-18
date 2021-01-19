@@ -289,9 +289,9 @@ input[type="checkbox"]:checked~* {
 
 .navbar.sticky .menu-list li a:hover {
 
-    color: #f00;
+    color: #fff;
 
-    background: white;
+    background: red;
 
     transition: all 0.67s ease;
 
