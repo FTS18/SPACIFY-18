@@ -1269,7 +1269,7 @@ footer {
 
     position: relative;
 
-    background: #000;
+    background: #e91e63;
 
     z-index: -1;
 
@@ -1515,7 +1515,9 @@ footer p {
 
     footer {
 
-        padding: 40px
+        padding: 40px;
+            
+        background:#000;
 
     }
 
@@ -1597,7 +1599,7 @@ footer p {
 
     .navbar .menu-list li {
 
-        color: #999;
+        color: #000;
 
         user-select: none;
 
@@ -1633,7 +1635,7 @@ footer p {
 
         display: block;
 
-        color: #f00;
+        color: #000;
 
         border-bottom: 3px solid #f00
 
@@ -1649,7 +1651,7 @@ footer p {
 
         border: 0;
 
-        color: #f00
+        color: #000;
 
     }
 
@@ -1681,7 +1683,7 @@ footer p {
 
     
 
-        color: #f00;
+        color: #000;
 
     
 
@@ -1691,7 +1693,7 @@ footer p {
 
         padding: 22px;
 
-        color: #f00;
+        color: #000;
 
         transition: all .375s ease-in
 
@@ -1699,7 +1701,7 @@ footer p {
 
     .navbar.sticky .menu-list li a:hover {
 
-        color: #f00;
+        color: #000;
 
         background: transparent;
 
@@ -1707,7 +1709,7 @@ footer p {
 
     .navbar.sticky .menu-list li.active a {
 
-        color: #f00;
+        color: #000;
 
         background: transparent;
 
@@ -1717,7 +1719,7 @@ footer p {
 
     .navbar .menu-list li.active a {
 
-        color: #f00;
+        color: #000;
 
         background: transparent;
 
