@@ -107,8 +107,8 @@ body {
 }
 
 .notfound .notfound-404 h2 {
-
-  font-family: 'Montserrat', sans-serif;
+ 
+  font-family: 'Josefin Sans', sans-serif;
 
   position: absolute;
 
@@ -136,7 +136,7 @@ body {
 
 .notfound a {
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 
   display: inline-block;
 
