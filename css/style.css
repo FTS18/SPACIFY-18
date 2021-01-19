@@ -1209,7 +1209,7 @@ input[type="checkbox"]:checked~* {
 
     border: 0;
 
-    color: #f00;
+    color: #000;
 
     right: 30px;
 
@@ -1269,7 +1269,7 @@ footer {
 
     position: relative;
 
-    background: #e91e63;
+    background: #000;
 
     z-index: -1;
 
@@ -1637,7 +1637,6 @@ footer p {
 
         color: #000;
 
-        border-bottom: 3px solid #f00
 
     }
 
@@ -1727,11 +1726,10 @@ footer p {
 
     .navbar.sticky .menu-list li.active a:hover {
 
-        color: #f00;
+        color: #000;
 
         background: transparent;
 
-        border-bottom: 3px solid #f00
 
     }
 
