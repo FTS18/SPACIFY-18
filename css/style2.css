@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Righteous';
+    font-family: 'Josefin Sans', sans-serif; 
 }
 
 body{
-  background: #644bff;
+  background: url('images/woods.jpg');
   padding: 0 20px;
 }
 
@@ -88,5 +88,7 @@ body{
   cursor: pointer;
 }
 h1{
-    
+    position: absolute;
+    righ:50%;
+    top:35%;
 }
