@@ -195,7 +195,7 @@ input[type="checkbox"]:checked~* {
 
     position: fixed;
 
-    background: black;
+    background: transparent;
 
     z-index: 100;
 
@@ -345,7 +345,6 @@ input[type="checkbox"]:checked~* {
 
 .menu-list li.active a {
 
-    border-bottom: 4px solid #f00;
 
     color: #fff;
 
@@ -357,9 +356,10 @@ input[type="checkbox"]:checked~* {
 
 .menu-list li a:hover {
 
-    border-bottom: 4px solid #f00;
 
-    color: #f00;
+    color: #fff;
+    
+    background:#f00;
 
     transition: all .4s ease-in;
 
