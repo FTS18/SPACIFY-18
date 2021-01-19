@@ -8,7 +8,7 @@
 }
 
 body{
-  background: url('images/woods.jpg');
+  background: url(Bg~4.png);
   padding: 0 20px;
 }
 
@@ -89,6 +89,6 @@ body{
 }
 h1{
     position: absolute;
-    righ:50%;
-    top:35%;
+    right:50%;
+    top:10%;
 }
