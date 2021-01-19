@@ -567,13 +567,9 @@ input[type="checkbox"]:checked~* {
 
 }
 
-.start{
-    filter:inherit;
-    }
 
-.nav{
-    filter: inherit; 
-    }
+
+
 
 .startScreen:before {
 
