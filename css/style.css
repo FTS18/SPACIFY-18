@@ -234,6 +234,8 @@ input[type="checkbox"]:checked~* {
 .navbar .content {
 
     color: #fff;
+    
+    background:#000;
 
     display: flex;
 
