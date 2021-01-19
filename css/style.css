@@ -551,7 +551,6 @@ input[type="checkbox"]:checked~* {
 
     width: 100%;
 
-    filter: inherit;
 
     position: relative;
 
@@ -566,6 +565,14 @@ input[type="checkbox"]:checked~* {
     background-attachment: fixed
 
 }
+
+.start{
+    filter:inherit;
+    }
+
+.nav{
+    filter: inherit; 
+    }
 
 .startScreen:before {
 
