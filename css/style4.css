@@ -7,7 +7,7 @@
 
 	font-size: 20px;	
 
-	font-family: 'Righteous';
+	font-family: 'Josefin Sans', sans-serif;
 
 	line-height: 1.5;
 
@@ -253,4 +253,4 @@ a { color: white; display: inline; }
 
           clip-path: polygon(0% 0%, 100% 0, 100% 26%, 0 26%, 0 29%, 100% 29%, 100% 51%, 0 51%, 0 59%, 100% 59%, 100% 66%, 0 66%, 0 79%, 100% 79%, 100% 86%, 0 86%, 0% 0%);
 
-}
+} 
