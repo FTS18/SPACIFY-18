@@ -195,7 +195,7 @@ input[type="checkbox"]:checked~* {
 
     position: fixed;
 
-    background: transparent;
+    background: #f00;
 
     z-index: 100;
 
@@ -235,7 +235,7 @@ input[type="checkbox"]:checked~* {
 
     color: #fff;
     
-    background:#000;
+    background:#f00;
 
     display: flex;
 
