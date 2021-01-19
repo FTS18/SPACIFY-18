@@ -389,7 +389,7 @@ input[type="checkbox"]:checked~* {
 
     align-items: center;
 
-    background: #111;
+    background: #000;
 
     display: none;
 
