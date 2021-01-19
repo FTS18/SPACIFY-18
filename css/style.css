@@ -396,8 +396,12 @@ input[type="checkbox"]:checked~* {
     border-top-left-radius: 15px;
 
     border-top-right-radius: 15px;
+    
+    
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+    
+    box-shadow:: 0 6px 15px rgba(0, 0, 0, 2);
 
 }
 
@@ -1506,6 +1510,10 @@ footer p {
 }
 
 @media(max-width:991px) {
+    
+    .copyrightText{
+        bottom: 20vh;
+        }
 
     .fade-in {
 
