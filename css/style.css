@@ -131,8 +131,8 @@ body {
   height: 20px;
   border: 2px solid #f00;
   border-radius: 50%;
-  top:50%;
-  left:50%;
+  top:-50%;
+  left:-50%;
   z-index: 100000;
   position: absolute;
   transition-duration: 200ms;
