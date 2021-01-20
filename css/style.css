@@ -147,7 +147,7 @@ body {
   border: 8px solid #e91e63;
   border-radius: 50%;
   opacity: .5;
-  top: -6px;
+  top: -10px;
   left: -8px;
   animation: cursorAnim2 .5s infinite alternate;
 }
