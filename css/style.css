@@ -129,7 +129,7 @@ body {
 .cursor{
   width: 20px;
   height: 20px;
-  border: 1px solid #f00;
+  border: 2px solid #f00;
   border-radius: 50%;
   z-index: 100000;
   position: absolute;
@@ -148,7 +148,7 @@ body {
   border-radius: 50%;
   opacity: .5;
   top: -10px;
-  left: -8px;
+  left: -10px;
   animation: cursorAnim2 .5s infinite alternate;
 }
 
@@ -188,7 +188,7 @@ body {
 
 .expand{
   animation: cursorAnim3 .5s forwards;
-  border: 1px solid white;
+  border: 2px solid white;
 }
 
 
