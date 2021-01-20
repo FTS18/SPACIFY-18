@@ -172,6 +172,35 @@
         <h1 class=fade-in data-aos=zoom-in>LOAD<span class=type3></span></h1>
 
     </div>
+    
+      <div class="cursor"></div>
+
+  <script>
+
+    const cursor = document.querySelector('.cursor');
+
+    
+
+    document.addEventListener('mousemove', e => {
+
+      cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+
+    })
+
+    document.addEventListenrer('click', () => {
+
+      cursor.classList.add("expand");
+
+      setTimeout(() => {
+
+        cursor.classList.remove("expand");
+
+      }, 500)
+
+    })
+
+  </script>
+    
 
     <section id=homepage>
 
