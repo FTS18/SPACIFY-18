@@ -9,7 +9,65 @@
 
 body{
   background-image: url("https://fts-18.netlify.app/Bg4~2.png");
+
+    
   padding: 0 20px;
+}
+
+.css-selector {
+
+    background: linear-gradient(51deg, #4721b3, #8f00fa, #fa003b, #fa0000);
+
+    background-size: 800% 800%;
+
+    -webkit-animation: Background 13s ease infinite;
+
+    -moz-animation: Background 13s ease infinite;
+
+    -o-animation: Background 13s ease infinite;
+
+    animation: Background 13s ease infinite;
+
+}
+
+@-webkit-keyframes Background {
+
+    0%{background-position:0% 26%}
+
+    50%{background-position:100% 75%}
+
+    100%{background-position:0% 26%}
+
+}
+
+@-moz-keyframes Background {
+
+    0%{background-position:0% 26%}
+
+    50%{background-position:100% 75%}
+
+    100%{background-position:0% 26%}
+
+}
+
+@-o-keyframes Background {
+
+    0%{background-position:0% 26%}
+
+    50%{background-position:100% 75%}
+
+    100%{background-position:0% 26%}
+
+}
+
+@keyframes Background {
+
+    0%{background-position:0% 26%}
+
+    50%{background-position:100% 75%}
+
+    100%{background-position:0% 26%}
+
 }
 
 ::selection{
