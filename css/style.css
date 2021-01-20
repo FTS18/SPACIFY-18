@@ -186,7 +186,7 @@ body {
 
 .expand{
   animation: cursorAnim3 .5s forwards;
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 
