@@ -477,6 +477,8 @@
                     <script src=js/typed.js charset=utf-8></script>
 
                     <script>
+                        
+                        document.location.href = String( document.location.href ).replace( "#/", "" );
 
                         var typed = new Typed(".type", { strings: ["Viewer", "Subscriber", "Visitor", "Friend"], typespeed: .2, backspeed: .2, loop: !0 });
 
