@@ -8,6 +8,8 @@
 
     font-family: 'Josefin Sans', sans-serif;
     
+    cursor: none;
+    
     letter-spacing:-2px;
 
 }
@@ -127,7 +129,7 @@ body {
 .cursor{
   width: 20px;
   height: 20px;
-  border: 2px solid #f00;
+  border: 1px solid #f00;
   border-radius: 50%;
   z-index: 100000;
   position: absolute;
