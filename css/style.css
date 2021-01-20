@@ -145,7 +145,7 @@ body {
   opacity: .5;
   top: -8px;
   left: -8px;
-  animation: cursorAnim2 .5x infinite alternate;
+  animation: cursorAnim2 .5s infinite alternate;
 }
 
 @keyframes cursorAnim{
