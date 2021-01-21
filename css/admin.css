@@ -1,395 +1,395 @@
 * {
 
-    margin: 0;
+  margin: 0;
 
-    padding: 0;
+  padding: 0;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 
-    cursor: none;
+  cursor: none;
 
-    letter-spacing: -2px;
+  letter-spacing: -2px;
 
 }
 
 html {
 
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 
-    width: 100%;
+  width: 100%;
 
 }
 
 .splash {
 
-    position: fixed;
+  position: fixed;
 
-    top: 0;
+  top: 0;
 
-    user-select: none;
+  user-select: none;
 
-    left: 0;
+  left: 0;
 
-    width: 100%;
+  width: 100%;
 
-    height: 100vh;
+  height: 100vh;
 
-    background: black;
+  background: black;
 
-    z-index: 200;
+  z-index: 200;
 
-    color: crimson;
+  color: crimson;
 
-    font-family: 'Righteous';
+  font-family: 'Righteous';
 
-    text-align: center;
-    line-height: 90vh
+  text-align: center;
+  line-height: 90vh
 }
 
 .splash.display-none {
 
-    position: fixed;
+  position: fixed;
 
-    opacity: 0;
+  opacity: 0;
 
-    top: 0;
+  top: 0;
 
-    left: 0;
+  left: 0;
 
-    width: 100%;
+  width: 100%;
 
-    height: 100vh;
+  height: 100vh;
 
-    background: black;
+  background: black;
 
-    z-index: -10;
+  z-index: -10;
 
-    color: white;
+  color: white;
 
-    line-height: 96vh;
+  line-height: 96vh;
 
-    transition: all .25s
+  transition: all .25s
 }
 
 @keyframes fadeIn {
 
-    to {
+  to {
 
-        opacity: 1
-    }
+    opacity: 1
+  }
 
 }
 
 .fade-in {
 
-    opacity: 0;
+  opacity: 0;
 
-    text-transform: uppercase;
+  text-transform: uppercase;
 
 
-    font-size: 75px;
+  font-size: 75px;
 
-    font-weight: 900;
+  font-weight: 900;
 
-    text-align: bottom;
+  text-align: bottom;
 
-    align-items: bottom;
+  align-items: bottom;
 
-    animation: fadeIn 1.55s ease-in forwards
+  animation: fadeIn 1.55s ease-in forwards
 }
 
 .fade-in .type3 {
 
-    color: #fff
+  color: #fff
 }
 
 body {
 
-    margin: 0;
+  margin: 0;
 
-    min-height: 100vh;
+  min-height: 100vh;
 
-    align-items: center;
+  align-items: center;
 
-    background: #000;
+  background: #000;
 
-    width: 100%;
+  width: 100%;
 
-    padding: 0;
+  padding: 0;
 
 }
 
 .cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #f00;
-    border-radius: 50%;
-    top: -50%;
-    left: -50%;
-    z-index: 100000;
-    position: absolute;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
-    animation: cursorAnim .5s infinite alternate;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f00;
+  border-radius: 50%;
+  top: -50%;
+  left: -50%;
+  z-index: 100000;
+  position: absolute;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+  animation: cursorAnim .5s infinite alternate;
 }
 
 .cursor::after {
-    content: '';
-    width: 20px;
-    z-index: 100000;
-    height: 20px;
-    position: absolute;
-    border: 8px solid #e91e63;
-    border-radius: 50%;
-    opacity: .5;
-    top: -10px;
-    left: -10px;
-    animation: cursorAnim2 .5s infinite alternate;
+  content: '';
+  width: 20px;
+  z-index: 100000;
+  height: 20px;
+  position: absolute;
+  border: 8px solid #e91e63;
+  border-radius: 50%;
+  opacity: .5;
+  top: -10px;
+  left: -10px;
+  animation: cursorAnim2 .5s infinite alternate;
 }
 
 @keyframes cursorAnim {
-    from {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(1);
+  }
 
-    to {
-        transform: scale(0.7);
-    }
+  to {
+    transform: scale(0.7);
+  }
 }
 
 @keyframes cursorAnim2 {
-    from {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(1);
+  }
 
-    to {
-        transform: scale(0.4);
-    }
+  to {
+    transform: scale(0.4);
+  }
 }
 
 @keyframes cursorAnim3 {
-    0% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
 
-    50% {
-        transform: scale(3);
-    }
+  50% {
+    transform: scale(3);
+  }
 
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
 .expand {
-    animation: cursorAnim3 .5s forwards;
-    border: 2px solid white;
+  animation: cursorAnim3 .5s forwards;
+  border: 2px solid white;
 }
 
 .content {
 
-    max-width: 1250px;
+  max-width: 1250px;
 
-    padding: 0 30px;
+  padding: 0 30px;
 
-    margin: auto
+  margin: auto
 }
 
 .navbar {
 
-    position: fixed;
+  position: fixed;
 
-    background: #000;
+  background: #000;
 
-    z-index: 100;
+  z-index: 100;
 
-    height: 80px;
+  height: 80px;
 
-    width: 100%;
+  width: 100%;
 
-    padding: 25px 0;
+  padding: 25px 0;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    transition: all 0.67s ease
+  transition: all 0.67s ease
 }
 
 .navbar.sticky {
 
-    color: #999;
+  color: #999;
 
-    z-index: 100;
+  z-index: 100;
 
-    background: black;
+  background: black;
 
-    height: 65px;
+  height: 65px;
 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 2);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 2);
 
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 
-    padding-top: 25px;
+  padding-top: 25px;
 
-    transition: all 0.67s ease
+  transition: all 0.67s ease
 }
 
 .navbar .content {
 
-    color: #fff;
+  color: #fff;
 
-    background: #000;
+  background: #000;
 
-    display: flex;
+  display: flex;
 
-    align-items: center;
+  align-items: center;
 
-    justify-content: space-between;
+  justify-content: space-between;
 
-    transition: all .3 ease
+  transition: all .3 ease
 }
 
-.navbar .logo .login{
-    font-size: 16px;
-    color: crimson;
-    }
+.navbar .logo .login {
+  font-size: 16px;
+  color: crimson;
+}
 
 .navbar .logo a {
 
-    color: #fff;
+  color: #fff;
 
-    user-select: none;
+  user-select: none;
 
-    font-size: 40px;
+  font-size: 40px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    font-weight: 600;
+  font-weight: 600;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    transition: .3s ease
+  transition: .3s ease
 }
 
 .navbar .menu-list {
 
-    display: inline-flex;
+  display: inline-flex;
 
-    z-index: 95
+  z-index: 95
 }
 
 .menu-list li {
 
-    list-style: none;
+  list-style: none;
 
 }
 
 .navbar.sticky .menu-list li a {
 
-    padding: 20px;
+  padding: 20px;
 
-    transition: all .4s ease;
+  transition: all .4s ease;
 
-    color: #fff;
+  color: #fff;
 
 }
 
 .navbar.sticky .menu-list li a:hover {
 
-    color: #fff;
+  color: #fff;
 
-    background: #f00;
+  background: #f00;
 
-    transition: all 0.67s ease;
+  transition: all 0.67s ease;
 
 }
 
 .navbar.sticky .menu-list li.active a {
 
-    color: #fff;
+  color: #fff;
 
-    background: #f00;
+  background: #f00;
 
-    transition: all 0.67s ease;
+  transition: all 0.67s ease;
 
 }
 
 .navbar.sticky .menu-list li.active a:hover {
 
-    color: #000;
+  color: #000;
 
-    transition: all 0.67s ease;
+  transition: all 0.67s ease;
 
 }
 
 .menu-list li a {
 
-    color: #fff;
+  color: #fff;
 
-    user-select: none;
+  user-select: none;
 
-    padding: 20px;
+  padding: 20px;
 
-    font-size: 15px;
+  font-size: 15px;
 
-    text-align: center;
+  text-align: center;
 
-    font-weight: 600;
+  font-weight: 600;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    transition: all .35s ease
+  transition: all .35s ease
 }
 
 .menu-list li.active a:hover {
 
-    color: #000;
+  color: #000;
 
 }
 
 .menu-list li.active a {
 
 
-    color: #fff;
+  color: #fff;
 
-    background: #f00;
+  background: #f00;
 
-    padding: 20px;
+  padding: 20px;
 
 }
 
 .menu-list li a:hover {
 
 
-    color: #fff;
+  color: #fff;
 
-    background: #f00;
+  background: #f00;
 
-    transition: all .4s ease-in;
+  transition: all .4s ease-in;
 
 }
 
 .startScreen {
 
-    width: 100%;
+  width: 100%;
 
-    filter: inherit;
+  filter: inherit;
 
-    position: relative;
+  position: relative;
 
-    min-height: 100vh;
+  min-height: 100vh;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    background-position: center;
+  background-position: center;
 
-    background-attachment: fixed
+  background-attachment: fixed
 }
 
 
@@ -398,1089 +398,1126 @@ body {
 
 .startScreen:before {
 
-    content: '';
+  content: '';
 
-    position: absolute;
+  position: absolute;
 
-    bottom: 0;
+  bottom: 0;
 
-    left: 0;
+  left: 0;
 
-    width: 100%;
+  width: 100%;
 
-    height: 500px;
+  height: 500px;
 
-    z-index: 1;
+  z-index: 1;
 
-    background: linear-gradient(to top, #000, transparent)
+  background: linear-gradient(to top, #000, transparent)
 }
 
 .startScreen .skewed {
 
-    position: absolute;
+  position: absolute;
 
-    bottom: -100%;
+  bottom: -100%;
 
-    left: 0;
+  left: 0;
 
-    width: 100%;
+  width: 100%;
 
-    height: 100%;
+  height: 100%;
 
-    background: #000;
+  background: #000;
 
-    transform: skewY(-10deg);
+  transform: skewY(-10deg);
 
-    transform-origin: top left;
+  transform-origin: top left;
 
 }
 
 .startScreen img {
 
-    position: absolute;
+  position: absolute;
 
-    background-attachment: fixed;
+  background-attachment: fixed;
 
-    background-size: cover;
+  background-size: cover;
 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 
-    height: 100vh;
+  height: 100vh;
 
-    width: 100%;
+  width: 100%;
 
-    object-fit: cover;
+  object-fit: cover;
 
-    top: 0;
+  top: 0;
 
-    left: 50%;
+  left: 50%;
 
-    transform: translate(-50%)
+  transform: translate(-50%)
 }
 
 .startScreen .visitors {
 
-    bottom: 0px;
+  bottom: 0px;
 
-    left: 0px;
+  left: 0px;
 
-    position: absolute;
+  position: absolute;
 
-    z-index: 10px;
+  z-index: 10px;
 
 }
 
 .startScreen .visitors a {
 
-    text-decoration: none;
+  text-decoration: none;
 
-    color: #f00;
+  color: #f00;
 
 }
 
 .container1 {
-    position: absolute;
-    top: 50%;
-    z-index: 93;
-    left: 50%;
-    width: 380px;
-    margin: auto;
-    transform: translate(-50%, -50%);
-    backdrop-filter: blur(35px);
-    background-color: rgba(0, 0, 0, 0.1);
-    color: white;
-    border-radius: 10px;
-    box-sizing: border-box;
-    padding: 50px 30px;
-    box-shadow: 7px 7px 60px #000;
-    border-bottom: 3px solid crimson;
+  position: absolute;
+  top: 50%;
+  z-index: 93;
+  left: 50%;
+  width: 380px;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(35px);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 50px 30px;
+  box-shadow: 7px 7px 60px #000;
+  border-bottom: 3px solid crimson;
 }
 
 .container1 h2 {
-    padding: 10px 15px;
-    color: #000;
-    text-transform: uppercase;
-    margin-bottom: 2em;
+  padding: 10px 15px;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 2em;
 }
 
 .form-container {
-    padding: 16px;
+  padding: 16px;
 }
 
 .form-container label {
-    text-transform: uppercase;
-    font-size: 17px;
+  text-transform: uppercase;
+  font-size: 17px;
+}
+
+.inline, .inline1{
+  display: inline
+}
+
+.inline i, .inline1 i{
+  margin-left: -30px;
 }
 
 input[type=email],
 input[type=password],
+input#psw,
 button {
-    width: 100%;
-    padding: 10px;
-    margin: 1em 0;
-    display: block;
-    box-sizing: border-box;
-    font-size: 18px;
-    color: white;
-    background-color: transparent;
-    border: 1px solid #000;
+  width: 100%;
+  padding: 10px;
+  margin: 1em 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: white;
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+input[type=email]::placeholder,
+input[type=password]::placeholder
+input#psw{
+  color: #999;
+}
+
+input[type=email],
+input[type=password],
+input#psw{
+  display: block
 }
 
 input[type=email]:focus,
 input[type=password]:focus,
+input#psw:focus{
+  background: transparent;
+}
+
+input[type=email]:focus,
+input[type=password]:focus,
+input#psw:focus,
 button {
-    outline: none;
+  outline: none;
+}
+
+.buttons{
+  user-select: none;
+  display: inline;
 }
 
 button {
-    background: crimson;
-    border: 3px solid black;
-    color: #000;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-size: 1.4em;
-    transition: opacity .3s ease;
-    opacity: .7
+  width: 49%;
+  background: crimson;
+  border: 3px solid black;
+  color: #000;
+  display: inline;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1.4em;
+  transition: opacity .3s ease;
+  opacity: .7
 }
 
 button:hover {
-    opacity: 1
+  opacity: 1;
 }
 
-.link{
-    text-align: center;
-    margin-top: 38px;
+.link {
+  text-align: center;
+  margin-top: 38px;
 }
 
-.link a{
-    text-decoration: none;
-    color: #fff;
-    opacity: .6;
-    transition: opacity .3s ease;
+.link a {
+  text-decoration: none;
+  color: #fff;
+  opacity: .6;
+  transition: opacity .3s ease;
 }
 
-.link a:hover{
-    opacity: 1
+.link a:hover {
+  opacity: 1
 }
 
 [data-scroll] {
 
-    transition: all 1.54s
+  transition: all 1.54s
 }
 
 [data-scroll="in"] {
 
-    opacity: 1;
+  opacity: 1;
 
-    transform: translateX(0)
+  transform: translateX(0)
 }
 
 [data-scroll="out"] {
 
-    opacity: 0;
+  opacity: 0;
 
-    transform: translateX(-200px)
+  transform: translateX(-200px)
 }
 
 ::-webkit-scrollbar {
 
-    width: 10px
+  width: 10px
 }
 
 ::-webkit-scrollbar-track {
 
-    border: 6px solid #232943;
+  border: 6px solid #232943;
 
-    box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5)
+  box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5)
 }
 
 ::-webkit-scrollbar-thumb {
 
-    background: #190031;
+  background: #190031;
 
-    background: -moz-linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
+  background: -moz-linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
 
-    background: -webkit-linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
+  background: -webkit-linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
 
-    background: linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
+  background: linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
 
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#190031", endColorstr="#ff003d", GradientType=1)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#190031", endColorstr="#ff003d", GradientType=1)
 }
 
 #homepage {
 
-    position: relative;
+  position: relative;
 
 }
 
 #sec-2 {
 
-    position: relative;
+  position: relative;
 
-    justify-content: center;
+  justify-content: center;
 
-    align-items: center;
+  align-items: center;
 
-    min-height: 100vh;
+  min-height: 100vh;
 
-    background: #111;
+  background: #111;
 
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 
-    color: #999
+  color: #999
 }
 
 .about .title {
 
-    position: relative;
+  position: relative;
 
-    margin: 0;
+  margin: 0;
 
-    padding: 0;
+  padding: 0;
 
-    display: inline-block;
+  display: inline-block;
 
-    font-size: 35px;
+  font-size: 35px;
 
-    transition: 3s;
+  transition: 3s;
 
-    transform-origin: left;
+  transform-origin: left;
 
-    font-weight: 700;
+  font-weight: 700;
 
-    color: crimson;
+  color: crimson;
 
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 
-    margin-top: 35px;
+  margin-top: 35px;
 
-    transform: scaleX(1)
+  transform: scaleX(1)
 }
 
 .about .title span {
 
-    font-size: 55px
+  font-size: 55px
 }
 
 .to-top {
 
-    background: white;
+  background: white;
 
-    position: fixed;
+  position: fixed;
 
-    bottom: 16px;
+  bottom: 16px;
 
-    right: 32px;
+  right: 32px;
 
-    width: 50px;
+  width: 50px;
 
-    height: 50px;
+  height: 50px;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    display: flex;
+  display: flex;
 
-    align-items: center;
+  align-items: center;
 
-    justify-content: center;
+  justify-content: center;
 
-    font-size: 32px;
+  font-size: 32px;
 
-    color: #1f1f1f;
+  color: #1f1f1f;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    opacity: 0;
+  opacity: 0;
 
-    pointer-events: none;
+  pointer-events: none;
 
-    transition: all .4s
+  transition: all .4s
 }
 
 .to-top.active {
 
-    bottom: 32px;
+  bottom: 32px;
 
-    pointer-events: auto;
+  pointer-events: auto;
 
-    opacity: 1
+  opacity: 1
 }
 
 .scroll-down {
 
-    height: 50px;
+  height: 50px;
 
-    width: 30px;
+  width: 30px;
 
-    border: 2px solid crimson;
+  border: 2px solid crimson;
 
-    position: absolute;
+  position: absolute;
 
-    z-index: 10;
+  z-index: 10;
 
-    left: 50%;
+  left: 50%;
 
-    bottom: 15px;
+  bottom: 15px;
 
-    border-radius: 30px;
+  border-radius: 30px;
 
-    cursor: pointer
+  cursor: pointer
 }
 
 .scroll-down::before,
 
 .scroll-down::after {
 
-    content: '';
+  content: '';
 
-    position: absolute;
+  position: absolute;
 
-    top: 30%;
+  top: 30%;
 
-    left: 50%;
+  left: 50%;
 
-    border: 2px solid crimson;
+  border: 2px solid crimson;
 
-    height: 10px;
+  height: 10px;
 
-    width: 10px;
+  width: 10px;
 
-    transform: translate(-50%, -100%) rotate(45deg);
+  transform: translate(-50%, -100%) rotate(45deg);
 
-    border-top: transparent;
+  border-top: transparent;
 
-    border-left: transparent;
+  border-left: transparent;
 
-    animation: scroll-down 1s ease-in-out infinite
+  animation: scroll-down 1s ease-in-out infinite
 }
 
 .scroll-down::after {
 
-    top: 30%;
+  top: 30%;
 
-    animation-delay: .3s
+  animation-delay: .3s
 }
 
 @keyframes scroll-down {
 
-    0% {
+  0% {
 
-        opacity: 0
-    }
+    opacity: 0
+  }
 
-    30% {
+  30% {
 
-        opacity: 1
-    }
+    opacity: 1
+  }
 
-    60% {
+  60% {
 
-        opacity: 1
-    }
+    opacity: 1
+  }
 
-    100% {
+  100% {
 
-        opacity: 0;
+    opacity: 0;
 
-        top: 75%
-    }
+    top: 75%
+  }
 
 }
 
 @media screen and (min-width:768px) {
 
-    #banner .caption h1 {
+  #banner .caption h1 {
 
-        font-size: 25px
-    }
+    font-size: 25px
+  }
 
-    #banner .caption h2 {
+  #banner .caption h2 {
 
-        font-size: 1.75rem
-    }
+    font-size: 1.75rem
+  }
 
 }
 
 @media screen and (min-width:992px) {
 
-    #banner .caption h1 {
+  #banner .caption h1 {
 
-        font-size: 3rem
-    }
+    font-size: 3rem
+  }
 
-    #banner .caption h2 {
+  #banner .caption h2 {
 
-        font-size: 2rem
-    }
+    font-size: 2rem
+  }
 
 }
 
 @media screen and (min-width:1200px) {
 
-    #banner .caption h1 {
+  #banner .caption h1 {
 
-        font-size: 4rem
-    }
+    font-size: 4rem
+  }
 
-    #banner .caption h2 {
+  #banner .caption h2 {
 
-        font-size: 2.5rem
-    }
+    font-size: 2.5rem
+  }
 
 }
 
 .about {
 
-    padding: 40px 0;
+  padding: 40px 0;
 
-    color: #999;
+  color: #999;
 
-    background: #000
+  background: #000
 }
 
 .about p {
 
-    padding-top: 20px;
+  padding-top: 20px;
 
-    text-align: justify;
+  text-align: justify;
 
-    padding: 0;
+  padding: 0;
 
-    box-sizing: border-box
+  box-sizing: border-box
 }
 
 .xyz {
 
-    display: flex;
+  display: flex;
 
-    justify-content: center;
+  justify-content: center;
 
-    background: #000;
+  background: #000;
 
-    filter: inherit;
+  filter: inherit;
 
-    align-items: center;
+  align-items: center;
 
-    width: 100%;
+  width: 100%;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    position: relative;
+  position: relative;
 
 }
 
 .pagination {
 
-    position: relative;
+  position: relative;
 
-    background: #000;
+  background: #000;
 
-    z-index: 5;
+  z-index: 5;
 
-    display: flex;
+  display: flex;
 
-    padding: 10px 20px;
+  padding: 10px 20px;
 
 }
 
 .pagination li {
 
-    line-height: 50px;
+  line-height: 50px;
 
-    list-style: none;
+  list-style: none;
 
-    margin: 0 5px
+  margin: 0 5px
 }
 
 .pagination li.pagenumber {
 
-    width: 25px;
+  width: 25px;
 
-    height: 25px;
+  height: 25px;
 
-    line-height: 50px;
+  line-height: 50px;
 
-    text-align: center
+  text-align: center
 }
 
 .pagination li.pagenumber:hover a {
 
-    background: #999;
+  background: #999;
 
-    color: #000;
+  color: #000;
 
-    transition: 1.56s
+  transition: 1.56s
 }
 
 .pagination li.pagenumber.active a {
 
-    background: #f00;
+  background: #f00;
 
-    color: #000;
+  color: #000;
 
-    transition: 1.56s
+  transition: 1.56s
 }
 
 .pagination li:first-child {
 
-    margin-right: 30px;
+  margin-right: 30px;
 
-    font-size: 20px;
+  font-size: 20px;
 
-    font-weight: 700
+  font-weight: 700
 }
 
 .pagination li:last-child {
 
-    margin-left: 30px;
+  margin-left: 30px;
 
-    font-size: 20px;
+  font-size: 20px;
 
-    font-weight: 700
+  font-weight: 700
 }
 
 .pagination li a {
 
-    display: block;
+  display: block;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    color: #999;
+  color: #999;
 
-    font-weight: 600;
+  font-weight: 600;
 
-    border-radius: 50%
+  border-radius: 50%
 }
 
 .icon {
 
-    color: white;
+  color: white;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    display: none;
+  display: none;
 
-    font-size: 16px
+  font-size: 16px
 }
 
 .icon.cancel-btn {
 
-    position: absolute;
+  position: absolute;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    border: 0;
+  border: 0;
 
-    color: #000;
+  color: #000;
 
-    right: 30px;
+  right: 30px;
 
-    top: 20px
+  top: 20px
 }
 
 .active3 {
 
-    background: #fff;
+  background: #fff;
 
-    color: #000;
+  color: #000;
 
 }
 
 .icon.search {
 
-    position: absolute;
+  position: absolute;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    color: #f00;
+  color: #f00;
 
-    right: 65px
+  right: 65px
 }
 
 li.active2 {
 
-    display: none;
+  display: none;
 
 }
 
 li.active1 {
 
-    display: none
+  display: none
 }
 
 .search a {
 
-    color: white
+  color: white
 }
 
 .search {
 
-    color: white;
+  color: white;
 
-    display: none
+  display: none
 }
 
 footer {
 
-    position: relative;
+  position: relative;
 
-    background: #000;
+  background: #000;
 
-    z-index: -1;
+  z-index: -1;
 
-    padding: 50px 100px;
+  padding: 50px 100px;
 
-    display: flex;
+  display: flex;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    justify-content: space-between;
+  justify-content: space-between;
 
-    height: auto;
+  height: auto;
 
-    filter: inherit;
+  filter: inherit;
 
-    width: 100%;
+  width: 100%;
 
-    bottom: 0;
+  bottom: 0;
 
 }
 
 footer .container {
 
-    display: flex;
+  display: flex;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    flex-direction: row;
+  flex-direction: row;
 
-    justify-content: space-between
+  justify-content: space-between
 }
 
 footer .container .sec {
 
-    margin-right: 30px
+  margin-right: 30px
 }
 
 footer .container .sec.aboutus {
 
-    width: 40%;
+  width: 40%;
 
-    text-align: justify
+  text-align: justify
 }
 
 footer .container h2 {
 
-    color: #fff;
+  color: #fff;
 
-    font-weight: 500;
+  font-weight: 500;
 
-    position: relative;
+  position: relative;
 
-    margin-bottom: 15px
+  margin-bottom: 15px
 }
 
 footer .container h2:before {
 
-    content: '';
+  content: '';
 
-    position: absolute;
+  position: absolute;
 
-    bottom: -5px;
+  bottom: -5px;
 
-    left: 0;
+  left: 0;
 
-    width: 50px;
+  width: 50px;
 
-    height: 2px;
+  height: 2px;
 
-    background: #f00
+  background: #f00
 }
 
 footer p {
 
-    color: #999
+  color: #999
 }
 
 .sci {
 
-    margin-top: 20px;
+  margin-top: 20px;
 
-    display: flex
+  display: flex
 }
 
 .sci li {
 
-    list-style: none
+  list-style: none
 }
 
 .sci li a {
 
-    display: inline-block;
+  display: inline-block;
 
-    width: 40px;
+  width: 40px;
 
-    height: 40px;
+  height: 40px;
 
-    background: #222;
+  background: #222;
 
-    display: flex;
+  display: flex;
 
-    justify-content: center;
+  justify-content: center;
 
-    align-items: center;
+  align-items: center;
 
-    margin-right: 10px;
+  margin-right: 10px;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    border-radius: 4px
+  border-radius: 4px
 }
 
 .sci li a:hover {
 
-    background: #f00
+  background: #f00
 }
 
 .sci li a .fa {
 
-    color: #fff;
+  color: #fff;
 
-    font-size: 20px
+  font-size: 20px
 }
 
 .quicklinks {
 
-    position: relative;
+  position: relative;
 
-    width: 25%
+  width: 25%
 }
 
 .quicklinks ul li {
 
-    list-style: none
+  list-style: none
 }
 
 .quicklinks ul li a {
 
-    color: #999;
+  color: #999;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 
-    display: inline-block
+  display: inline-block
 }
 
 .quicklinks ul li a:hover {
 
-    color: #fff
+  color: #fff
 }
 
 .contact {
 
-    width: calc(35% - 60px);
+  width: calc(35% - 60px);
 
-    margin-right: 0 !important
+  margin-right: 0 !important
 }
 
 .contact .info {
 
-    position: relative
+  position: relative
 }
 
 .contact .info li {
 
-    display: flex;
+  display: flex;
 
-    margin-bottom: 16px
+  margin-bottom: 16px
 }
 
 .contact .info li span:nth-child(1) {
 
-    color: #fff;
+  color: #fff;
 
-    font-size: 20px;
+  font-size: 20px;
 
-    margin-right: 10px
+  margin-right: 10px
 }
 
 .contact .info li span {
 
-    color: #999
+  color: #999
 }
 
 .contact .info li a {
 
-    color: #999;
+  color: #999;
 
-    text-decoration: none
+  text-decoration: none
 }
 
 .contact .info li a:hover {
 
-    color: #fff
+  color: #fff
 }
 
 .copyrightText {
 
-    width: 100%;
+  width: 100%;
 
-    background: #000;
+  background: #000;
 
-    text-align: center;
+  text-align: center;
 
-    filter: inherit;
+  filter: inherit;
 
-    padding: 8px 100px;
+  padding: 8px 100px;
 
-    color: #999
+  color: #999
 }
 
 @media(max-width:991px) {
 
-    .copyrightText {
-        bottom: 20vh;
-    }
+  .copyrightText {
+    bottom: 20vh;
+  }
 
-    .fade-in {
+  .fade-in {
 
-        font-size: 48px;
+    font-size: 48px;
 
-    }
+  }
 
-    footer {
+  footer {
 
-        padding: 40px;
+    padding: 40px;
 
-        background: #000;
+    background: #000;
 
-    }
+  }
 
-    footer .container {
+  footer .container {
 
-        flex-direction: column
-    }
+    flex-direction: column
+  }
 
-    footer .container .sec {
+  footer .container .sec {
 
-        margin-right: 0;
+    margin-right: 0;
 
-        margin-bottom: 40px
-    }
+    margin-bottom: 40px
+  }
 
-    footer .container .sec.aboutus,
+  footer .container .sec.aboutus,
 
-    .quicklinks .contact {
+  .quicklinks .contact {
 
-        width: 100%
-    }
+    width: 100%
+  }
 
-    .copyrightText {
+  .copyrightText {
 
-        padding: 8px 40px
-    }
+    padding: 8px 40px
+  }
 
-    body.disabledScroll {
+  body.disabledScroll {
 
-        overflow: hidden
-    }
+    overflow: hidden
+  }
 
-    .icon {
+  .icon {
 
-        display: block
-    }
+    display: block
+  }
 
-    .icon.hide {
+  .icon.hide {
 
-        display: none
-    }
+    display: none
+  }
 
-    .navbar .menu-list {
+  .navbar .menu-list {
 
-        position: fixed;
+    position: fixed;
 
-        background: crimson;
+    background: crimson;
 
-        top: 0;
+    top: 0;
 
-        left: -150%;
+    left: -150%;
 
-        z-index: 20;
+    z-index: 20;
 
-        height: 100vh;
+    height: 100vh;
 
-        display: block;
+    display: block;
 
-        padding: 60px 0;
+    padding: 60px 0;
 
-        width: 100%;
+    width: 100%;
 
-        box-shadow: 5.4px 0 20px rgba(0, 0, 0, 1);
+    box-shadow: 5.4px 0 20px rgba(0, 0, 0, 1);
 
-        max-width: 245px;
+    max-width: 245px;
 
-        text-align: center;
+    text-align: center;
 
-        transition: .55s cubic-bezier(1, 1, 0, 1.00)
-    }
+    transition: .55s cubic-bezier(1, 1, 0, 1.00)
+  }
 
-    .navbar .menu-list li {
+  .navbar .menu-list li {
 
-        color: #000;
+    color: #000;
 
-        user-select: none;
+    user-select: none;
 
-        font-size: 15px;
+    font-size: 15px;
 
-        padding: 15px;
+    padding: 15px;
 
-        text-align: center;
+    text-align: center;
 
-        font-weight: 400;
+    font-weight: 400;
 
-        cursor: pointer;
+    cursor: pointer;
 
-        text-decoration: none;
+    text-decoration: none;
 
-        transition: all .35s ease
-    }
+    transition: all .35s ease
+  }
 
-    .navbar.active .menu-list {
+  .navbar.active .menu-list {
 
-        left: 0
-    }
+    left: 0
+  }
 
-    .menu-list li.active1,
+  .menu-list li.active1,
 
-    .menu-list li.active1:hover,
+  .menu-list li.active1:hover,
 
-    .menu-list li.active1:active {
+  .menu-list li.active1:active {
 
-        padding: 50px;
+    padding: 50px;
 
-        display: block;
+    display: block;
 
-        color: #000;
+    color: #000;
 
 
-    }
+  }
 
-    .menu-list li.active2 {
+  .menu-list li.active2 {
 
-        display: block;
+    display: block;
 
-    }
+  }
 
-    .menu-list li.active {
+  .menu-list li.active {
 
-        border: 0;
+    border: 0;
 
-        color: #000;
+    color: #000;
 
-    }
+  }
 
-    .search1 {
+  .search1 {
 
-        display: none
-    }
+    display: none
+  }
 
-    .search {
+  .search {
 
-        display: inline-block
-    }
+    display: inline-block
+  }
 
-    .menu-list li.active a,
+  .menu-list li.active a,
 
-    .menu-list li a:hover {
+  .menu-list li a:hover {
 
-        border-bottom: none;
+    border-bottom: none;
 
-        background: transparent;
+    background: transparent;
 
-    }
+  }
 
 
 
-    .menu-list li.active a:hover {
+  .menu-list li.active a:hover {
 
 
 
-        color: #000;
+    color: #000;
 
 
 
-    }
+  }
 
-    .menu-list li:hover {
+  .menu-list li:hover {
 
-        padding: 22px;
+    padding: 22px;
 
-        color: #000;
+    color: #000;
 
-        transition: all .375s ease-in
-    }
+    transition: all .375s ease-in
+  }
 
-    .navbar.sticky .menu-list li a:hover {
+  .navbar.sticky .menu-list li a:hover {
 
-        color: #000;
+    color: #000;
 
-        background: transparent;
+    background: transparent;
 
-    }
+  }
 
-    .navbar.sticky .menu-list li.active a {
+  .navbar.sticky .menu-list li.active a {
 
-        color: #000;
+    color: #000;
 
-        background: transparent;
+    background: transparent;
 
-        border-bottom: none;
+    border-bottom: none;
 
-    }
+  }
 
-    .navbar .menu-list li.active a {
+  .navbar .menu-list li.active a {
 
-        color: #000;
+    color: #000;
 
-        background: transparent;
+    background: transparent;
 
-    }
+  }
 
-    .navbar.sticky .menu-list li.active a:hover {
+  .navbar.sticky .menu-list li.active a:hover {
 
-        color: #000;
+    color: #000;
 
-        background: transparent;
+    background: transparent;
 
 
-    }
+  }
 
-    .navbar .menu-list li {
+  .navbar .menu-list li {
 
-        font-size: 18px;
+    font-size: 18px;
 
-        width: 100%;
+    width: 100%;
 
-        transition: .48s cubic-bezier(0.68, -0.55, 0.265, 1.55)
-    }
+    transition: .48s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+  }
 
-    .active3 {
+  .active3 {
 
-        display: none;
+    display: none;
 
-    }
+  }
 
-    .cursor {
-        display: none;
-    }
+  .cursor {
+    display: none;
+  }
 
-    .bottom_menu {
+  .bottom_menu {
 
-        display: flex;
+    display: flex;
 
-    }
+  }
 
 }
