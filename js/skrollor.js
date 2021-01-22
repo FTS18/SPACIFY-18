@@ -14,2816 +14,2816 @@
 
 (function(window, document, undefined) {
 
-	'use strict';
+  'use strict';
 
-	/*
+  /*
 
-	 * Global api.
+   * Global api.
 
-	 */
+   */
 
-	var skrollr = {
+  var skrollr = {
 
-		get: function() {
+    get: function() {
 
-			return _instance;
+      return _instance;
 
-		},
+    },
 
-		//Main entry point.
+    //Main entry point.
 
-		init: function(options) {
+    init: function(options) {
 
-			return _instance || new Skrollr(options);
+      return _instance || new Skrollr(options);
 
-		},
+    },
 
-		VERSION: '0.6.30'
+    VERSION: '0.6.30'
 
-	};
+  };
 
-	//Minify optimization.
+  //Minify optimization.
 
-	var hasProp = Object.prototype.hasOwnProperty;
+  var hasProp = Object.prototype.hasOwnProperty;
 
-	var Math = window.Math;
+  var Math = window.Math;
 
-	var getStyle = window.getComputedStyle;
+  var getStyle = window.getComputedStyle;
 
-	//They will be filled when skrollr gets initialized.
+  //They will be filled when skrollr gets initialized.
 
-	var documentElement;
+  var documentElement;
 
-	var body;
+  var body;
 
-	var EVENT_TOUCHSTART = 'touchstart';
+  var EVENT_TOUCHSTART = 'touchstart';
 
-	var EVENT_TOUCHMOVE = 'touchmove';
+  var EVENT_TOUCHMOVE = 'touchmove';
 
-	var EVENT_TOUCHCANCEL = 'touchcancel';
+  var EVENT_TOUCHCANCEL = 'touchcancel';
 
-	var EVENT_TOUCHEND = 'touchend';
+  var EVENT_TOUCHEND = 'touchend';
 
-	var SKROLLABLE_CLASS = 'skrollable';
+  var SKROLLABLE_CLASS = 'skrollable';
 
-	var SKROLLABLE_BEFORE_CLASS = SKROLLABLE_CLASS + '-before';
+  var SKROLLABLE_BEFORE_CLASS = SKROLLABLE_CLASS + '-before';
 
-	var SKROLLABLE_BETWEEN_CLASS = SKROLLABLE_CLASS + '-between';
+  var SKROLLABLE_BETWEEN_CLASS = SKROLLABLE_CLASS + '-between';
 
-	var SKROLLABLE_AFTER_CLASS = SKROLLABLE_CLASS + '-after';
+  var SKROLLABLE_AFTER_CLASS = SKROLLABLE_CLASS + '-after';
 
-	var SKROLLR_CLASS = 'skrollr';
+  var SKROLLR_CLASS = 'skrollr';
 
-	var NO_SKROLLR_CLASS = 'no-' + SKROLLR_CLASS;
+  var NO_SKROLLR_CLASS = 'no-' + SKROLLR_CLASS;
 
-	var SKROLLR_DESKTOP_CLASS = SKROLLR_CLASS + '-desktop';
+  var SKROLLR_DESKTOP_CLASS = SKROLLR_CLASS + '-desktop';
 
-	var SKROLLR_MOBILE_CLASS = SKROLLR_CLASS + '-mobile';
+  var SKROLLR_MOBILE_CLASS = SKROLLR_CLASS + '-mobile';
 
-	var DEFAULT_EASING = 'linear';
+  var DEFAULT_EASING = 'linear';
 
-	var DEFAULT_DURATION = 1000;//ms
+  var DEFAULT_DURATION = 1000; //ms
 
-	var DEFAULT_MOBILE_DECELERATION = 0.004;//pixel/ms²
+  var DEFAULT_MOBILE_DECELERATION = 0.004; //pixel/ms²
 
-	var DEFAULT_SKROLLRBODY = 'skrollr-body';
+  var DEFAULT_SKROLLRBODY = 'skrollr-body';
 
-	var DEFAULT_SMOOTH_SCROLLING_DURATION = 200;//ms
+  var DEFAULT_SMOOTH_SCROLLING_DURATION = 200; //ms
 
-	var ANCHOR_START = 'start';
+  var ANCHOR_START = 'start';
 
-	var ANCHOR_END = 'end';
+  var ANCHOR_END = 'end';
 
-	var ANCHOR_CENTER = 'center';
+  var ANCHOR_CENTER = 'center';
 
-	var ANCHOR_BOTTOM = 'bottom';
+  var ANCHOR_BOTTOM = 'bottom';
 
-	//The property which will be added to the DOM element to hold the ID of the skrollable.
+  //The property which will be added to the DOM element to hold the ID of the skrollable.
 
-	var SKROLLABLE_ID_DOM_PROPERTY = '___skrollable_id';
+  var SKROLLABLE_ID_DOM_PROPERTY = '___skrollable_id';
 
-	var rxTouchIgnoreTags = /^(?:input|textarea|button|select)$/i;
+  var rxTouchIgnoreTags = /^(?:input|textarea|button|select)$/i;
 
-	var rxTrim = /^\s+|\s+$/g;
+  var rxTrim = /^\s+|\s+$/g;
 
-	//Find all data-attributes. data-[_constant]-[offset]-[anchor]-[anchor].
+  //Find all data-attributes. data-[_constant]-[offset]-[anchor]-[anchor].
 
-	var rxKeyframeAttribute = /^data(?:-(_\w+))?(?:-?(-?\d*\.?\d+p?))?(?:-?(start|end|top|center|bottom))?(?:-?(top|center|bottom))?$/;
+  var rxKeyframeAttribute = /^data(?:-(_\w+))?(?:-?(-?\d*\.?\d+p?))?(?:-?(start|end|top|center|bottom))?(?:-?(top|center|bottom))?$/;
 
-	var rxPropValue = /\s*(@?[\w\-\[\]]+)\s*:\s*(.+?)\s*(?:;|$)/gi;
+  var rxPropValue = /\s*(@?[\w\-\[\]]+)\s*:\s*(.+?)\s*(?:;|$)/gi;
 
-	//Easing function names follow the property in square brackets.
+  //Easing function names follow the property in square brackets.
 
-	var rxPropEasing = /^(@?[a-z\-]+)\[(\w+)\]$/;
+  var rxPropEasing = /^(@?[a-z\-]+)\[(\w+)\]$/;
 
-	var rxCamelCase = /-([a-z0-9_])/g;
+  var rxCamelCase = /-([a-z0-9_])/g;
 
-	var rxCamelCaseFn = function(str, letter) {
+  var rxCamelCaseFn = function(str, letter) {
 
-		return letter.toUpperCase();
+    return letter.toUpperCase();
 
-	};
+  };
 
-	//Numeric values with optional sign.
+  //Numeric values with optional sign.
 
-	var rxNumericValue = /[\-+]?[\d]*\.?[\d]+/g;
+  var rxNumericValue = /[\-+]?[\d]*\.?[\d]+/g;
 
-	//Used to replace occurences of {?} with a number.
+  //Used to replace occurences of {?} with a number.
 
-	var rxInterpolateString = /\{\?\}/g;
+  var rxInterpolateString = /\{\?\}/g;
 
-	//Finds rgb(a) colors, which don't use the percentage notation.
+  //Finds rgb(a) colors, which don't use the percentage notation.
 
-	var rxRGBAIntegerColor = /rgba?\(\s*-?\d+\s*,\s*-?\d+\s*,\s*-?\d+/g;
+  var rxRGBAIntegerColor = /rgba?\(\s*-?\d+\s*,\s*-?\d+\s*,\s*-?\d+/g;
 
-	//Finds all gradients.
+  //Finds all gradients.
 
-	var rxGradient = /[a-z\-]+-gradient/g;
+  var rxGradient = /[a-z\-]+-gradient/g;
 
-	//Vendor prefix. Will be set once skrollr gets initialized.
+  //Vendor prefix. Will be set once skrollr gets initialized.
 
-	var theCSSPrefix = '';
+  var theCSSPrefix = '';
 
-	var theDashedCSSPrefix = '';
+  var theDashedCSSPrefix = '';
 
-	//Will be called once (when skrollr gets initialized).
+  //Will be called once (when skrollr gets initialized).
 
-	var detectCSSPrefix = function() {
+  var detectCSSPrefix = function() {
 
-		//Only relevant prefixes. May be extended.
+    //Only relevant prefixes. May be extended.
 
-		//Could be dangerous if there will ever be a CSS property which actually starts with "ms". Don't hope so.
+    //Could be dangerous if there will ever be a CSS property which actually starts with "ms". Don't hope so.
 
-		var rxPrefixes = /^(?:O|Moz|webkit|ms)|(?:-(?:o|moz|webkit|ms)-)/;
+    var rxPrefixes = /^(?:O|Moz|webkit|ms)|(?:-(?:o|moz|webkit|ms)-)/;
 
-		//Detect prefix for current browser by finding the first property using a prefix.
+    //Detect prefix for current browser by finding the first property using a prefix.
 
-		if(!getStyle) {
+    if (!getStyle) {
 
-			return;
+      return;
 
-		}
+    }
 
-		var style = getStyle(body, null);
+    var style = getStyle(body, null);
 
-		for(var k in style) {
+    for (var k in style) {
 
-			//We check the key and if the key is a number, we check the value as well, because safari's getComputedStyle returns some weird array-like thingy.
+      //We check the key and if the key is a number, we check the value as well, because safari's getComputedStyle returns some weird array-like thingy.
 
-			theCSSPrefix = (k.match(rxPrefixes) || (+k == k && style[k].match(rxPrefixes)));
+      theCSSPrefix = (k.match(rxPrefixes) || (+k == k && style[k].match(rxPrefixes)));
 
-			if(theCSSPrefix) {
+      if (theCSSPrefix) {
 
-				break;
+        break;
 
-			}
+      }
 
-		}
+    }
 
-		//Did we even detect a prefix?
+    //Did we even detect a prefix?
 
-		if(!theCSSPrefix) {
+    if (!theCSSPrefix) {
 
-			theCSSPrefix = theDashedCSSPrefix = '';
+      theCSSPrefix = theDashedCSSPrefix = '';
 
-			return;
+      return;
 
-		}
+    }
 
-		theCSSPrefix = theCSSPrefix[0];
+    theCSSPrefix = theCSSPrefix[0];
 
-		//We could have detected either a dashed prefix or this camelCaseish-inconsistent stuff.
+    //We could have detected either a dashed prefix or this camelCaseish-inconsistent stuff.
 
-		if(theCSSPrefix.slice(0,1) === '-') {
+    if (theCSSPrefix.slice(0, 1) === '-') {
 
-			theDashedCSSPrefix = theCSSPrefix;
+      theDashedCSSPrefix = theCSSPrefix;
 
-			//There's no logic behind these. Need a look up.
+      //There's no logic behind these. Need a look up.
 
-			theCSSPrefix = ({
+      theCSSPrefix = ({
 
-				'-webkit-': 'webkit',
+        '-webkit-': 'webkit',
 
-				'-moz-': 'Moz',
+        '-moz-': 'Moz',
 
-				'-ms-': 'ms',
+        '-ms-': 'ms',
 
-				'-o-': 'O'
+        '-o-': 'O'
 
-			})[theCSSPrefix];
+      })[theCSSPrefix];
 
-		} else {
+    } else {
 
-			theDashedCSSPrefix = '-' + theCSSPrefix.toLowerCase() + '-';
+      theDashedCSSPrefix = '-' + theCSSPrefix.toLowerCase() + '-';
 
-		}
+    }
 
-	};
+  };
 
-	var polyfillRAF = function() {
+  var polyfillRAF = function() {
 
-		var requestAnimFrame = window.requestAnimationFrame || window[theCSSPrefix.toLowerCase() + 'RequestAnimationFrame'];
+    var requestAnimFrame = window.requestAnimationFrame || window[theCSSPrefix.toLowerCase() + 'RequestAnimationFrame'];
 
-		var lastTime = _now();
+    var lastTime = _now();
 
-		if(_isMobile || !requestAnimFrame) {
+    if (_isMobile || !requestAnimFrame) {
 
-			requestAnimFrame = function(callback) {
+      requestAnimFrame = function(callback) {
 
-				//How long did it take to render?
+        //How long did it take to render?
 
-				var deltaTime = _now() - lastTime;
+        var deltaTime = _now() - lastTime;
 
-				var delay = Math.max(0, 1000 / 60 - deltaTime);
+        var delay = Math.max(0, 1000 / 60 - deltaTime);
 
-				return window.setTimeout(function() {
+        return window.setTimeout(function() {
 
-					lastTime = _now();
+          lastTime = _now();
 
-					callback();
+          callback();
 
-				}, delay);
+        }, delay);
 
-			};
+      };
 
-		}
+    }
 
-		return requestAnimFrame;
+    return requestAnimFrame;
 
-	};
+  };
 
-	var polyfillCAF = function() {
+  var polyfillCAF = function() {
 
-		var cancelAnimFrame = window.cancelAnimationFrame || window[theCSSPrefix.toLowerCase() + 'CancelAnimationFrame'];
+    var cancelAnimFrame = window.cancelAnimationFrame || window[theCSSPrefix.toLowerCase() + 'CancelAnimationFrame'];
 
-		if(_isMobile || !cancelAnimFrame) {
+    if (_isMobile || !cancelAnimFrame) {
 
-			cancelAnimFrame = function(timeout) {
+      cancelAnimFrame = function(timeout) {
 
-				return window.clearTimeout(timeout);
+        return window.clearTimeout(timeout);
 
-			};
+      };
 
-		}
+    }
 
-		return cancelAnimFrame;
+    return cancelAnimFrame;
 
-	};
+  };
 
-	//Built-in easing functions.
+  //Built-in easing functions.
 
-	var easings = {
+  var easings = {
 
-		begin: function() {
+    begin: function() {
 
-			return 0;
+      return 0;
 
-		},
+    },
 
-		end: function() {
+    end: function() {
 
-			return 1;
+      return 1;
 
-		},
+    },
 
-		linear: function(p) {
+    linear: function(p) {
 
-			return p;
+      return p;
 
-		},
+    },
 
-		quadratic: function(p) {
+    quadratic: function(p) {
 
-			return p * p;
+      return p * p;
 
-		},
+    },
 
-		cubic: function(p) {
+    cubic: function(p) {
 
-			return p * p * p;
+      return p * p * p;
 
-		},
+    },
 
-		swing: function(p) {
+    swing: function(p) {
 
-			return (-Math.cos(p * Math.PI) / 2) + 0.5;
+      return (-Math.cos(p * Math.PI) / 2) + 0.5;
 
-		},
+    },
 
-		sqrt: function(p) {
+    sqrt: function(p) {
 
-			return Math.sqrt(p);
+      return Math.sqrt(p);
 
-		},
+    },
 
-		outCubic: function(p) {
+    outCubic: function(p) {
 
-			return (Math.pow((p - 1), 3) + 1);
+      return (Math.pow((p - 1), 3) + 1);
 
-		},
+    },
 
-		//see https://www.desmos.com/calculator/tbr20s8vd2 for how I did this
+    //see https://www.desmos.com/calculator/tbr20s8vd2 for how I did this
 
-		bounce: function(p) {
+    bounce: function(p) {
 
-			var a;
+      var a;
 
-			if(p <= 0.5083) {
+      if (p <= 0.5083) {
 
-				a = 3;
+        a = 3;
 
-			} else if(p <= 0.8489) {
+      } else if (p <= 0.8489) {
 
-				a = 9;
+        a = 9;
 
-			} else if(p <= 0.96208) {
+      } else if (p <= 0.96208) {
 
-				a = 27;
+        a = 27;
 
-			} else if(p <= 0.99981) {
+      } else if (p <= 0.99981) {
 
-				a = 91;
+        a = 91;
 
-			} else {
+      } else {
 
-				return 1;
+        return 1;
 
-			}
+      }
 
-			return 1 - Math.abs(3 * Math.cos(p * a * 1.028) / a);
+      return 1 - Math.abs(3 * Math.cos(p * a * 1.028) / a);
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Constructor.
+   * Constructor.
 
-	 */
+   */
 
-	function Skrollr(options) {
+  function Skrollr(options) {
 
-		documentElement = document.documentElement;
+    documentElement = document.documentElement;
 
-		body = document.body;
+    body = document.body;
 
-		detectCSSPrefix();
+    detectCSSPrefix();
 
-		_instance = this;
+    _instance = this;
 
-		options = options || {};
+    options = options || {};
 
-		_constants = options.constants || {};
+    _constants = options.constants || {};
 
-		//We allow defining custom easings or overwrite existing.
+    //We allow defining custom easings or overwrite existing.
 
-		if(options.easing) {
+    if (options.easing) {
 
-			for(var e in options.easing) {
+      for (var e in options.easing) {
 
-				easings[e] = options.easing[e];
+        easings[e] = options.easing[e];
 
-			}
+      }
 
-		}
+    }
 
-		_edgeStrategy = options.edgeStrategy || 'set';
+    _edgeStrategy = options.edgeStrategy || 'set';
 
-		_listeners = {
+    _listeners = {
 
-			//Function to be called right before rendering.
+      //Function to be called right before rendering.
 
-			beforerender: options.beforerender,
+      beforerender: options.beforerender,
 
-			//Function to be called right after finishing rendering.
+      //Function to be called right after finishing rendering.
 
-			render: options.render,
+      render: options.render,
 
-			//Function to be called whenever an element with the `data-emit-events` attribute passes a keyframe.
+      //Function to be called whenever an element with the `data-emit-events` attribute passes a keyframe.
 
-			keyframe: options.keyframe
+      keyframe: options.keyframe
 
-		};
+    };
 
-		//forceHeight is true by default
+    //forceHeight is true by default
 
-		_forceHeight = options.forceHeight !== false;
+    _forceHeight = options.forceHeight !== false;
 
-		if(_forceHeight) {
+    if (_forceHeight) {
 
-			_scale = options.scale || 1;
+      _scale = options.scale || 1;
 
-		}
+    }
 
-		_mobileDeceleration = options.mobileDeceleration || DEFAULT_MOBILE_DECELERATION;
+    _mobileDeceleration = options.mobileDeceleration || DEFAULT_MOBILE_DECELERATION;
 
-		_smoothScrollingEnabled = options.smoothScrolling !== false;
+    _smoothScrollingEnabled = options.smoothScrolling !== false;
 
-		_smoothScrollingDuration = options.smoothScrollingDuration || DEFAULT_SMOOTH_SCROLLING_DURATION;
+    _smoothScrollingDuration = options.smoothScrollingDuration || DEFAULT_SMOOTH_SCROLLING_DURATION;
 
-		//Dummy object. Will be overwritten in the _render method when smooth scrolling is calculated.
+    //Dummy object. Will be overwritten in the _render method when smooth scrolling is calculated.
 
-		_smoothScrolling = {
+    _smoothScrolling = {
 
-			targetTop: _instance.getScrollTop()
+      targetTop: _instance.getScrollTop()
 
-		};
+    };
 
-		//A custom check function may be passed.
+    //A custom check function may be passed.
 
-		_isMobile = ((options.mobileCheck || function() {
+    _isMobile = ((options.mobileCheck || function() {
 
-			return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
+      return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
 
-		})());
+    })());
 
-		if(_isMobile) {
+    if (_isMobile) {
 
-			_skrollrBody = document.getElementById(options.skrollrBody || DEFAULT_SKROLLRBODY);
+      _skrollrBody = document.getElementById(options.skrollrBody || DEFAULT_SKROLLRBODY);
 
-			//Detect 3d transform if there's a skrollr-body (only needed for #skrollr-body).
+      //Detect 3d transform if there's a skrollr-body (only needed for #skrollr-body).
 
-			if(_skrollrBody) {
+      if (_skrollrBody) {
 
-				_detect3DTransforms();
+        _detect3DTransforms();
 
-			}
+      }
 
-			_initMobile();
+      _initMobile();
 
-			_updateClass(documentElement, [SKROLLR_CLASS, SKROLLR_MOBILE_CLASS], [NO_SKROLLR_CLASS]);
+      _updateClass(documentElement, [SKROLLR_CLASS, SKROLLR_MOBILE_CLASS], [NO_SKROLLR_CLASS]);
 
-		} else {
+    } else {
 
-			_updateClass(documentElement, [SKROLLR_CLASS, SKROLLR_DESKTOP_CLASS], [NO_SKROLLR_CLASS]);
+      _updateClass(documentElement, [SKROLLR_CLASS, SKROLLR_DESKTOP_CLASS], [NO_SKROLLR_CLASS]);
 
-		}
+    }
 
-		//Triggers parsing of elements and a first reflow.
+    //Triggers parsing of elements and a first reflow.
 
-		_instance.refresh();
+    _instance.refresh();
 
-		_addEvent(window, 'resize orientationchange', function() {
+    _addEvent(window, 'resize orientationchange', function() {
 
-			var width = documentElement.clientWidth;
+      var width = documentElement.clientWidth;
 
-			var height = documentElement.clientHeight;
+      var height = documentElement.clientHeight;
 
-			//Only reflow if the size actually changed (#271).
+      //Only reflow if the size actually changed (#271).
 
-			if(height !== _lastViewportHeight || width !== _lastViewportWidth) {
+      if (height !== _lastViewportHeight || width !== _lastViewportWidth) {
 
-				_lastViewportHeight = height;
+        _lastViewportHeight = height;
 
-				_lastViewportWidth = width;
+        _lastViewportWidth = width;
 
-				_requestReflow = true;
+        _requestReflow = true;
 
-			}
+      }
 
-		});
+    });
 
-		var requestAnimFrame = polyfillRAF();
+    var requestAnimFrame = polyfillRAF();
 
-		//Let's go.
+    //Let's go.
 
-		(function animloop(){
+    (function animloop() {
 
-			_render();
+      _render();
 
-			_animFrame = requestAnimFrame(animloop);
+      _animFrame = requestAnimFrame(animloop);
 
-		}());
+    }());
 
-		return _instance;
+    return _instance;
 
-	}
+  }
 
-	/**
+  /**
 
-	 * (Re)parses some or all elements.
+   * (Re)parses some or all elements.
 
-	 */
+   */
 
-	Skrollr.prototype.refresh = function(elements) {
+  Skrollr.prototype.refresh = function(elements) {
 
-		var elementIndex;
+    var elementIndex;
 
-		var elementsLength;
+    var elementsLength;
 
-		var ignoreID = false;
+    var ignoreID = false;
 
-		//Completely reparse anything without argument.
+    //Completely reparse anything without argument.
 
-		if(elements === undefined) {
+    if (elements === undefined) {
 
-			//Ignore that some elements may already have a skrollable ID.
+      //Ignore that some elements may already have a skrollable ID.
 
-			ignoreID = true;
+      ignoreID = true;
 
-			_skrollables = [];
+      _skrollables = [];
 
-			_skrollableIdCounter = 0;
+      _skrollableIdCounter = 0;
 
-			elements = document.getElementsByTagName('*');
+      elements = document.getElementsByTagName('*');
 
-		} else if(elements.length === undefined) {
+    } else if (elements.length === undefined) {
 
-			//We also accept a single element as parameter.
+      //We also accept a single element as parameter.
 
-			elements = [elements];
+      elements = [elements];
 
-		}
+    }
 
-		elementIndex = 0;
+    elementIndex = 0;
 
-		elementsLength = elements.length;
+    elementsLength = elements.length;
 
-		for(; elementIndex < elementsLength; elementIndex++) {
+    for (; elementIndex < elementsLength; elementIndex++) {
 
-			var el = elements[elementIndex];
+      var el = elements[elementIndex];
 
-			var anchorTarget = el;
+      var anchorTarget = el;
 
-			var keyFrames = [];
+      var keyFrames = [];
 
-			//If this particular element should be smooth scrolled.
+      //If this particular element should be smooth scrolled.
 
-			var smoothScrollThis = _smoothScrollingEnabled;
+      var smoothScrollThis = _smoothScrollingEnabled;
 
-			//The edge strategy for this particular element.
+      //The edge strategy for this particular element.
 
-			var edgeStrategy = _edgeStrategy;
+      var edgeStrategy = _edgeStrategy;
 
-			//If this particular element should emit keyframe events.
+      //If this particular element should emit keyframe events.
 
-			var emitEvents = false;
+      var emitEvents = false;
 
-			//If we're reseting the counter, remove any old element ids that may be hanging around.
+      //If we're reseting the counter, remove any old element ids that may be hanging around.
 
-			if(ignoreID && SKROLLABLE_ID_DOM_PROPERTY in el) {
+      if (ignoreID && SKROLLABLE_ID_DOM_PROPERTY in el) {
 
-				delete el[SKROLLABLE_ID_DOM_PROPERTY];
+        delete el[SKROLLABLE_ID_DOM_PROPERTY];
 
-			}
+      }
 
-			if(!el.attributes) {
+      if (!el.attributes) {
 
-				continue;
+        continue;
 
-			}
+      }
 
-			//Iterate over all attributes and search for key frame attributes.
+      //Iterate over all attributes and search for key frame attributes.
 
-			var attributeIndex = 0;
+      var attributeIndex = 0;
 
-			var attributesLength = el.attributes.length;
+      var attributesLength = el.attributes.length;
 
-			for (; attributeIndex < attributesLength; attributeIndex++) {
+      for (; attributeIndex < attributesLength; attributeIndex++) {
 
-				var attr = el.attributes[attributeIndex];
+        var attr = el.attributes[attributeIndex];
 
-				if(attr.name === 'data-anchor-target') {
+        if (attr.name === 'data-anchor-target') {
 
-					anchorTarget = document.querySelector(attr.value);
+          anchorTarget = document.querySelector(attr.value);
 
-					if(anchorTarget === null) {
+          if (anchorTarget === null) {
 
-						throw 'Unable to find anchor target "' + attr.value + '"';
+            throw 'Unable to find anchor target "' + attr.value + '"';
 
-					}
+          }
 
-					continue;
+          continue;
 
-				}
+        }
 
-				//Global smooth scrolling can be overridden by the element attribute.
+        //Global smooth scrolling can be overridden by the element attribute.
 
-				if(attr.name === 'data-smooth-scrolling') {
+        if (attr.name === 'data-smooth-scrolling') {
 
-					smoothScrollThis = attr.value !== 'off';
+          smoothScrollThis = attr.value !== 'off';
 
-					continue;
+          continue;
 
-				}
+        }
 
-				//Global edge strategy can be overridden by the element attribute.
+        //Global edge strategy can be overridden by the element attribute.
 
-				if(attr.name === 'data-edge-strategy') {
+        if (attr.name === 'data-edge-strategy') {
 
-					edgeStrategy = attr.value;
+          edgeStrategy = attr.value;
 
-					continue;
+          continue;
 
-				}
+        }
 
-				//Is this element tagged with the `data-emit-events` attribute?
+        //Is this element tagged with the `data-emit-events` attribute?
 
-				if(attr.name === 'data-emit-events') {
+        if (attr.name === 'data-emit-events') {
 
-					emitEvents = true;
+          emitEvents = true;
 
-					continue;
+          continue;
 
-				}
+        }
 
-				var match = attr.name.match(rxKeyframeAttribute);
+        var match = attr.name.match(rxKeyframeAttribute);
 
-				if(match === null) {
+        if (match === null) {
 
-					continue;
+          continue;
 
-				}
+        }
 
-				var kf = {
+        var kf = {
 
-					props: attr.value,
+          props: attr.value,
 
-					//Point back to the element as well.
+          //Point back to the element as well.
 
-					element: el,
+          element: el,
 
-					//The name of the event which this keyframe will fire, if emitEvents is
+          //The name of the event which this keyframe will fire, if emitEvents is
 
-					eventType: attr.name.replace(rxCamelCase, rxCamelCaseFn)
+          eventType: attr.name.replace(rxCamelCase, rxCamelCaseFn)
 
-				};
+        };
 
-				keyFrames.push(kf);
+        keyFrames.push(kf);
 
-				var constant = match[1];
+        var constant = match[1];
 
-				if(constant) {
+        if (constant) {
 
-					//Strip the underscore prefix.
+          //Strip the underscore prefix.
 
-					kf.constant = constant.substr(1);
+          kf.constant = constant.substr(1);
 
-				}
+        }
 
-				//Get the key frame offset.
+        //Get the key frame offset.
 
-				var offset = match[2];
+        var offset = match[2];
 
-				//Is it a percentage offset?
+        //Is it a percentage offset?
 
-				if(/p$/.test(offset)) {
+        if (/p$/.test(offset)) {
 
-					kf.isPercentage = true;
+          kf.isPercentage = true;
 
-					kf.offset = (offset.slice(0, -1) | 0) / 100;
+          kf.offset = (offset.slice(0, -1) | 0) / 100;
 
-				} else {
+        } else {
 
-					kf.offset = (offset | 0);
+          kf.offset = (offset | 0);
 
-				}
+        }
 
-				var anchor1 = match[3];
+        var anchor1 = match[3];
 
-				//If second anchor is not set, the first will be taken for both.
+        //If second anchor is not set, the first will be taken for both.
 
-				var anchor2 = match[4] || anchor1;
+        var anchor2 = match[4] || anchor1;
 
-				//"absolute" (or "classic") mode, where numbers mean absolute scroll offset.
+        //"absolute" (or "classic") mode, where numbers mean absolute scroll offset.
 
-				if(!anchor1 || anchor1 === ANCHOR_START || anchor1 === ANCHOR_END) {
+        if (!anchor1 || anchor1 === ANCHOR_START || anchor1 === ANCHOR_END) {
 
-					kf.mode = 'absolute';
+          kf.mode = 'absolute';
 
-					//data-end needs to be calculated after all key frames are known.
+          //data-end needs to be calculated after all key frames are known.
 
-					if(anchor1 === ANCHOR_END) {
+          if (anchor1 === ANCHOR_END) {
 
-						kf.isEnd = true;
+            kf.isEnd = true;
 
-					} else if(!kf.isPercentage) {
+          } else if (!kf.isPercentage) {
 
-						//For data-start we can already set the key frame w/o calculations.
+            //For data-start we can already set the key frame w/o calculations.
 
-						//#59: "scale" options should only affect absolute mode.
+            //#59: "scale" options should only affect absolute mode.
 
-						kf.offset = kf.offset * _scale;
+            kf.offset = kf.offset * _scale;
 
-					}
+          }
 
-				}
+        }
 
-				//"relative" mode, where numbers are relative to anchors.
+        //"relative" mode, where numbers are relative to anchors.
 
-				else {
+        else {
 
-					kf.mode = 'relative';
+          kf.mode = 'relative';
 
-					kf.anchors = [anchor1, anchor2];
+          kf.anchors = [anchor1, anchor2];
 
-				}
+        }
 
-			}
+      }
 
-			//Does this element have key frames?
+      //Does this element have key frames?
 
-			if(!keyFrames.length) {
+      if (!keyFrames.length) {
 
-				continue;
+        continue;
 
-			}
+      }
 
-			//Will hold the original style and class attributes before we controlled the element (see #80).
+      //Will hold the original style and class attributes before we controlled the element (see #80).
 
-			var styleAttr, classAttr;
+      var styleAttr, classAttr;
 
-			var id;
+      var id;
 
-			if(!ignoreID && SKROLLABLE_ID_DOM_PROPERTY in el) {
+      if (!ignoreID && SKROLLABLE_ID_DOM_PROPERTY in el) {
 
-				//We already have this element under control. Grab the corresponding skrollable id.
+        //We already have this element under control. Grab the corresponding skrollable id.
 
-				id = el[SKROLLABLE_ID_DOM_PROPERTY];
+        id = el[SKROLLABLE_ID_DOM_PROPERTY];
 
-				styleAttr = _skrollables[id].styleAttr;
+        styleAttr = _skrollables[id].styleAttr;
 
-				classAttr = _skrollables[id].classAttr;
+        classAttr = _skrollables[id].classAttr;
 
-			} else {
+      } else {
 
-				//It's an unknown element. Asign it a new skrollable id.
+        //It's an unknown element. Asign it a new skrollable id.
 
-				id = (el[SKROLLABLE_ID_DOM_PROPERTY] = _skrollableIdCounter++);
+        id = (el[SKROLLABLE_ID_DOM_PROPERTY] = _skrollableIdCounter++);
 
-				styleAttr = el.style.cssText;
+        styleAttr = el.style.cssText;
 
-				classAttr = _getClass(el);
+        classAttr = _getClass(el);
 
-			}
+      }
 
-			_skrollables[id] = {
+      _skrollables[id] = {
 
-				element: el,
+        element: el,
 
-				styleAttr: styleAttr,
+        styleAttr: styleAttr,
 
-				classAttr: classAttr,
+        classAttr: classAttr,
 
-				anchorTarget: anchorTarget,
+        anchorTarget: anchorTarget,
 
-				keyFrames: keyFrames,
+        keyFrames: keyFrames,
 
-				smoothScrolling: smoothScrollThis,
+        smoothScrolling: smoothScrollThis,
 
-				edgeStrategy: edgeStrategy,
+        edgeStrategy: edgeStrategy,
 
-				emitEvents: emitEvents,
+        emitEvents: emitEvents,
 
-				lastFrameIndex: -1
+        lastFrameIndex: -1
 
-			};
+      };
 
-			_updateClass(el, [SKROLLABLE_CLASS], []);
+      _updateClass(el, [SKROLLABLE_CLASS], []);
 
-		}
+    }
 
-		//Reflow for the first time.
+    //Reflow for the first time.
 
-		_reflow();
+    _reflow();
 
-		//Now that we got all key frame numbers right, actually parse the properties.
+    //Now that we got all key frame numbers right, actually parse the properties.
 
-		elementIndex = 0;
+    elementIndex = 0;
 
-		elementsLength = elements.length;
+    elementsLength = elements.length;
 
-		for(; elementIndex < elementsLength; elementIndex++) {
+    for (; elementIndex < elementsLength; elementIndex++) {
 
-			var sk = _skrollables[elements[elementIndex][SKROLLABLE_ID_DOM_PROPERTY]];
+      var sk = _skrollables[elements[elementIndex][SKROLLABLE_ID_DOM_PROPERTY]];
 
-			if(sk === undefined) {
+      if (sk === undefined) {
 
-				continue;
+        continue;
 
-			}
+      }
 
-			//Parse the property string to objects
+      //Parse the property string to objects
 
-			_parseProps(sk);
+      _parseProps(sk);
 
-			//Fill key frames with missing properties from left and right
+      //Fill key frames with missing properties from left and right
 
-			_fillProps(sk);
+      _fillProps(sk);
 
-		}
+    }
 
-		return _instance;
+    return _instance;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Transform "relative" mode to "absolute" mode.
+   * Transform "relative" mode to "absolute" mode.
 
-	 * That is, calculate anchor position and offset of element.
+   * That is, calculate anchor position and offset of element.
 
-	 */
+   */
 
-	Skrollr.prototype.relativeToAbsolute = function(element, viewportAnchor, elementAnchor) {
+  Skrollr.prototype.relativeToAbsolute = function(element, viewportAnchor, elementAnchor) {
 
-		var viewportHeight = documentElement.clientHeight;
+    var viewportHeight = documentElement.clientHeight;
 
-		var box = element.getBoundingClientRect();
+    var box = element.getBoundingClientRect();
 
-		var absolute = box.top;
+    var absolute = box.top;
 
-		//#100: IE doesn't supply "height" with getBoundingClientRect.
+    //#100: IE doesn't supply "height" with getBoundingClientRect.
 
-		var boxHeight = box.bottom - box.top;
+    var boxHeight = box.bottom - box.top;
 
-		if(viewportAnchor === ANCHOR_BOTTOM) {
+    if (viewportAnchor === ANCHOR_BOTTOM) {
 
-			absolute -= viewportHeight;
+      absolute -= viewportHeight;
 
-		} else if(viewportAnchor === ANCHOR_CENTER) {
+    } else if (viewportAnchor === ANCHOR_CENTER) {
 
-			absolute -= viewportHeight / 2;
+      absolute -= viewportHeight / 2;
 
-		}
+    }
 
-		if(elementAnchor === ANCHOR_BOTTOM) {
+    if (elementAnchor === ANCHOR_BOTTOM) {
 
-			absolute += boxHeight;
+      absolute += boxHeight;
 
-		} else if(elementAnchor === ANCHOR_CENTER) {
+    } else if (elementAnchor === ANCHOR_CENTER) {
 
-			absolute += boxHeight / 2;
+      absolute += boxHeight / 2;
 
-		}
+    }
 
-		//Compensate scrolling since getBoundingClientRect is relative to viewport.
+    //Compensate scrolling since getBoundingClientRect is relative to viewport.
 
-		absolute += _instance.getScrollTop();
+    absolute += _instance.getScrollTop();
 
-		return (absolute + 0.5) | 0;
+    return (absolute + 0.5) | 0;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Animates scroll top to new position.
+   * Animates scroll top to new position.
 
-	 */
+   */
 
-	Skrollr.prototype.animateTo = function(top, options) {
+  Skrollr.prototype.animateTo = function(top, options) {
 
-		options = options || {};
+    options = options || {};
 
-		var now = _now();
+    var now = _now();
 
-		var scrollTop = _instance.getScrollTop();
+    var scrollTop = _instance.getScrollTop();
 
-		var duration = options.duration === undefined ? DEFAULT_DURATION : options.duration;
+    var duration = options.duration === undefined ? DEFAULT_DURATION : options.duration;
 
-		//Setting this to a new value will automatically cause the current animation to stop, if any.
+    //Setting this to a new value will automatically cause the current animation to stop, if any.
 
-		_scrollAnimation = {
+    _scrollAnimation = {
 
-			startTop: scrollTop,
+      startTop: scrollTop,
 
-			topDiff: top - scrollTop,
+      topDiff: top - scrollTop,
 
-			targetTop: top,
+      targetTop: top,
 
-			duration: duration,
+      duration: duration,
 
-			startTime: now,
+      startTime: now,
 
-			endTime: now + duration,
+      endTime: now + duration,
 
-			easing: easings[options.easing || DEFAULT_EASING],
+      easing: easings[options.easing || DEFAULT_EASING],
 
-			done: options.done
+      done: options.done
 
-		};
+    };
 
-		//Don't queue the animation if there's nothing to animate.
+    //Don't queue the animation if there's nothing to animate.
 
-		if(!_scrollAnimation.topDiff) {
+    if (!_scrollAnimation.topDiff) {
 
-			if(_scrollAnimation.done) {
+      if (_scrollAnimation.done) {
 
-				_scrollAnimation.done.call(_instance, false);
+        _scrollAnimation.done.call(_instance, false);
 
-			}
+      }
 
-			_scrollAnimation = undefined;
+      _scrollAnimation = undefined;
 
-		}
+    }
 
-		return _instance;
+    return _instance;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Stops animateTo animation.
+   * Stops animateTo animation.
 
-	 */
+   */
 
-	Skrollr.prototype.stopAnimateTo = function() {
+  Skrollr.prototype.stopAnimateTo = function() {
 
-		if(_scrollAnimation && _scrollAnimation.done) {
+    if (_scrollAnimation && _scrollAnimation.done) {
 
-			_scrollAnimation.done.call(_instance, true);
+      _scrollAnimation.done.call(_instance, true);
 
-		}
+    }
 
-		_scrollAnimation = undefined;
+    _scrollAnimation = undefined;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Returns if an animation caused by animateTo is currently running.
+   * Returns if an animation caused by animateTo is currently running.
 
-	 */
+   */
 
-	Skrollr.prototype.isAnimatingTo = function() {
+  Skrollr.prototype.isAnimatingTo = function() {
 
-		return !!_scrollAnimation;
+    return !!_scrollAnimation;
 
-	};
+  };
 
-	Skrollr.prototype.isMobile = function() {
+  Skrollr.prototype.isMobile = function() {
 
-		return _isMobile;
+    return _isMobile;
 
-	};
+  };
 
-	Skrollr.prototype.setScrollTop = function(top, force) {
+  Skrollr.prototype.setScrollTop = function(top, force) {
 
-		_forceRender = (force === true);
+    _forceRender = (force === true);
 
-		if(_isMobile) {
+    if (_isMobile) {
 
-			_mobileOffset = Math.min(Math.max(top, 0), _maxKeyFrame);
+      _mobileOffset = Math.min(Math.max(top, 0), _maxKeyFrame);
 
-		} else {
+    } else {
 
-			window.scrollTo(0, top);
+      window.scrollTo(0, top);
 
-		}
+    }
 
-		return _instance;
+    return _instance;
 
-	};
+  };
 
-	Skrollr.prototype.getScrollTop = function() {
+  Skrollr.prototype.getScrollTop = function() {
 
-		if(_isMobile) {
+    if (_isMobile) {
 
-			return _mobileOffset;
+      return _mobileOffset;
 
-		} else {
+    } else {
 
-			return window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;
+      return window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;
 
-		}
+    }
 
-	};
+  };
 
-	Skrollr.prototype.getMaxScrollTop = function() {
+  Skrollr.prototype.getMaxScrollTop = function() {
 
-		return _maxKeyFrame;
+    return _maxKeyFrame;
 
-	};
+  };
 
-	Skrollr.prototype.on = function(name, fn) {
+  Skrollr.prototype.on = function(name, fn) {
 
-		_listeners[name] = fn;
+    _listeners[name] = fn;
 
-		return _instance;
+    return _instance;
 
-	};
+  };
 
-	Skrollr.prototype.off = function(name) {
+  Skrollr.prototype.off = function(name) {
 
-		delete _listeners[name];
+    delete _listeners[name];
 
-		return _instance;
+    return _instance;
 
-	};
+  };
 
-	Skrollr.prototype.destroy = function() {
+  Skrollr.prototype.destroy = function() {
 
-		var cancelAnimFrame = polyfillCAF();
+    var cancelAnimFrame = polyfillCAF();
 
-		cancelAnimFrame(_animFrame);
+    cancelAnimFrame(_animFrame);
 
-		_removeAllEvents();
+    _removeAllEvents();
 
-		_updateClass(documentElement, [NO_SKROLLR_CLASS], [SKROLLR_CLASS, SKROLLR_DESKTOP_CLASS, SKROLLR_MOBILE_CLASS]);
+    _updateClass(documentElement, [NO_SKROLLR_CLASS], [SKROLLR_CLASS, SKROLLR_DESKTOP_CLASS, SKROLLR_MOBILE_CLASS]);
 
-		var skrollableIndex = 0;
+    var skrollableIndex = 0;
 
-		var skrollablesLength = _skrollables.length;
+    var skrollablesLength = _skrollables.length;
 
-		for(; skrollableIndex < skrollablesLength; skrollableIndex++) {
+    for (; skrollableIndex < skrollablesLength; skrollableIndex++) {
 
-			_reset(_skrollables[skrollableIndex].element);
+      _reset(_skrollables[skrollableIndex].element);
 
-		}
+    }
 
-		documentElement.style.overflow = body.style.overflow = '';
+    documentElement.style.overflow = body.style.overflow = '';
 
-		documentElement.style.height = body.style.height = '';
+    documentElement.style.height = body.style.height = '';
 
-		if(_skrollrBody) {
+    if (_skrollrBody) {
 
-			skrollr.setStyle(_skrollrBody, 'transform', 'none');
+      skrollr.setStyle(_skrollrBody, 'transform', 'none');
 
-		}
+    }
 
-		_instance = undefined;
+    _instance = undefined;
 
-		_skrollrBody = undefined;
+    _skrollrBody = undefined;
 
-		_listeners = undefined;
+    _listeners = undefined;
 
-		_forceHeight = undefined;
+    _forceHeight = undefined;
 
-		_maxKeyFrame = 0;
+    _maxKeyFrame = 0;
 
-		_scale = 1;
+    _scale = 1;
 
-		_constants = undefined;
+    _constants = undefined;
 
-		_mobileDeceleration = undefined;
+    _mobileDeceleration = undefined;
 
-		_direction = 'down';
+    _direction = 'down';
 
-		_lastTop = -1;
+    _lastTop = -1;
 
-		_lastViewportWidth = 0;
+    _lastViewportWidth = 0;
 
-		_lastViewportHeight = 0;
+    _lastViewportHeight = 0;
 
-		_requestReflow = false;
+    _requestReflow = false;
 
-		_scrollAnimation = undefined;
+    _scrollAnimation = undefined;
 
-		_smoothScrollingEnabled = undefined;
+    _smoothScrollingEnabled = undefined;
 
-		_smoothScrollingDuration = undefined;
+    _smoothScrollingDuration = undefined;
 
-		_smoothScrolling = undefined;
+    _smoothScrolling = undefined;
 
-		_forceRender = undefined;
+    _forceRender = undefined;
 
-		_skrollableIdCounter = 0;
+    _skrollableIdCounter = 0;
 
-		_edgeStrategy = undefined;
+    _edgeStrategy = undefined;
 
-		_isMobile = false;
+    _isMobile = false;
 
-		_mobileOffset = 0;
+    _mobileOffset = 0;
 
-		_translateZ = undefined;
+    _translateZ = undefined;
 
-	};
+  };
 
-	/*
+  /*
 
-		Private methods.
+  	Private methods.
 
-	*/
+  */
 
-	var _initMobile = function() {
+  var _initMobile = function() {
 
-		var initialElement;
+    var initialElement;
 
-		var initialTouchY;
+    var initialTouchY;
 
-		var initialTouchX;
+    var initialTouchX;
 
-		var currentElement;
+    var currentElement;
 
-		var currentTouchY;
+    var currentTouchY;
 
-		var currentTouchX;
+    var currentTouchX;
 
-		var lastTouchY;
+    var lastTouchY;
 
-		var deltaY;
+    var deltaY;
 
-		var initialTouchTime;
+    var initialTouchTime;
 
-		var currentTouchTime;
+    var currentTouchTime;
 
-		var lastTouchTime;
+    var lastTouchTime;
 
-		var deltaTime;
+    var deltaTime;
 
-		_addEvent(documentElement, [EVENT_TOUCHSTART, EVENT_TOUCHMOVE, EVENT_TOUCHCANCEL, EVENT_TOUCHEND].join(' '), function(e) {
+    _addEvent(documentElement, [EVENT_TOUCHSTART, EVENT_TOUCHMOVE, EVENT_TOUCHCANCEL, EVENT_TOUCHEND].join(' '), function(e) {
 
-			var touch = e.changedTouches[0];
+      var touch = e.changedTouches[0];
 
-			currentElement = e.target;
+      currentElement = e.target;
 
-			//We don't want text nodes.
+      //We don't want text nodes.
 
-			while(currentElement.nodeType === 3) {
+      while (currentElement.nodeType === 3) {
 
-				currentElement = currentElement.parentNode;
+        currentElement = currentElement.parentNode;
 
-			}
+      }
 
-			currentTouchY = touch.clientY;
+      currentTouchY = touch.clientY;
 
-			currentTouchX = touch.clientX;
+      currentTouchX = touch.clientX;
 
-			currentTouchTime = e.timeStamp;
+      currentTouchTime = e.timeStamp;
 
-			if(!rxTouchIgnoreTags.test(currentElement.tagName)) {
+      if (!rxTouchIgnoreTags.test(currentElement.tagName)) {
 
-				e.preventDefault();
+        e.preventDefault();
 
-			}
+      }
 
-			switch(e.type) {
+      switch (e.type) {
 
-				case EVENT_TOUCHSTART:
+        case EVENT_TOUCHSTART:
 
-					//The last element we tapped on.
+          //The last element we tapped on.
 
-					if(initialElement) {
+          if (initialElement) {
 
-						initialElement.blur();
+            initialElement.blur();
 
-					}
+          }
 
-					_instance.stopAnimateTo();
+          _instance.stopAnimateTo();
 
-					initialElement = currentElement;
+          initialElement = currentElement;
 
-					initialTouchY = lastTouchY = currentTouchY;
+          initialTouchY = lastTouchY = currentTouchY;
 
-					initialTouchX = currentTouchX;
+          initialTouchX = currentTouchX;
 
-					initialTouchTime = currentTouchTime;
+          initialTouchTime = currentTouchTime;
 
-					break;
+          break;
 
-				case EVENT_TOUCHMOVE:
+        case EVENT_TOUCHMOVE:
 
-					//Prevent default event on touchIgnore elements in case they don't have focus yet.
+          //Prevent default event on touchIgnore elements in case they don't have focus yet.
 
-					if(rxTouchIgnoreTags.test(currentElement.tagName) && document.activeElement !== currentElement) {
+          if (rxTouchIgnoreTags.test(currentElement.tagName) && document.activeElement !== currentElement) {
 
-						e.preventDefault();
+            e.preventDefault();
 
-					}
+          }
 
-					deltaY = currentTouchY - lastTouchY;
+          deltaY = currentTouchY - lastTouchY;
 
-					deltaTime = currentTouchTime - lastTouchTime;
+          deltaTime = currentTouchTime - lastTouchTime;
 
-					_instance.setScrollTop(_mobileOffset - deltaY, true);
+          _instance.setScrollTop(_mobileOffset - deltaY, true);
 
-					lastTouchY = currentTouchY;
+          lastTouchY = currentTouchY;
 
-					lastTouchTime = currentTouchTime;
+          lastTouchTime = currentTouchTime;
 
-					break;
+          break;
 
-				default:
+        default:
 
-				case EVENT_TOUCHCANCEL:
+        case EVENT_TOUCHCANCEL:
 
-				case EVENT_TOUCHEND:
+        case EVENT_TOUCHEND:
 
-					var distanceY = initialTouchY - currentTouchY;
+          var distanceY = initialTouchY - currentTouchY;
 
-					var distanceX = initialTouchX - currentTouchX;
+          var distanceX = initialTouchX - currentTouchX;
 
-					var distance2 = distanceX * distanceX + distanceY * distanceY;
+          var distance2 = distanceX * distanceX + distanceY * distanceY;
 
-					//Check if it was more like a tap (moved less than 7px).
+          //Check if it was more like a tap (moved less than 7px).
 
-					if(distance2 < 49) {
+          if (distance2 < 49) {
 
-						if(!rxTouchIgnoreTags.test(initialElement.tagName)) {
+            if (!rxTouchIgnoreTags.test(initialElement.tagName)) {
 
-							initialElement.focus();
+              initialElement.focus();
 
-							//It was a tap, click the element.
+              //It was a tap, click the element.
 
-							var clickEvent = document.createEvent('MouseEvents');
+              var clickEvent = document.createEvent('MouseEvents');
 
-							clickEvent.initMouseEvent('click', true, true, e.view, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, e.ctrlKey, e.altKey, e.shiftKey, e.metaKey, 0, null);
+              clickEvent.initMouseEvent('click', true, true, e.view, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, e.ctrlKey, e.altKey, e.shiftKey, e.metaKey, 0, null);
 
-							initialElement.dispatchEvent(clickEvent);
+              initialElement.dispatchEvent(clickEvent);
 
-						}
+            }
 
-						return;
+            return;
 
-					}
+          }
 
-					initialElement = undefined;
+          initialElement = undefined;
 
-					var speed = deltaY / deltaTime;
+          var speed = deltaY / deltaTime;
 
-					//Cap speed at 3 pixel/ms.
+          //Cap speed at 3 pixel/ms.
 
-					speed = Math.max(Math.min(speed, 3), -3);
+          speed = Math.max(Math.min(speed, 3), -3);
 
-					var duration = Math.abs(speed / _mobileDeceleration);
+          var duration = Math.abs(speed / _mobileDeceleration);
 
-					var targetOffset = speed * duration + 0.5 * _mobileDeceleration * duration * duration;
+          var targetOffset = speed * duration + 0.5 * _mobileDeceleration * duration * duration;
 
-					var targetTop = _instance.getScrollTop() - targetOffset;
+          var targetTop = _instance.getScrollTop() - targetOffset;
 
-					//Relative duration change for when scrolling above bounds.
+          //Relative duration change for when scrolling above bounds.
 
-					var targetRatio = 0;
+          var targetRatio = 0;
 
-					//Change duration proportionally when scrolling would leave bounds.
+          //Change duration proportionally when scrolling would leave bounds.
 
-					if(targetTop > _maxKeyFrame) {
+          if (targetTop > _maxKeyFrame) {
 
-						targetRatio = (_maxKeyFrame - targetTop) / targetOffset;
+            targetRatio = (_maxKeyFrame - targetTop) / targetOffset;
 
-						targetTop = _maxKeyFrame;
+            targetTop = _maxKeyFrame;
 
-					} else if(targetTop < 0) {
+          } else if (targetTop < 0) {
 
-						targetRatio = -targetTop / targetOffset;
+            targetRatio = -targetTop / targetOffset;
 
-						targetTop = 0;
+            targetTop = 0;
 
-					}
+          }
 
-					duration = duration * (1 - targetRatio);
+          duration = duration * (1 - targetRatio);
 
-					_instance.animateTo((targetTop + 0.5) | 0, {easing: 'outCubic', duration: duration});
+          _instance.animateTo((targetTop + 0.5) | 0, { easing: 'outCubic', duration: duration });
 
-					break;
+          break;
 
-			}
+      }
 
-		});
+    });
 
-		//Just in case there has already been some native scrolling, reset it.
+    //Just in case there has already been some native scrolling, reset it.
 
-		window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 
-		documentElement.style.overflow = body.style.overflow = 'hidden';
+    documentElement.style.overflow = body.style.overflow = 'hidden';
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Updates key frames which depend on others / need to be updated on resize.
+   * Updates key frames which depend on others / need to be updated on resize.
 
-	 * That is "end" in "absolute" mode and all key frames in "relative" mode.
+   * That is "end" in "absolute" mode and all key frames in "relative" mode.
 
-	 * Also handles constants, because they may change on resize.
+   * Also handles constants, because they may change on resize.
 
-	 */
+   */
 
-	var _updateDependentKeyFrames = function() {
+  var _updateDependentKeyFrames = function() {
 
-		var viewportHeight = documentElement.clientHeight;
+    var viewportHeight = documentElement.clientHeight;
 
-		var processedConstants = _processConstants();
+    var processedConstants = _processConstants();
 
-		var skrollable;
+    var skrollable;
 
-		var element;
+    var element;
 
-		var anchorTarget;
+    var anchorTarget;
 
-		var keyFrames;
+    var keyFrames;
 
-		var keyFrameIndex;
+    var keyFrameIndex;
 
-		var keyFramesLength;
+    var keyFramesLength;
 
-		var kf;
+    var kf;
 
-		var skrollableIndex;
+    var skrollableIndex;
 
-		var skrollablesLength;
+    var skrollablesLength;
 
-		var offset;
+    var offset;
 
-		var constantValue;
+    var constantValue;
 
-		//First process all relative-mode elements and find the max key frame.
+    //First process all relative-mode elements and find the max key frame.
 
-		skrollableIndex = 0;
+    skrollableIndex = 0;
 
-		skrollablesLength = _skrollables.length;
+    skrollablesLength = _skrollables.length;
 
-		for(; skrollableIndex < skrollablesLength; skrollableIndex++) {
+    for (; skrollableIndex < skrollablesLength; skrollableIndex++) {
 
-			skrollable = _skrollables[skrollableIndex];
+      skrollable = _skrollables[skrollableIndex];
 
-			element = skrollable.element;
+      element = skrollable.element;
 
-			anchorTarget = skrollable.anchorTarget;
+      anchorTarget = skrollable.anchorTarget;
 
-			keyFrames = skrollable.keyFrames;
+      keyFrames = skrollable.keyFrames;
 
-			keyFrameIndex = 0;
+      keyFrameIndex = 0;
 
-			keyFramesLength = keyFrames.length;
+      keyFramesLength = keyFrames.length;
 
-			for(; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
+      for (; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
 
-				kf = keyFrames[keyFrameIndex];
+        kf = keyFrames[keyFrameIndex];
 
-				offset = kf.offset;
+        offset = kf.offset;
 
-				constantValue = processedConstants[kf.constant] || 0;
+        constantValue = processedConstants[kf.constant] || 0;
 
-				kf.frame = offset;
+        kf.frame = offset;
 
-				if(kf.isPercentage) {
+        if (kf.isPercentage) {
 
-					//Convert the offset to percentage of the viewport height.
+          //Convert the offset to percentage of the viewport height.
 
-					offset = offset * viewportHeight;
+          offset = offset * viewportHeight;
 
-					//Absolute + percentage mode.
+          //Absolute + percentage mode.
 
-					kf.frame = offset;
+          kf.frame = offset;
 
-				}
+        }
 
-				if(kf.mode === 'relative') {
+        if (kf.mode === 'relative') {
 
-					_reset(element);
+          _reset(element);
 
-					kf.frame = _instance.relativeToAbsolute(anchorTarget, kf.anchors[0], kf.anchors[1]) - offset;
+          kf.frame = _instance.relativeToAbsolute(anchorTarget, kf.anchors[0], kf.anchors[1]) - offset;
 
-					_reset(element, true);
+          _reset(element, true);
 
-				}
+        }
 
-				kf.frame += constantValue;
+        kf.frame += constantValue;
 
-				//Only search for max key frame when forceHeight is enabled.
+        //Only search for max key frame when forceHeight is enabled.
 
-				if(_forceHeight) {
+        if (_forceHeight) {
 
-					//Find the max key frame, but don't use one of the data-end ones for comparison.
+          //Find the max key frame, but don't use one of the data-end ones for comparison.
 
-					if(!kf.isEnd && kf.frame > _maxKeyFrame) {
+          if (!kf.isEnd && kf.frame > _maxKeyFrame) {
 
-						_maxKeyFrame = kf.frame;
+            _maxKeyFrame = kf.frame;
 
-					}
+          }
 
-				}
+        }
 
-			}
+      }
 
-		}
+    }
 
-		//#133: The document can be larger than the maxKeyFrame we found.
+    //#133: The document can be larger than the maxKeyFrame we found.
 
-		_maxKeyFrame = Math.max(_maxKeyFrame, _getDocumentHeight());
+    _maxKeyFrame = Math.max(_maxKeyFrame, _getDocumentHeight());
 
-		//Now process all data-end keyframes.
+    //Now process all data-end keyframes.
 
-		skrollableIndex = 0;
+    skrollableIndex = 0;
 
-		skrollablesLength = _skrollables.length;
+    skrollablesLength = _skrollables.length;
 
-		for(; skrollableIndex < skrollablesLength; skrollableIndex++) {
+    for (; skrollableIndex < skrollablesLength; skrollableIndex++) {
 
-			skrollable = _skrollables[skrollableIndex];
+      skrollable = _skrollables[skrollableIndex];
 
-			keyFrames = skrollable.keyFrames;
+      keyFrames = skrollable.keyFrames;
 
-			keyFrameIndex = 0;
+      keyFrameIndex = 0;
 
-			keyFramesLength = keyFrames.length;
+      keyFramesLength = keyFrames.length;
 
-			for(; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
+      for (; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
 
-				kf = keyFrames[keyFrameIndex];
+        kf = keyFrames[keyFrameIndex];
 
-				constantValue = processedConstants[kf.constant] || 0;
+        constantValue = processedConstants[kf.constant] || 0;
 
-				if(kf.isEnd) {
+        if (kf.isEnd) {
 
-					kf.frame = _maxKeyFrame - kf.offset + constantValue;
+          kf.frame = _maxKeyFrame - kf.offset + constantValue;
 
-				}
+        }
 
-			}
+      }
 
-			skrollable.keyFrames.sort(_keyFrameComparator);
+      skrollable.keyFrames.sort(_keyFrameComparator);
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Calculates and sets the style properties for the element at the given frame.
+   * Calculates and sets the style properties for the element at the given frame.
 
-	 * @param fakeFrame The frame to render at when smooth scrolling is enabled.
+   * @param fakeFrame The frame to render at when smooth scrolling is enabled.
 
-	 * @param actualFrame The actual frame we are at.
+   * @param actualFrame The actual frame we are at.
 
-	 */
+   */
 
-	var _calcSteps = function(fakeFrame, actualFrame) {
+  var _calcSteps = function(fakeFrame, actualFrame) {
 
-		//Iterate over all skrollables.
+    //Iterate over all skrollables.
 
-		var skrollableIndex = 0;
+    var skrollableIndex = 0;
 
-		var skrollablesLength = _skrollables.length;
+    var skrollablesLength = _skrollables.length;
 
-		for(; skrollableIndex < skrollablesLength; skrollableIndex++) {
+    for (; skrollableIndex < skrollablesLength; skrollableIndex++) {
 
-			var skrollable = _skrollables[skrollableIndex];
+      var skrollable = _skrollables[skrollableIndex];
 
-			var element = skrollable.element;
+      var element = skrollable.element;
 
-			var frame = skrollable.smoothScrolling ? fakeFrame : actualFrame;
+      var frame = skrollable.smoothScrolling ? fakeFrame : actualFrame;
 
-			var frames = skrollable.keyFrames;
+      var frames = skrollable.keyFrames;
 
-			var framesLength = frames.length;
+      var framesLength = frames.length;
 
-			var firstFrame = frames[0];
+      var firstFrame = frames[0];
 
-			var lastFrame = frames[frames.length - 1];
+      var lastFrame = frames[frames.length - 1];
 
-			var beforeFirst = frame < firstFrame.frame;
+      var beforeFirst = frame < firstFrame.frame;
 
-			var afterLast = frame > lastFrame.frame;
+      var afterLast = frame > lastFrame.frame;
 
-			var firstOrLastFrame = beforeFirst ? firstFrame : lastFrame;
+      var firstOrLastFrame = beforeFirst ? firstFrame : lastFrame;
 
-			var emitEvents = skrollable.emitEvents;
+      var emitEvents = skrollable.emitEvents;
 
-			var lastFrameIndex = skrollable.lastFrameIndex;
+      var lastFrameIndex = skrollable.lastFrameIndex;
 
-			var key;
+      var key;
 
-			var value;
+      var value;
 
-			//If we are before/after the first/last frame, set the styles according to the given edge strategy.
+      //If we are before/after the first/last frame, set the styles according to the given edge strategy.
 
-			if(beforeFirst || afterLast) {
+      if (beforeFirst || afterLast) {
 
-				//Check if we already handled this edge case last time.
+        //Check if we already handled this edge case last time.
 
-				//Note: using setScrollTop it's possible that we jumped from one edge to the other.
+        //Note: using setScrollTop it's possible that we jumped from one edge to the other.
 
-				if(beforeFirst && skrollable.edge === -1 || afterLast && skrollable.edge === 1) {
+        if (beforeFirst && skrollable.edge === -1 || afterLast && skrollable.edge === 1) {
 
-					continue;
+          continue;
 
-				}
+        }
 
-				//Add the skrollr-before or -after class.
+        //Add the skrollr-before or -after class.
 
-				if(beforeFirst) {
+        if (beforeFirst) {
 
-					_updateClass(element, [SKROLLABLE_BEFORE_CLASS], [SKROLLABLE_AFTER_CLASS, SKROLLABLE_BETWEEN_CLASS]);
+          _updateClass(element, [SKROLLABLE_BEFORE_CLASS], [SKROLLABLE_AFTER_CLASS, SKROLLABLE_BETWEEN_CLASS]);
 
-					//This handles the special case where we exit the first keyframe.
+          //This handles the special case where we exit the first keyframe.
 
-					if(emitEvents && lastFrameIndex > -1) {
+          if (emitEvents && lastFrameIndex > -1) {
 
-						_emitEvent(element, firstFrame.eventType, _direction);
+            _emitEvent(element, firstFrame.eventType, _direction);
 
-						skrollable.lastFrameIndex = -1;
+            skrollable.lastFrameIndex = -1;
 
-					}
+          }
 
-				} else {
+        } else {
 
-					_updateClass(element, [SKROLLABLE_AFTER_CLASS], [SKROLLABLE_BEFORE_CLASS, SKROLLABLE_BETWEEN_CLASS]);
+          _updateClass(element, [SKROLLABLE_AFTER_CLASS], [SKROLLABLE_BEFORE_CLASS, SKROLLABLE_BETWEEN_CLASS]);
 
-					//This handles the special case where we exit the last keyframe.
+          //This handles the special case where we exit the last keyframe.
 
-					if(emitEvents && lastFrameIndex < framesLength) {
+          if (emitEvents && lastFrameIndex < framesLength) {
 
-						_emitEvent(element, lastFrame.eventType, _direction);
+            _emitEvent(element, lastFrame.eventType, _direction);
 
-						skrollable.lastFrameIndex = framesLength;
+            skrollable.lastFrameIndex = framesLength;
 
-					}
+          }
 
-				}
+        }
 
-				//Remember that we handled the edge case (before/after the first/last keyframe).
+        //Remember that we handled the edge case (before/after the first/last keyframe).
 
-				skrollable.edge = beforeFirst ? -1 : 1;
+        skrollable.edge = beforeFirst ? -1 : 1;
 
-				switch(skrollable.edgeStrategy) {
+        switch (skrollable.edgeStrategy) {
 
-					case 'reset':
+          case 'reset':
 
-						_reset(element);
+            _reset(element);
 
-						continue;
+            continue;
 
-					case 'ease':
+          case 'ease':
 
-						//Handle this case like it would be exactly at first/last keyframe and just pass it on.
+            //Handle this case like it would be exactly at first/last keyframe and just pass it on.
 
-						frame = firstOrLastFrame.frame;
+            frame = firstOrLastFrame.frame;
 
-						break;
+            break;
 
-					default:
+          default:
 
-					case 'set':
+          case 'set':
 
-						var props = firstOrLastFrame.props;
+            var props = firstOrLastFrame.props;
 
-						for(key in props) {
+            for (key in props) {
 
-							if(hasProp.call(props, key)) {
+              if (hasProp.call(props, key)) {
 
-								value = _interpolateString(props[key].value);
+                value = _interpolateString(props[key].value);
 
-								//Set style or attribute.
+                //Set style or attribute.
 
-								if(key.indexOf('@') === 0) {
+                if (key.indexOf('@') === 0) {
 
-									element.setAttribute(key.substr(1), value);
+                  element.setAttribute(key.substr(1), value);
 
-								} else {
+                } else {
 
-									skrollr.setStyle(element, key, value);
+                  skrollr.setStyle(element, key, value);
 
-								}
+                }
 
-							}
+              }
 
-						}
+            }
 
-						continue;
+            continue;
 
-				}
+        }
 
-			} else {
+      } else {
 
-				//Did we handle an edge last time?
+        //Did we handle an edge last time?
 
-				if(skrollable.edge !== 0) {
+        if (skrollable.edge !== 0) {
 
-					_updateClass(element, [SKROLLABLE_CLASS, SKROLLABLE_BETWEEN_CLASS], [SKROLLABLE_BEFORE_CLASS, SKROLLABLE_AFTER_CLASS]);
+          _updateClass(element, [SKROLLABLE_CLASS, SKROLLABLE_BETWEEN_CLASS], [SKROLLABLE_BEFORE_CLASS, SKROLLABLE_AFTER_CLASS]);
 
-					skrollable.edge = 0;
+          skrollable.edge = 0;
 
-				}
+        }
 
-			}
+      }
 
-			//Find out between which two key frames we are right now.
+      //Find out between which two key frames we are right now.
 
-			var keyFrameIndex = 0;
+      var keyFrameIndex = 0;
 
-			for(; keyFrameIndex < framesLength - 1; keyFrameIndex++) {
+      for (; keyFrameIndex < framesLength - 1; keyFrameIndex++) {
 
-				if(frame >= frames[keyFrameIndex].frame && frame <= frames[keyFrameIndex + 1].frame) {
+        if (frame >= frames[keyFrameIndex].frame && frame <= frames[keyFrameIndex + 1].frame) {
 
-					var left = frames[keyFrameIndex];
+          var left = frames[keyFrameIndex];
 
-					var right = frames[keyFrameIndex + 1];
+          var right = frames[keyFrameIndex + 1];
 
-					for(key in left.props) {
+          for (key in left.props) {
 
-						if(hasProp.call(left.props, key)) {
+            if (hasProp.call(left.props, key)) {
 
-							var progress = (frame - left.frame) / (right.frame - left.frame);
+              var progress = (frame - left.frame) / (right.frame - left.frame);
 
-							//Transform the current progress using the given easing function.
+              //Transform the current progress using the given easing function.
 
-							progress = left.props[key].easing(progress);
+              progress = left.props[key].easing(progress);
 
-							//Interpolate between the two values
+              //Interpolate between the two values
 
-							value = _calcInterpolation(left.props[key].value, right.props[key].value, progress);
+              value = _calcInterpolation(left.props[key].value, right.props[key].value, progress);
 
-							value = _interpolateString(value);
+              value = _interpolateString(value);
 
-							//Set style or attribute.
+              //Set style or attribute.
 
-							if(key.indexOf('@') === 0) {
+              if (key.indexOf('@') === 0) {
 
-								element.setAttribute(key.substr(1), value);
+                element.setAttribute(key.substr(1), value);
 
-							} else {
+              } else {
 
-								skrollr.setStyle(element, key, value);
+                skrollr.setStyle(element, key, value);
 
-							}
+              }
 
-						}
+            }
 
-					}
+          }
 
-					//Are events enabled on this element?
+          //Are events enabled on this element?
 
-					//This code handles the usual cases of scrolling through different keyframes.
+          //This code handles the usual cases of scrolling through different keyframes.
 
-					//The special cases of before first and after last keyframe are handled above.
+          //The special cases of before first and after last keyframe are handled above.
 
-					if(emitEvents) {
+          if (emitEvents) {
 
-						//Did we pass a new keyframe?
+            //Did we pass a new keyframe?
 
-						if(lastFrameIndex !== keyFrameIndex) {
+            if (lastFrameIndex !== keyFrameIndex) {
 
-							if(_direction === 'down') {
+              if (_direction === 'down') {
 
-								_emitEvent(element, left.eventType, _direction);
+                _emitEvent(element, left.eventType, _direction);
 
-							} else {
+              } else {
 
-								_emitEvent(element, right.eventType, _direction);
+                _emitEvent(element, right.eventType, _direction);
 
-							}
+              }
 
-							skrollable.lastFrameIndex = keyFrameIndex;
+              skrollable.lastFrameIndex = keyFrameIndex;
 
-						}
+            }
 
-					}
+          }
 
-					break;
+          break;
 
-				}
+        }
 
-			}
+      }
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Renders all elements.
+   * Renders all elements.
 
-	 */
+   */
 
-	var _render = function() {
+  var _render = function() {
 
-		if(_requestReflow) {
+    if (_requestReflow) {
 
-			_requestReflow = false;
+      _requestReflow = false;
 
-			_reflow();
+      _reflow();
 
-		}
+    }
 
-		//We may render something else than the actual scrollbar position.
+    //We may render something else than the actual scrollbar position.
 
-		var renderTop = _instance.getScrollTop();
+    var renderTop = _instance.getScrollTop();
 
-		//If there's an animation, which ends in current render call, call the callback after rendering.
+    //If there's an animation, which ends in current render call, call the callback after rendering.
 
-		var afterAnimationCallback;
+    var afterAnimationCallback;
 
-		var now = _now();
+    var now = _now();
 
-		var progress;
+    var progress;
 
-		//Before actually rendering handle the scroll animation, if any.
+    //Before actually rendering handle the scroll animation, if any.
 
-		if(_scrollAnimation) {
+    if (_scrollAnimation) {
 
-			//It's over
+      //It's over
 
-			if(now >= _scrollAnimation.endTime) {
+      if (now >= _scrollAnimation.endTime) {
 
-				renderTop = _scrollAnimation.targetTop;
+        renderTop = _scrollAnimation.targetTop;
 
-				afterAnimationCallback = _scrollAnimation.done;
+        afterAnimationCallback = _scrollAnimation.done;
 
-				_scrollAnimation = undefined;
+        _scrollAnimation = undefined;
 
-			} else {
+      } else {
 
-				//Map the current progress to the new progress using given easing function.
+        //Map the current progress to the new progress using given easing function.
 
-				progress = _scrollAnimation.easing((now - _scrollAnimation.startTime) / _scrollAnimation.duration);
+        progress = _scrollAnimation.easing((now - _scrollAnimation.startTime) / _scrollAnimation.duration);
 
-				renderTop = (_scrollAnimation.startTop + progress * _scrollAnimation.topDiff) | 0;
+        renderTop = (_scrollAnimation.startTop + progress * _scrollAnimation.topDiff) | 0;
 
-			}
+      }
 
-			_instance.setScrollTop(renderTop, true);
+      _instance.setScrollTop(renderTop, true);
 
-		}
+    }
 
-		//Smooth scrolling only if there's no animation running and if we're not forcing the rendering.
+    //Smooth scrolling only if there's no animation running and if we're not forcing the rendering.
 
-		else if(!_forceRender) {
+    else if (!_forceRender) {
 
-			var smoothScrollingDiff = _smoothScrolling.targetTop - renderTop;
+      var smoothScrollingDiff = _smoothScrolling.targetTop - renderTop;
 
-			//The user scrolled, start new smooth scrolling.
+      //The user scrolled, start new smooth scrolling.
 
-			if(smoothScrollingDiff) {
+      if (smoothScrollingDiff) {
 
-				_smoothScrolling = {
+        _smoothScrolling = {
 
-					startTop: _lastTop,
+          startTop: _lastTop,
 
-					topDiff: renderTop - _lastTop,
+          topDiff: renderTop - _lastTop,
 
-					targetTop: renderTop,
+          targetTop: renderTop,
 
-					startTime: _lastRenderCall,
+          startTime: _lastRenderCall,
 
-					endTime: _lastRenderCall + _smoothScrollingDuration
+          endTime: _lastRenderCall + _smoothScrollingDuration
 
-				};
+        };
 
-			}
+      }
 
-			//Interpolate the internal scroll position (not the actual scrollbar).
+      //Interpolate the internal scroll position (not the actual scrollbar).
 
-			if(now <= _smoothScrolling.endTime) {
+      if (now <= _smoothScrolling.endTime) {
 
-				//Map the current progress to the new progress using easing function.
+        //Map the current progress to the new progress using easing function.
 
-				progress = easings.sqrt((now - _smoothScrolling.startTime) / _smoothScrollingDuration);
+        progress = easings.sqrt((now - _smoothScrolling.startTime) / _smoothScrollingDuration);
 
-				renderTop = (_smoothScrolling.startTop + progress * _smoothScrolling.topDiff) | 0;
+        renderTop = (_smoothScrolling.startTop + progress * _smoothScrolling.topDiff) | 0;
 
-			}
+      }
 
-		}
+    }
 
-		//Did the scroll position even change?
+    //Did the scroll position even change?
 
-		if(_forceRender || _lastTop !== renderTop) {
+    if (_forceRender || _lastTop !== renderTop) {
 
-			//Remember in which direction are we scrolling?
+      //Remember in which direction are we scrolling?
 
-			_direction = (renderTop > _lastTop) ? 'down' : (renderTop < _lastTop ? 'up' : _direction);
+      _direction = (renderTop > _lastTop) ? 'down' : (renderTop < _lastTop ? 'up' : _direction);
 
-			_forceRender = false;
+      _forceRender = false;
 
-			var listenerParams = {
+      var listenerParams = {
 
-				curTop: renderTop,
+        curTop: renderTop,
 
-				lastTop: _lastTop,
+        lastTop: _lastTop,
 
-				maxTop: _maxKeyFrame,
+        maxTop: _maxKeyFrame,
 
-				direction: _direction
+        direction: _direction
 
-			};
+      };
 
-			//Tell the listener we are about to render.
+      //Tell the listener we are about to render.
 
-			var continueRendering = _listeners.beforerender && _listeners.beforerender.call(_instance, listenerParams);
+      var continueRendering = _listeners.beforerender && _listeners.beforerender.call(_instance, listenerParams);
 
-			//The beforerender listener function is able the cancel rendering.
+      //The beforerender listener function is able the cancel rendering.
 
-			if(continueRendering !== false) {
+      if (continueRendering !== false) {
 
-				//Now actually interpolate all the styles.
+        //Now actually interpolate all the styles.
 
-				_calcSteps(renderTop, _instance.getScrollTop());
+        _calcSteps(renderTop, _instance.getScrollTop());
 
-				//That's were we actually "scroll" on mobile.
+        //That's were we actually "scroll" on mobile.
 
-				if(_isMobile && _skrollrBody) {
+        if (_isMobile && _skrollrBody) {
 
-					//Set the transform ("scroll it").
+          //Set the transform ("scroll it").
 
-					skrollr.setStyle(_skrollrBody, 'transform', 'translate(0, ' + -(_mobileOffset) + 'px) ' + _translateZ);
+          skrollr.setStyle(_skrollrBody, 'transform', 'translate(0, ' + -(_mobileOffset) + 'px) ' + _translateZ);
 
-				}
+        }
 
-				//Remember when we last rendered.
+        //Remember when we last rendered.
 
-				_lastTop = renderTop;
+        _lastTop = renderTop;
 
-				if(_listeners.render) {
+        if (_listeners.render) {
 
-					_listeners.render.call(_instance, listenerParams);
+          _listeners.render.call(_instance, listenerParams);
 
-				}
+        }
 
-			}
+      }
 
-			if(afterAnimationCallback) {
+      if (afterAnimationCallback) {
 
-				afterAnimationCallback.call(_instance, false);
+        afterAnimationCallback.call(_instance, false);
 
-			}
+      }
 
-		}
+    }
 
-		_lastRenderCall = now;
+    _lastRenderCall = now;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Parses the properties for each key frame of the given skrollable.
+   * Parses the properties for each key frame of the given skrollable.
 
-	 */
+   */
 
-	var _parseProps = function(skrollable) {
+  var _parseProps = function(skrollable) {
 
-		//Iterate over all key frames
+    //Iterate over all key frames
 
-		var keyFrameIndex = 0;
+    var keyFrameIndex = 0;
 
-		var keyFramesLength = skrollable.keyFrames.length;
+    var keyFramesLength = skrollable.keyFrames.length;
 
-		for(; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
+    for (; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
 
-			var frame = skrollable.keyFrames[keyFrameIndex];
+      var frame = skrollable.keyFrames[keyFrameIndex];
 
-			var easing;
+      var easing;
 
-			var value;
+      var value;
 
-			var prop;
+      var prop;
 
-			var props = {};
+      var props = {};
 
-			var match;
+      var match;
 
-			while((match = rxPropValue.exec(frame.props)) !== null) {
+      while ((match = rxPropValue.exec(frame.props)) !== null) {
 
-				prop = match[1];
+        prop = match[1];
 
-				value = match[2];
+        value = match[2];
 
-				easing = prop.match(rxPropEasing);
+        easing = prop.match(rxPropEasing);
 
-				//Is there an easing specified for this prop?
+        //Is there an easing specified for this prop?
 
-				if(easing !== null) {
+        if (easing !== null) {
 
-					prop = easing[1];
+          prop = easing[1];
 
-					easing = easing[2];
+          easing = easing[2];
 
-				} else {
+        } else {
 
-					easing = DEFAULT_EASING;
+          easing = DEFAULT_EASING;
 
-				}
+        }
 
-				//Exclamation point at first position forces the value to be taken literal.
+        //Exclamation point at first position forces the value to be taken literal.
 
-				value = value.indexOf('!') ? _parseProp(value) : [value.slice(1)];
+        value = value.indexOf('!') ? _parseProp(value) : [value.slice(1)];
 
-				//Save the prop for this key frame with his value and easing function
+        //Save the prop for this key frame with his value and easing function
 
-				props[prop] = {
+        props[prop] = {
 
-					value: value,
+          value: value,
 
-					easing: easings[easing]
+          easing: easings[easing]
 
-				};
+        };
 
-			}
+      }
 
-			frame.props = props;
+      frame.props = props;
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Parses a value extracting numeric values and generating a format string
+   * Parses a value extracting numeric values and generating a format string
 
-	 * for later interpolation of the new values in old string.
+   * for later interpolation of the new values in old string.
 
-	 *
+   *
 
-	 * @param val The CSS value to be parsed.
+   * @param val The CSS value to be parsed.
 
-	 * @return Something like ["rgba(?%,?%, ?%,?)", 100, 50, 0, .7]
+   * @return Something like ["rgba(?%,?%, ?%,?)", 100, 50, 0, .7]
 
-	 * where the first element is the format string later used
+   * where the first element is the format string later used
 
-	 * and all following elements are the numeric value.
+   * and all following elements are the numeric value.
 
-	 */
+   */
 
-	var _parseProp = function(val) {
+  var _parseProp = function(val) {
 
-		var numbers = [];
+    var numbers = [];
 
-		//One special case, where floats don't work.
+    //One special case, where floats don't work.
 
-		//We replace all occurences of rgba colors
+    //We replace all occurences of rgba colors
 
-		//which don't use percentage notation with the percentage notation.
+    //which don't use percentage notation with the percentage notation.
 
-		rxRGBAIntegerColor.lastIndex = 0;
+    rxRGBAIntegerColor.lastIndex = 0;
 
-		val = val.replace(rxRGBAIntegerColor, function(rgba) {
+    val = val.replace(rxRGBAIntegerColor, function(rgba) {
 
-			return rgba.replace(rxNumericValue, function(n) {
+      return rgba.replace(rxNumericValue, function(n) {
 
-				return n / 255 * 100 + '%';
+        return n / 255 * 100 + '%';
 
-			});
+      });
 
-		});
+    });
 
-		//Handle prefixing of "gradient" values.
+    //Handle prefixing of "gradient" values.
 
-		//For now only the prefixed value will be set. Unprefixed isn't supported anyway.
+    //For now only the prefixed value will be set. Unprefixed isn't supported anyway.
 
-		if(theDashedCSSPrefix) {
+    if (theDashedCSSPrefix) {
 
-			rxGradient.lastIndex = 0;
+      rxGradient.lastIndex = 0;
 
-			val = val.replace(rxGradient, function(s) {
+      val = val.replace(rxGradient, function(s) {
 
-				return theDashedCSSPrefix + s;
+        return theDashedCSSPrefix + s;
 
-			});
+      });
 
-		}
+    }
 
-		//Now parse ANY number inside this string and create a format string.
+    //Now parse ANY number inside this string and create a format string.
 
-		val = val.replace(rxNumericValue, function(n) {
+    val = val.replace(rxNumericValue, function(n) {
 
-			numbers.push(+n);
+      numbers.push(+n);
 
-			return '{?}';
+      return '{?}';
 
-		});
+    });
 
-		//Add the formatstring as first value.
+    //Add the formatstring as first value.
 
-		numbers.unshift(val);
+    numbers.unshift(val);
 
-		return numbers;
+    return numbers;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Fills the key frames with missing left and right hand properties.
+   * Fills the key frames with missing left and right hand properties.
 
-	 * If key frame 1 has property X and key frame 2 is missing X,
+   * If key frame 1 has property X and key frame 2 is missing X,
 
-	 * but key frame 3 has X again, then we need to assign X to key frame 2 too.
+   * but key frame 3 has X again, then we need to assign X to key frame 2 too.
 
-	 *
+   *
 
-	 * @param sk A skrollable.
+   * @param sk A skrollable.
 
-	 */
+   */
 
-	var _fillProps = function(sk) {
+  var _fillProps = function(sk) {
 
-		//Will collect the properties key frame by key frame
+    //Will collect the properties key frame by key frame
 
-		var propList = {};
+    var propList = {};
 
-		var keyFrameIndex;
+    var keyFrameIndex;
 
-		var keyFramesLength;
+    var keyFramesLength;
 
-		//Iterate over all key frames from left to right
+    //Iterate over all key frames from left to right
 
-		keyFrameIndex = 0;
+    keyFrameIndex = 0;
 
-		keyFramesLength = sk.keyFrames.length;
+    keyFramesLength = sk.keyFrames.length;
 
-		for(; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
+    for (; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
 
-			_fillPropForFrame(sk.keyFrames[keyFrameIndex], propList);
+      _fillPropForFrame(sk.keyFrames[keyFrameIndex], propList);
 
-		}
+    }
 
-		//Now do the same from right to fill the last gaps
+    //Now do the same from right to fill the last gaps
 
-		propList = {};
+    propList = {};
 
-		//Iterate over all key frames from right to left
+    //Iterate over all key frames from right to left
 
-		keyFrameIndex = sk.keyFrames.length - 1;
+    keyFrameIndex = sk.keyFrames.length - 1;
 
-		for(; keyFrameIndex >= 0; keyFrameIndex--) {
+    for (; keyFrameIndex >= 0; keyFrameIndex--) {
 
-			_fillPropForFrame(sk.keyFrames[keyFrameIndex], propList);
+      _fillPropForFrame(sk.keyFrames[keyFrameIndex], propList);
 
-		}
+    }
 
-	};
+  };
 
-	var _fillPropForFrame = function(frame, propList) {
+  var _fillPropForFrame = function(frame, propList) {
 
-		var key;
+    var key;
 
-		//For each key frame iterate over all right hand properties and assign them,
+    //For each key frame iterate over all right hand properties and assign them,
 
-		//but only if the current key frame doesn't have the property by itself
+    //but only if the current key frame doesn't have the property by itself
 
-		for(key in propList) {
+    for (key in propList) {
 
-			//The current frame misses this property, so assign it.
+      //The current frame misses this property, so assign it.
 
-			if(!hasProp.call(frame.props, key)) {
+      if (!hasProp.call(frame.props, key)) {
 
-				frame.props[key] = propList[key];
+        frame.props[key] = propList[key];
 
-			}
+      }
 
-		}
+    }
 
-		//Iterate over all props of the current frame and collect them
+    //Iterate over all props of the current frame and collect them
 
-		for(key in frame.props) {
+    for (key in frame.props) {
 
-			propList[key] = frame.props[key];
+      propList[key] = frame.props[key];
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Calculates the new values for two given values array.
+   * Calculates the new values for two given values array.
 
-	 */
+   */
 
-	var _calcInterpolation = function(val1, val2, progress) {
+  var _calcInterpolation = function(val1, val2, progress) {
 
-		var valueIndex;
+    var valueIndex;
 
-		var val1Length = val1.length;
+    var val1Length = val1.length;
 
-		//They both need to have the same length
+    //They both need to have the same length
 
-		if(val1Length !== val2.length) {
+    if (val1Length !== val2.length) {
 
-			throw 'Can\'t interpolate between "' + val1[0] + '" and "' + val2[0] + '"';
+      throw 'Can\'t interpolate between "' + val1[0] + '" and "' + val2[0] + '"';
 
-		}
+    }
 
-		//Add the format string as first element.
+    //Add the format string as first element.
 
-		var interpolated = [val1[0]];
+    var interpolated = [val1[0]];
 
-		valueIndex = 1;
+    valueIndex = 1;
 
-		for(; valueIndex < val1Length; valueIndex++) {
+    for (; valueIndex < val1Length; valueIndex++) {
 
-			//That's the line where the two numbers are actually interpolated.
+      //That's the line where the two numbers are actually interpolated.
 
-			interpolated[valueIndex] = val1[valueIndex] + ((val2[valueIndex] - val1[valueIndex]) * progress);
+      interpolated[valueIndex] = val1[valueIndex] + ((val2[valueIndex] - val1[valueIndex]) * progress);
 
-		}
+    }
 
-		return interpolated;
+    return interpolated;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Interpolates the numeric values into the format string.
+   * Interpolates the numeric values into the format string.
 
-	 */
+   */
 
-	var _interpolateString = function(val) {
+  var _interpolateString = function(val) {
 
-		var valueIndex = 1;
+    var valueIndex = 1;
 
-		rxInterpolateString.lastIndex = 0;
+    rxInterpolateString.lastIndex = 0;
 
-		return val[0].replace(rxInterpolateString, function() {
+    return val[0].replace(rxInterpolateString, function() {
 
-			return val[valueIndex++];
+      return val[valueIndex++];
 
-		});
+    });
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Resets the class and style attribute to what it was before skrollr manipulated the element.
+   * Resets the class and style attribute to what it was before skrollr manipulated the element.
 
-	 * Also remembers the values it had before reseting, in order to undo the reset.
+   * Also remembers the values it had before reseting, in order to undo the reset.
 
-	 */
+   */
 
-	var _reset = function(elements, undo) {
+  var _reset = function(elements, undo) {
 
-		//We accept a single element or an array of elements.
+    //We accept a single element or an array of elements.
 
-		elements = [].concat(elements);
+    elements = [].concat(elements);
 
-		var skrollable;
+    var skrollable;
 
-		var element;
+    var element;
 
-		var elementsIndex = 0;
+    var elementsIndex = 0;
 
-		var elementsLength = elements.length;
+    var elementsLength = elements.length;
 
-		for(; elementsIndex < elementsLength; elementsIndex++) {
+    for (; elementsIndex < elementsLength; elementsIndex++) {
 
-			element = elements[elementsIndex];
+      element = elements[elementsIndex];
 
-			skrollable = _skrollables[element[SKROLLABLE_ID_DOM_PROPERTY]];
+      skrollable = _skrollables[element[SKROLLABLE_ID_DOM_PROPERTY]];
 
-			//Couldn't find the skrollable for this DOM element.
+      //Couldn't find the skrollable for this DOM element.
 
-			if(!skrollable) {
+      if (!skrollable) {
 
-				continue;
+        continue;
 
-			}
+      }
 
-			if(undo) {
+      if (undo) {
 
-				//Reset class and style to the "dirty" (set by skrollr) values.
+        //Reset class and style to the "dirty" (set by skrollr) values.
 
-				element.style.cssText = skrollable.dirtyStyleAttr;
+        element.style.cssText = skrollable.dirtyStyleAttr;
 
-				_updateClass(element, skrollable.dirtyClassAttr);
+        _updateClass(element, skrollable.dirtyClassAttr);
 
-			} else {
+      } else {
 
-				//Remember the "dirty" (set by skrollr) class and style.
+        //Remember the "dirty" (set by skrollr) class and style.
 
-				skrollable.dirtyStyleAttr = element.style.cssText;
+        skrollable.dirtyStyleAttr = element.style.cssText;
 
-				skrollable.dirtyClassAttr = _getClass(element);
+        skrollable.dirtyClassAttr = _getClass(element);
 
-				//Reset class and style to what it originally was.
+        //Reset class and style to what it originally was.
 
-				element.style.cssText = skrollable.styleAttr;
+        element.style.cssText = skrollable.styleAttr;
 
-				_updateClass(element, skrollable.classAttr);
+        _updateClass(element, skrollable.classAttr);
 
-			}
+      }
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Detects support for 3d transforms by applying it to the skrollr-body.
+   * Detects support for 3d transforms by applying it to the skrollr-body.
 
-	 */
+   */
 
-	var _detect3DTransforms = function() {
+  var _detect3DTransforms = function() {
 
-		_translateZ = 'translateZ(0)';
+    _translateZ = 'translateZ(0)';
 
-		skrollr.setStyle(_skrollrBody, 'transform', _translateZ);
+    skrollr.setStyle(_skrollrBody, 'transform', _translateZ);
 
-		var computedStyle = getStyle(_skrollrBody);
+    var computedStyle = getStyle(_skrollrBody);
 
-		var computedTransform = computedStyle.getPropertyValue('transform');
+    var computedTransform = computedStyle.getPropertyValue('transform');
 
-		var computedTransformWithPrefix = computedStyle.getPropertyValue(theDashedCSSPrefix + 'transform');
+    var computedTransformWithPrefix = computedStyle.getPropertyValue(theDashedCSSPrefix + 'transform');
 
-		var has3D = (computedTransform && computedTransform !== 'none') || (computedTransformWithPrefix && computedTransformWithPrefix !== 'none');
+    var has3D = (computedTransform && computedTransform !== 'none') || (computedTransformWithPrefix && computedTransformWithPrefix !== 'none');
 
-		if(!has3D) {
+    if (!has3D) {
 
-			_translateZ = '';
+      _translateZ = '';
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Set the CSS property on the given element. Sets prefixed properties as well.
+   * Set the CSS property on the given element. Sets prefixed properties as well.
 
-	 */
+   */
 
-	skrollr.setStyle = function(el, prop, val) {
+  skrollr.setStyle = function(el, prop, val) {
 
-		var style = el.style;
+    var style = el.style;
 
-		//Camel case.
+    //Camel case.
 
-		prop = prop.replace(rxCamelCase, rxCamelCaseFn).replace('-', '');
+    prop = prop.replace(rxCamelCase, rxCamelCaseFn).replace('-', '');
 
-		//Make sure z-index gets a <integer>.
+    //Make sure z-index gets a <integer>.
 
-		//This is the only <integer> case we need to handle.
+    //This is the only <integer> case we need to handle.
 
-		if(prop === 'zIndex') {
+    if (prop === 'zIndex') {
 
-			if(isNaN(val)) {
+      if (isNaN(val)) {
 
-				//If it's not a number, don't touch it.
+        //If it's not a number, don't touch it.
 
-				//It could for example be "auto" (#351).
+        //It could for example be "auto" (#351).
 
-				style[prop] = val;
+        style[prop] = val;
 
-			} else {
+      } else {
 
-				//Floor the number.
+        //Floor the number.
 
-				style[prop] = '' + (val | 0);
+        style[prop] = '' + (val | 0);
 
-			}
+      }
 
-		}
+    }
 
-		//#64: "float" can't be set across browsers. Needs to use "cssFloat" for all except IE.
+    //#64: "float" can't be set across browsers. Needs to use "cssFloat" for all except IE.
 
-		else if(prop === 'float') {
+    else if (prop === 'float') {
 
-			style.styleFloat = style.cssFloat = val;
+      style.styleFloat = style.cssFloat = val;
 
-		}
+    }
 
-		else {
+    else {
 
-			//Need try-catch for old IE.
+      //Need try-catch for old IE.
 
-			try {
+      try {
 
-				//Set prefixed property if there's a prefix.
+        //Set prefixed property if there's a prefix.
 
-				if(theCSSPrefix) {
+        if (theCSSPrefix) {
 
-					style[theCSSPrefix + prop.slice(0,1).toUpperCase() + prop.slice(1)] = val;
+          style[theCSSPrefix + prop.slice(0, 1).toUpperCase() + prop.slice(1)] = val;
 
-				}
+        }
 
-				//Set unprefixed.
+        //Set unprefixed.
 
-				style[prop] = val;
+        style[prop] = val;
 
-			} catch(ignore) {}
+      } catch (ignore) {}
 
-		}
+    }
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Cross browser event handling.
+   * Cross browser event handling.
 
-	 */
+   */
 
-	var _addEvent = skrollr.addEvent = function(element, names, callback) {
+  var _addEvent = skrollr.addEvent = function(element, names, callback) {
 
-		var intermediate = function(e) {
+    var intermediate = function(e) {
 
-			//Normalize IE event stuff.
+      //Normalize IE event stuff.
 
-			e = e || window.event;
+      e = e || window.event;
 
-			if(!e.target) {
+      if (!e.target) {
 
-				e.target = e.srcElement;
+        e.target = e.srcElement;
 
-			}
+      }
 
-			if(!e.preventDefault) {
+      if (!e.preventDefault) {
 
-				e.preventDefault = function() {
+        e.preventDefault = function() {
 
-					e.returnValue = false;
+          e.returnValue = false;
 
-					e.defaultPrevented = true;
+          e.defaultPrevented = true;
 
-				};
+        };
 
-			}
+      }
 
-			return callback.call(this, e);
+      return callback.call(this, e);
 
-		};
+    };
 
-		names = names.split(' ');
+    names = names.split(' ');
 
-		var name;
+    var name;
 
-		var nameCounter = 0;
+    var nameCounter = 0;
 
-		var namesLength = names.length;
+    var namesLength = names.length;
 
-		for(; nameCounter < namesLength; nameCounter++) {
+    for (; nameCounter < namesLength; nameCounter++) {
 
-			name = names[nameCounter];
+      name = names[nameCounter];
 
-			if(element.addEventListener) {
+      if (element.addEventListener) {
 
-				element.addEventListener(name, callback, false);
+        element.addEventListener(name, callback, false);
 
-			} else {
+      } else {
 
-				element.attachEvent('on' + name, intermediate);
+        element.attachEvent('on' + name, intermediate);
 
-			}
+      }
 
-			//Remember the events to be able to flush them later.
+      //Remember the events to be able to flush them later.
 
-			_registeredEvents.push({
+      _registeredEvents.push({
 
-				element: element,
+        element: element,
 
-				name: name,
+        name: name,
 
-				listener: callback
+        listener: callback
 
-			});
+      });
 
-		}
+    }
 
-	};
+  };
 
-	var _removeEvent = skrollr.removeEvent = function(element, names, callback) {
+  var _removeEvent = skrollr.removeEvent = function(element, names, callback) {
 
-		names = names.split(' ');
+    names = names.split(' ');
 
-		var nameCounter = 0;
+    var nameCounter = 0;
 
-		var namesLength = names.length;
+    var namesLength = names.length;
 
-		for(; nameCounter < namesLength; nameCounter++) {
+    for (; nameCounter < namesLength; nameCounter++) {
 
-			if(element.removeEventListener) {
+      if (element.removeEventListener) {
 
-				element.removeEventListener(names[nameCounter], callback, false);
+        element.removeEventListener(names[nameCounter], callback, false);
 
-			} else {
+      } else {
 
-				element.detachEvent('on' + names[nameCounter], callback);
+        element.detachEvent('on' + names[nameCounter], callback);
 
-			}
+      }
 
-		}
+    }
 
-	};
+  };
 
-	var _removeAllEvents = function() {
+  var _removeAllEvents = function() {
 
-		var eventData;
+    var eventData;
 
-		var eventCounter = 0;
+    var eventCounter = 0;
 
-		var eventsLength = _registeredEvents.length;
+    var eventsLength = _registeredEvents.length;
 
-		for(; eventCounter < eventsLength; eventCounter++) {
+    for (; eventCounter < eventsLength; eventCounter++) {
 
-			eventData = _registeredEvents[eventCounter];
+      eventData = _registeredEvents[eventCounter];
 
-			_removeEvent(eventData.element, eventData.name, eventData.listener);
+      _removeEvent(eventData.element, eventData.name, eventData.listener);
 
-		}
+    }
 
-		_registeredEvents = [];
+    _registeredEvents = [];
 
-	};
+  };
 
-	var _emitEvent = function(element, name, direction) {
+  var _emitEvent = function(element, name, direction) {
 
-		if(_listeners.keyframe) {
+    if (_listeners.keyframe) {
 
-			_listeners.keyframe.call(_instance, element, name, direction);
+      _listeners.keyframe.call(_instance, element, name, direction);
 
-		}
+    }
 
-	};
+  };
 
-	var _reflow = function() {
+  var _reflow = function() {
 
-		var pos = _instance.getScrollTop();
+    var pos = _instance.getScrollTop();
 
-		//Will be recalculated by _updateDependentKeyFrames.
+    //Will be recalculated by _updateDependentKeyFrames.
 
-		_maxKeyFrame = 0;
+    _maxKeyFrame = 0;
 
-		if(_forceHeight && !_isMobile) {
+    if (_forceHeight && !_isMobile) {
 
-			//un-"force" the height to not mess with the calculations in _updateDependentKeyFrames (#216).
+      //un-"force" the height to not mess with the calculations in _updateDependentKeyFrames (#216).
 
-			body.style.height = '';
+      body.style.height = '';
 
-		}
+    }
 
-		_updateDependentKeyFrames();
+    _updateDependentKeyFrames();
 
-		if(_forceHeight && !_isMobile) {
+    if (_forceHeight && !_isMobile) {
 
-			//"force" the height.
+      //"force" the height.
 
-			body.style.height = (_maxKeyFrame + documentElement.clientHeight) + 'px';
+      body.style.height = (_maxKeyFrame + documentElement.clientHeight) + 'px';
 
-		}
+    }
 
-		//The scroll offset may now be larger than needed (on desktop the browser/os prevents scrolling farther than the bottom).
+    //The scroll offset may now be larger than needed (on desktop the browser/os prevents scrolling farther than the bottom).
 
-		if(_isMobile) {
+    if (_isMobile) {
 
-			_instance.setScrollTop(Math.min(_instance.getScrollTop(), _maxKeyFrame));
+      _instance.setScrollTop(Math.min(_instance.getScrollTop(), _maxKeyFrame));
 
-		} else {
+    } else {
 
-			//Remember and reset the scroll pos (#217).
+      //Remember and reset the scroll pos (#217).
 
-			_instance.setScrollTop(pos, true);
+      _instance.setScrollTop(pos, true);
 
-		}
+    }
 
-		_forceRender = true;
+    _forceRender = true;
 
-	};
+  };
 
-	/*
+  /*
 
-	 * Returns a copy of the constants object where all functions and strings have been evaluated.
+   * Returns a copy of the constants object where all functions and strings have been evaluated.
 
-	 */
+   */
 
-	var _processConstants = function() {
+  var _processConstants = function() {
 
-		var viewportHeight = documentElement.clientHeight;
+    var viewportHeight = documentElement.clientHeight;
 
-		var copy = {};
+    var copy = {};
 
-		var prop;
+    var prop;
 
-		var value;
+    var value;
 
-		for(prop in _constants) {
+    for (prop in _constants) {
 
-			value = _constants[prop];
+      value = _constants[prop];
 
-			if(typeof value === 'function') {
+      if (typeof value === 'function') {
 
-				value = value.call(_instance);
+        value = value.call(_instance);
 
-			}
+      }
 
-			//Percentage offset.
+      //Percentage offset.
 
-			else if((/p$/).test(value)) {
+      else if ((/p$/).test(value)) {
 
-				value = (value.slice(0, -1) / 100) * viewportHeight;
+        value = (value.slice(0, -1) / 100) * viewportHeight;
 
-			}
+      }
 
-			copy[prop] = value;
+      copy[prop] = value;
 
-		}
+    }
 
-		return copy;
+    return copy;
 
-	};
+  };
 
-	/*
+  /*
 
-	 * Returns the height of the document.
+   * Returns the height of the document.
 
-	 */
+   */
 
-	var _getDocumentHeight = function() {
+  var _getDocumentHeight = function() {
 
-		var skrollrBodyHeight = 0;
+    var skrollrBodyHeight = 0;
 
-		var bodyHeight;
+    var bodyHeight;
 
-		if(_skrollrBody) {
+    if (_skrollrBody) {
 
-			skrollrBodyHeight = Math.max(_skrollrBody.offsetHeight, _skrollrBody.scrollHeight);
+      skrollrBodyHeight = Math.max(_skrollrBody.offsetHeight, _skrollrBody.scrollHeight);
 
-		}
+    }
 
-		bodyHeight = Math.max(skrollrBodyHeight, body.scrollHeight, body.offsetHeight, documentElement.scrollHeight, documentElement.offsetHeight, documentElement.clientHeight);
+    bodyHeight = Math.max(skrollrBodyHeight, body.scrollHeight, body.offsetHeight, documentElement.scrollHeight, documentElement.offsetHeight, documentElement.clientHeight);
 
-		return bodyHeight - documentElement.clientHeight;
+    return bodyHeight - documentElement.clientHeight;
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Returns a string of space separated classnames for the current element.
+   * Returns a string of space separated classnames for the current element.
 
-	 * Works with SVG as well.
+   * Works with SVG as well.
 
-	 */
+   */
 
-	var _getClass = function(element) {
+  var _getClass = function(element) {
 
-		var prop = 'className';
+    var prop = 'className';
 
-		//SVG support by using className.baseVal instead of just className.
+    //SVG support by using className.baseVal instead of just className.
 
-		if(window.SVGElement && element instanceof window.SVGElement) {
+    if (window.SVGElement && element instanceof window.SVGElement) {
 
-			element = element[prop];
+      element = element[prop];
 
-			prop = 'baseVal';
+      prop = 'baseVal';
 
-		}
+    }
 
-		return element[prop];
+    return element[prop];
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Adds and removes a CSS classes.
+   * Adds and removes a CSS classes.
 
-	 * Works with SVG as well.
+   * Works with SVG as well.
 
-	 * add and remove are arrays of strings,
+   * add and remove are arrays of strings,
 
-	 * or if remove is ommited add is a string and overwrites all classes.
+   * or if remove is ommited add is a string and overwrites all classes.
 
-	 */
+   */
 
-	var _updateClass = function(element, add, remove) {
+  var _updateClass = function(element, add, remove) {
 
-		var prop = 'className';
+    var prop = 'className';
 
-		//SVG support by using className.baseVal instead of just className.
+    //SVG support by using className.baseVal instead of just className.
 
-		if(window.SVGElement && element instanceof window.SVGElement) {
+    if (window.SVGElement && element instanceof window.SVGElement) {
 
-			element = element[prop];
+      element = element[prop];
 
-			prop = 'baseVal';
+      prop = 'baseVal';
 
-		}
+    }
 
-		//When remove is ommited, we want to overwrite/set the classes.
+    //When remove is ommited, we want to overwrite/set the classes.
 
-		if(remove === undefined) {
+    if (remove === undefined) {
 
-			element[prop] = add;
+      element[prop] = add;
 
-			return;
+      return;
 
-		}
+    }
 
-		//Cache current classes. We will work on a string before passing back to DOM.
+    //Cache current classes. We will work on a string before passing back to DOM.
 
-		var val = element[prop];
+    var val = element[prop];
 
-		//All classes to be removed.
+    //All classes to be removed.
 
-		var classRemoveIndex = 0;
+    var classRemoveIndex = 0;
 
-		var removeLength = remove.length;
+    var removeLength = remove.length;
 
-		for(; classRemoveIndex < removeLength; classRemoveIndex++) {
+    for (; classRemoveIndex < removeLength; classRemoveIndex++) {
 
-			val = _untrim(val).replace(_untrim(remove[classRemoveIndex]), ' ');
+      val = _untrim(val).replace(_untrim(remove[classRemoveIndex]), ' ');
 
-		}
+    }
 
-		val = _trim(val);
+    val = _trim(val);
 
-		//All classes to be added.
+    //All classes to be added.
 
-		var classAddIndex = 0;
+    var classAddIndex = 0;
 
-		var addLength = add.length;
+    var addLength = add.length;
 
-		for(; classAddIndex < addLength; classAddIndex++) {
+    for (; classAddIndex < addLength; classAddIndex++) {
 
-			//Only add if el not already has class.
+      //Only add if el not already has class.
 
-			if(_untrim(val).indexOf(_untrim(add[classAddIndex])) === -1) {
+      if (_untrim(val).indexOf(_untrim(add[classAddIndex])) === -1) {
 
-				val += ' ' + add[classAddIndex];
+        val += ' ' + add[classAddIndex];
 
-			}
+      }
 
-		}
+    }
 
-		element[prop] = _trim(val);
+    element[prop] = _trim(val);
 
-	};
+  };
 
-	var _trim = function(a) {
+  var _trim = function(a) {
 
-		return a.replace(rxTrim, '');
+    return a.replace(rxTrim, '');
 
-	};
+  };
 
-	/**
+  /**
 
-	 * Adds a space before and after the string.
+   * Adds a space before and after the string.
 
-	 */
+   */
 
-	var _untrim = function(a) {
+  var _untrim = function(a) {
 
-		return ' ' + a + ' ';
+    return ' ' + a + ' ';
 
-	};
+  };
 
-	var _now = Date.now || function() {
+  var _now = Date.now || function() {
 
-		return +new Date();
+    return +new Date();
 
-	};
+  };
 
-	var _keyFrameComparator = function(a, b) {
+  var _keyFrameComparator = function(a, b) {
 
-		return a.frame - b.frame;
+    return a.frame - b.frame;
 
-	};
+  };
 
-	/*
+  /*
 
-	 * Private variables.
+   * Private variables.
 
-	 */
+   */
 
-	//Singleton
+  //Singleton
 
-	var _instance;
+  var _instance;
 
-	/*
+  /*
 
-		A list of all elements which should be animated associated with their the metadata.
+  	A list of all elements which should be animated associated with their the metadata.
 
-		Exmaple skrollable with two key frames animating from 100px width to 20px:
+  	Exmaple skrollable with two key frames animating from 100px width to 20px:
 
-		skrollable = {
+  	skrollable = {
 
-			element: <the DOM element>,
+  		element: <the DOM element>,
 
-			styleAttr: <style attribute of the element before skrollr>,
+  		styleAttr: <style attribute of the element before skrollr>,
 
-			classAttr: <class attribute of the element before skrollr>,
+  		classAttr: <class attribute of the element before skrollr>,
 
-			keyFrames: [
+  		keyFrames: [
 
-				{
+  			{
 
-					frame: 100,
+  				frame: 100,
 
-					props: {
+  				props: {
 
-						width: {
+  					width: {
 
-							value: ['{?}px', 100],
+  						value: ['{?}px', 100],
 
-							easing: <reference to easing function>
+  						easing: <reference to easing function>
 
-						}
+  					}
 
-					},
+  				},
 
-					mode: "absolute"
+  				mode: "absolute"
 
-				},
+  			},
 
-				{
+  			{
 
-					frame: 200,
+  				frame: 200,
 
-					props: {
+  				props: {
 
-						width: {
+  					width: {
 
-							value: ['{?}px', 20],
+  						value: ['{?}px', 20],
 
-							easing: <reference to easing function>
+  						easing: <reference to easing function>
 
-						}
+  					}
 
-					},
+  				},
 
-					mode: "absolute"
+  				mode: "absolute"
 
-				}
+  			}
 
-			]
+  		]
 
-		};
+  	};
 
-	*/
+  */
 
-	var _skrollables;
+  var _skrollables;
 
-	var _skrollrBody;
+  var _skrollrBody;
 
-	var _listeners;
+  var _listeners;
 
-	var _forceHeight;
+  var _forceHeight;
 
-	var _maxKeyFrame = 0;
+  var _maxKeyFrame = 0;
 
-	var _scale = 1;
+  var _scale = 1;
 
-	var _constants;
+  var _constants;
 
-	var _mobileDeceleration;
+  var _mobileDeceleration;
 
-	//Current direction (up/down).
+  //Current direction (up/down).
 
-	var _direction = 'down';
+  var _direction = 'down';
 
-	//The last top offset value. Needed to determine direction.
+  //The last top offset value. Needed to determine direction.
 
-	var _lastTop = -1;
+  var _lastTop = -1;
 
-	//The last time we called the render method (doesn't mean we rendered!).
+  //The last time we called the render method (doesn't mean we rendered!).
 
-	var _lastRenderCall = _now();
+  var _lastRenderCall = _now();
 
-	//For detecting if it actually resized (#271).
+  //For detecting if it actually resized (#271).
 
-	var _lastViewportWidth = 0;
+  var _lastViewportWidth = 0;
 
-	var _lastViewportHeight = 0;
+  var _lastViewportHeight = 0;
 
-	var _requestReflow = false;
+  var _requestReflow = false;
 
-	//Will contain data about a running scrollbar animation, if any.
+  //Will contain data about a running scrollbar animation, if any.
 
-	var _scrollAnimation;
+  var _scrollAnimation;
 
-	var _smoothScrollingEnabled;
+  var _smoothScrollingEnabled;
 
-	var _smoothScrollingDuration;
+  var _smoothScrollingDuration;
 
-	//Will contain settins for smooth scrolling if enabled.
+  //Will contain settins for smooth scrolling if enabled.
 
-	var _smoothScrolling;
+  var _smoothScrolling;
 
-	//Can be set by any operation/event to force rendering even if the scrollbar didn't move.
+  //Can be set by any operation/event to force rendering even if the scrollbar didn't move.
 
-	var _forceRender;
+  var _forceRender;
 
-	//Each skrollable gets an unique ID incremented for each skrollable.
+  //Each skrollable gets an unique ID incremented for each skrollable.
 
-	//The ID is the index in the _skrollables array.
+  //The ID is the index in the _skrollables array.
 
-	var _skrollableIdCounter = 0;
+  var _skrollableIdCounter = 0;
 
-	var _edgeStrategy;
+  var _edgeStrategy;
 
-	//Mobile specific vars. Will be stripped by UglifyJS when not in use.
+  //Mobile specific vars. Will be stripped by UglifyJS when not in use.
 
-	var _isMobile = false;
+  var _isMobile = false;
 
-	//The virtual scroll offset when using mobile scrolling.
+  //The virtual scroll offset when using mobile scrolling.
 
-	var _mobileOffset = 0;
+  var _mobileOffset = 0;
 
-	//If the browser supports 3d transforms, this will be filled with 'translateZ(0)' (empty string otherwise).
+  //If the browser supports 3d transforms, this will be filled with 'translateZ(0)' (empty string otherwise).
 
-	var _translateZ;
+  var _translateZ;
 
-	//Will contain data about registered events by skrollr.
+  //Will contain data about registered events by skrollr.
 
-	var _registeredEvents = [];
+  var _registeredEvents = [];
 
-	//Animation frame id returned by RequestAnimationFrame (or timeout when RAF is not supported).
+  //Animation frame id returned by RequestAnimationFrame (or timeout when RAF is not supported).
 
-	var _animFrame;
+  var _animFrame;
 
-	//Expose skrollr as either a global variable or a require.js module.
+  //Expose skrollr as either a global variable or a require.js module.
 
-	if(typeof define === 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
 
-		define([], function () {
+    define([], function() {
 
-			return skrollr;
+      return skrollr;
 
-		});
+    });
 
-	} else if (typeof module !== 'undefined' && module.exports) {
+  } else if (typeof module !== 'undefined' && module.exports) {
 
-		module.exports = skrollr;
+    module.exports = skrollr;
 
-	} else {
+  } else {
 
-		window.skrollr = skrollr;
+    window.skrollr = skrollr;
 
-	}
+  }
 
 }(window, document));

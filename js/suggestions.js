@@ -1,11 +1,17 @@
 let suggestions = [
-
-    "FTS",
-
-    "Falcon Tech Studios",
-
-    "Falcon Tech Studios YouTube",
-
-    "youtube.com",
-
-    ]
+  "FTS",
+  "Falcon Tech Studios",
+  "Falcon Tech Studios YouTube",
+  "Our Sun FTS",
+  "Planet Mercury FTS",
+  "Planet Venus FTS",
+  "Planet Earth FTS",
+  "Planet Mars FTS",
+  "Planet Jupiter FTS",
+  "Planet Saturn FTS",
+  "Planet Uranus FTS",
+  "fts-18.netlify.app",
+  "Falcon Tech Studios Homepage",
+  "Planet Neptune FTS",
+  "youtube.com",
+  ]
