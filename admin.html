@@ -46,55 +46,34 @@
   <script src=js/main.js charset=utf-8></script>
   <script>
     $(window).scroll(function() {
-
       var n = $(window).scrollTop();
-
       $(".startScreen .banner").css({ width: 100 + n / 5 + "%" })
-
     })
   </script>
   <script src="login.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
-  <link rel=preconnect href=https://fonts.gstatic.com>
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel=stylesheet>
 </head>
 
 <body oncontextmenu="return false">
   <script>
     document.onkeydown = function(e) {
-
       if (event.keyCode == 123) {
-
         return false;
-
       }
-
       if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-
         return false;
-
       }
-
       if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-
         return false;
-
       }
-
       if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-
         return false;
-
       }
-
       if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-
         return false;
-
       }
-
     }
   </script>
   <section id=homepage>
@@ -156,13 +135,9 @@
           <span class="skewed"></span>
           <script type="text/javascript" charset="utf-8">
             var skewed = document.querySelector('.skewed');
-
             window.addEventListener('scroll', function() {
-
               var value = -10 + window.scrollY / 60;
-
               skewed.style.transform = "skewY(" + value + "deg)"
-
             })
           </script>
           <div class=container1 id="container1">
@@ -171,7 +146,7 @@
               <div class='form'>
                 <label for="email"><b>Email</b></label>
                 <div class="inline">
-                    <i class="fa fa-google"></i>
+                  <i class="fa fa-google"></i>
                   <input autocomplete="on" minlength="6" maxlength="60" type="email" spellcheck="false" name="email" id="email" placeholder="Enter your Email..." required />
                 </div>
                 <br />
@@ -197,7 +172,6 @@
               <script type="text/javascript" charset="utf-8">
                 const togglePassword = document.querySelector('#togglePassword');
                 const password = document.querySelector('#psw');
-
                 togglePassword.addEventListener('click', function(e) {
                   // toggle the type attribute
                   const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -227,34 +201,26 @@
         </div>
         <script>
           function signOut() {
-
             var auth2 = gapi.auth2.getAuthInstance();
-
             auth2.signOut().then(function() {
-
               alert("You have successfully signed out")
-
               console.log('User signed out.');
-
               $(".g-signin2").css("display", "block");
-
               $(".data").css("display", "none");
-
             });
-
           }
         </script>
       </section>
       <section class=xyz>
         <ul class=pagination>
-          <li><a href=# class=prev>&laquo;</a></li>
+          <li><a href=javascript:void(0); class=prev>&laquo;</a></li>
           <li class="pagenumber active"><a href=#>1</a></li>
           <li class=pagenumber><a href=#>2</a></li>
           <li class=pagenumber><a href=#>3</a></li>
           <li class=pagenumber><a href=#>4</a></li>
           <li class=pagenumber><a href=#>5</a></li>
           <li class=pagenumber><a href=#>6</a></li>
-          <li><a href=# class=next>&raquo;</a></li>
+          <li><a href=javascript:void(0); class=next>&raquo;</a></li>
         </ul>
         <script src=https://code.jquery.com/jquery-3.4.1.js charset=utf-8></script>
         <script>
@@ -269,10 +235,10 @@
             <h2>About Us</h2>
             <p>Lorem ipsum dolor sit ramet, consectetur adipisicing elit. Quo impedit atque consequatur! Iusto distinctio temporibus repellendus labore odit adipisci harum ipsa beatae natus, eum eius, hic aperiam odio! Quasi molestias magnam illo voluptatem iusto ipsam blanditiis, tempore cumque reiciendis quaerat vero tenetur, sequi dolores libero voluptas vitae voluptate placeat dolorum modi ipsa nisi repellat facilis aliquam asperiores. Aut nam repellat harum quas saepe dolorum voluptates ratione, itaque consectetur explicabo a facilis rem mollitia maxime repudiandae fuga reprehenderit, odio cum incidunt labore molestiae quis non perferendis ipsam. Illum, in, deserunt. Ipsa.</p>
             <ul class=sci data-scroll>
-              <li><a href=https://www.facebook.com/FTS1807><i class="fa fa-facebook" aria-hidden=true></i></a></li>
-              <li><a href=https://mobile.twitter.com/fts26628060><i class="fa fa-twitter" aria-hidden=true></i></a></li>
-              <li><a href=https://www.instagram.com/fts1818><i class="fa fa-instagram" aria-hidden=true></i></a></li>
-              <li><a href=https://youtube.com/c/FTS-18><i class="fa fa-youtube-play" aria-hidden=true></i></a></li>
+              <li><a href="https://www.facebook.com/FTS1807"><i class="fa fa-facebook" aria-hidden=true></i></a></li>
+              <li><a href="https://mobile.twitter.com/fts26628060"><i class="fa fa-twitter" aria-hidden=true></i></a></li>
+              <li><a href="https://www.instagram.com/fts1818"><i class="fa fa-instagram" aria-hidden=true></i></a></li>
+              <li><a href="https://youtube.com/c/FTS-18"><i class="fa fa-youtube-play" aria-hidden=true></i></a></li>
             </ul>
           </div>
           <div class="sec quicklinks">
@@ -297,7 +263,7 @@
                   <span><i class="fa fa-phone" aria-hidden=true></i></span>
                   <span class=text>Call us</span>
                 </a></li>
-              <li><a href="mailto:anandsagardubey71568@gmail.com,fts71568@gmail.com?subject=Describe%20your%20issue&body=Hello%2C%20User%0D%0A" target=_blank>
+              <li><a href="mailto:fts71568@gmail.com?subject=Describe%20your%20issue&body=Describe%2C%20Issue%0D%0A" target=_blank>
                   <span><i class="fa fa-envelope" aria-hidden=true></i></span>
                   <span class=text>Email us</span>
                 </a></li>
@@ -306,7 +272,7 @@
         </div>
       </footer>
       <div class=copyrightText>
-        <p>Copyright © 2020 FTS. All rights reserved.</p>
+        <p>Copyright © 2021 FTS. All rights reserved.</p>
       </div>
     </section>
   </section>
@@ -317,38 +283,21 @@
   <script src=js/object-fit-videos.js></script>
   <script src=js/app.js></script>
   <script>
-    const splash = document.querySelector(".splash")
-
     const body = document.querySelector("body");
-
     const navbar = document.querySelector(".navbar");
-
     const menuBtn = document.querySelector(".menu-btn");
-
     const cancelBtn = document.querySelector(".cancel-btn");
-
     document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 3250); })
-
     menuBtn.onclick = () => {
-
       navbar.classList.add("active");
-
       menuBtn.classList.add("hide");
-
       body.classList.add("disabledScroll");
-
     }
-
     cancelBtn.onclick = () => {
-
       body.classList.remove("disabledScroll");
-
       navbar.classList.remove("active");
-
       menuBtn.classList.remove("hide");
-
     }
-
     window.onscroll = () => { this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky"); }
   </script>
 </body>
