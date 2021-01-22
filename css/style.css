@@ -27,17 +27,15 @@ html {
   z-index: 100000;
   width: 200px;
   /*background: #1b1a1a;*/
-  padding-top: 1px;
-  padding-bottom: 1px;
-  background: white;
+  padding: 2px;
   user-select: none;
   border-radius: 3px;
   box-shadow: 7px 7px 60px #000;
-  backdrop-filter: blur(155px);
-  /*background-color: rgba(0, 0, 0, 0.9);*/
+  backdrop-filter: blur(100px);
+  background-color: rgba(0,0,0, 0.4);
   transform: scale(0);
   transform-origin: top left;
-  border: 1px solid black
+  border: 2px solid black
 }
 
 #context-menu.active{
@@ -48,7 +46,7 @@ html {
 #context-menu .item {
   padding: 8px 10px;
   font-size: 14px;
-  color: black;
+  color: #eee;
   transition: 0.18s ease-in-out
   /*color: #eee;*/
 }
@@ -57,9 +55,7 @@ html {
   background: #e91e63;
   /*background: rgb(24, 1, 48);*/
   border-radius: 2px;
-  margin-right: 1px;
   color: white;
-  margin-left: 1px
 }
 
 #context-menu .item i {
