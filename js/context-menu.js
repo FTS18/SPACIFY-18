@@ -26,15 +26,19 @@ function share(){
 
   }).then(() => console.log('Successful share'))
 
-  .catch(error => alert('Error sharing:', error));
+  .catch(error => console.log('Error sharing:', error));
 
 }
   }
 
 function exit() {
-  window.open("", "_self");
 
-window.close();
+
+  if (confirm("Close Window?")) {
+
+    close();
+
+  }
 }
 
 window.onbeforeunload = function exitOnNotSavedChanges() { 
