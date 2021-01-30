@@ -13,6 +13,24 @@ function reload() {
   location.reload();
 }
 
+function share(){
+  if (navigator.share) {
+
+  navigator.share({
+
+    title: document.title,
+
+    text: "Check Bhi Out",
+
+    url: window.location.href
+
+  }).then(() => console.log('Successful share'))
+
+  .catch(error => console.log('Error sharing:', error));
+
+}
+  }
+
 function exit() {
   window.open("", "_self");
 
