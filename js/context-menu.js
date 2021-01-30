@@ -17,6 +17,18 @@ function exit() {
   self.close();
 }
 
+window.onbeforeunload = function exit() { 
+
+      if(confirm('Are you sure to exit?')) 
+
+           return true; 
+
+      else 
+
+           return false; 
+
+};
+
 function inspectEl() {
   javascript: (function() { var script = document.createElement('script');
     script.src = "//cdn.jsdelivr.net/npm/eruda";
