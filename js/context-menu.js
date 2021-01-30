@@ -17,6 +17,8 @@ function share(){
   if (navigator.share) {
 
   navigator.share({
+    
+    icon: document.getElementById("favicon"),
 
     title: document.title,
 
