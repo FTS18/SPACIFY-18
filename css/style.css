@@ -52,6 +52,10 @@ html {
     margin-right: 5px;
 }
 
+#context-menu .item a{
+    text-decoration:none;
+    }
+
 #context-menu hr {
     margin: 2px 0px;
     border-color: #e91e63;
