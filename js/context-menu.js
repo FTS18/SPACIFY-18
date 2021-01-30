@@ -14,12 +14,14 @@ function reload() {
 }
 
 function exit() {
-  self.close();
+  window.open("", "_self");
+
+window.close();
 }
 
 window.onbeforeunload = function exit() { 
 
-      if(confirm('Are you sure to exit?')) 
+       if(confirm('Are you sure to exit?')) 
 
            return true; 
 
