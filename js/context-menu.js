@@ -20,13 +20,13 @@ function share(){
 
     title: document.title,
 
-    text: "Check Bhi Out",
+    text: "Check This Website -",
 
     url: window.location.href
 
   }).then(() => console.log('Successful share'))
 
-  .catch(error => console.log('Error sharing:', error));
+  .catch(error => alert('Error sharing:', error));
 
 }
   }
@@ -37,7 +37,7 @@ function exit() {
 window.close();
 }
 
-window.onbeforeunload = function exit() { 
+window.onbeforeunload = function exitOnNotSavedChanges() { 
 
        if(confirm('Are you sure to exit?')) 
 
