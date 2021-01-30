@@ -1,10 +1,10 @@
 {
 
-    "author":"FTS",
+    "author": "SPACIFY",
 
-    "background_color":"crimson",
+    "background_color":"black",
 
-    "description":"FTS",
+    "description":"SPACIFY",
 
     "display":"standalone",
 
@@ -46,21 +46,21 @@
 
     "dir":"ltr",
 
-    "start_url":"https://fts-18.netlify.app/",
+    "start_url":"https://spacify.netlify.app/",
 
     "manifest_version":2,
 
-    "name":"FTS",
+    "name":"SPACIFY",
 
     "default_locale":"en",
 
     "orientation":"portrait",
 
-    "homepage_url":"https://fts-18.netlify.app/index",
+    "homepage_url":"https://spacify.netlify.app/index",
 
-    "short_name":"FTS",
+    "short_name":"SPACIFY",
 
-    "short_url":"https://fts-18.netlify.app/",
+    "short_url":"https://spacify.netlify.app/",
 
     "theme_color":"crimson",
 
