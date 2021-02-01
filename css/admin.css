@@ -121,6 +121,100 @@ body {
 
 }
 
+#capt{
+  outline: none;
+  user-select: none;
+  width: 42.5%;
+  height: 46px;
+  font-size:21px;
+  background: #000;
+  padding: 4px;
+  letter-spacing: 1px;
+  color: #e91e63;
+  border: none;
+}
+.textCode {
+  display: inline 
+}
+#textInput{ 
+  color: #fff;
+  padding: 5px;
+  width: 42.5%;
+  height: 45px;
+  font-size: 21px;
+  background: #000;
+  border: none;
+  outline: none;
+}
+.refresh{
+  outline: none;
+  width: 9%;
+  height: 46px;
+  font-size: 20px;
+  user-select: none;
+  cursor: pointer;
+  color: #fff;
+  display: inline;
+  transition: all 300ms;
+  opacity: 0.7;
+}
+.refresh:hover{
+  opacity:1;
+}
+.refresh i { 
+  border-radius: 50%;
+  padding: 3.6px;
+  border: 3.93px solid #e91e63 
+}
+#text2{
+  display: block;
+  user-select: none;
+  color: #000;
+  margin-top: 1px;
+  font-size: 17px;
+  font-weight: 300;
+  padding: 5px;
+}
+.contain button{
+  padding: 8px 20px;
+  height: 45px;
+  width: 100%;
+  font-size: 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  background: #e91e63;
+  border: 3px solid #000;
+  user-select: none;
+  margin-top: 15px;
+  opacity: .65;
+  animation: pulsating 3s linear infinite;
+  transition: .37s 
+}
+/**
+@keyframes pulsating {
+  0%{
+    box-shadow: 0 0 0 0 rgba(242, 0, 0, 0.6);
+  }
+  25% {
+    box-shadow: 0 0 0 8px rgba(242, 0, 0, 0.375);
+  }
+  50% {
+    box-shadow: 0 0 0 0px rgba(242, 0, 0, 0);
+  }
+  75% {
+    box-shadow: 0 0 0 8px rgba(242, 0, 0, 0.375);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(242, 0, 0, 0);
+  }
+}**/
+.contain button:hover{
+  opacity: 1;
+  animation: none;
+}
+
 .cursor {
   width: 20px;
   height: 20px;
@@ -512,11 +606,13 @@ body {
   font-size: 17px;
 }
 
-.inline, .inline1{
+.inline,
+.inline1 {
   display: inline
 }
 
-.inline i, .inline1 i{
+.inline i,
+.inline1 i {
   margin-left: -30px;
 }
 
@@ -538,20 +634,19 @@ button {
 }
 
 input[type=email]::placeholder,
-input[type=password]::placeholder
-input#psw{
+input[type=password]::placeholder input#psw {
   color: #999;
 }
 
 input[type=email],
 input[type=password],
-input#psw{
+input#psw {
   display: block
 }
 
 input[type=email]:focus,
 input[type=password]:focus,
-input#psw:focus{
+input#psw:focus {
   background: transparent;
 }
 
@@ -562,7 +657,7 @@ button {
   outline: none;
 }
 
-.buttons{
+.buttons {
   user-select: none;
   display: inline;
 }

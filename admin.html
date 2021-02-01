@@ -146,7 +146,8 @@
                 <label for="email"><b>Email</b></label>
                 <div class="inline">
                   <i class="fa fa-google"></i>
-                  <input autocomplete="on" minlength="6" maxlength="60" type="email" spellcheck="false" name="email" id="email" placeholder="Enter your Email..." required />
+                  <input onkeydown="validation()" autocomplete="on" minlength="6" maxlength="60" type="email" spellcheck="false" name="email" id="email" placeholder="Enter your Email..." required />
+                  <span id="text2"></span>
                 </div>
                 <br />
                 <label for="psw"><b>Password</b></label>
@@ -157,6 +158,70 @@
                 <br />
                 <span><input type="checkbox" value="IsRememberMe" id="rememberMe" />Remember Me</span>
                 <br /><br />
+                <div class="contain">
+                  <div class="textCode">
+                    <input type="text" id="capt" readonly="readonly" />
+                    <div class="refresh"><i class="fas fa-sync" onclick="cap()"></i>
+                    </div>
+                  </div>
+                  <input type="text" id="textInput" />
+                  <button type="submit" onclick="checkCap()">Check</button>
+                </div><br />
+                <hr color="crimson" width="286" /><br />
+                <script type="text/javascript" charset="utf-8">
+                  function cap() {
+                    var alpha = ['/', '?', '!', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+                    var a = alpha[Math.floor(Math.random() * 62)];
+                    var b = alpha[Math.floor(Math.random() * 62)];
+                    var c = alpha[Math.floor(Math.random() * 62)];
+                    var d = alpha[Math.floor(Math.random() * 62)];
+                    var e = alpha[Math.floor(Math.random() * 62)];
+                    var f = alpha[Math.floor(Math.random() * 62)];
+
+                    var sum = a + b + c + d + e + f;
+
+                    document.getElementById("capt").value = sum;
+                  }
+
+                  function checkCap() {
+                    var s1 = document.getElementById("capt").value;
+                    var s2 = document.getElementById("textInput").value;
+                    if (s1 == s2) {
+                      alert("Form Validated Sucessfully");
+                      return true;
+                    } else {
+                      alert("Invalid Captcha");
+                      return false;
+                    }
+                  }
+                  window.onload = cap();
+
+                  function validation() {
+                    var form = document.getElementById("container1");
+                    var email = document.getElementById("email").value;
+
+                    var text = document.getElementById("text2");
+                    var pattern = /^[^  ]+@[^ ]+\.[a-z]{2,3}$/;
+
+                    if (email.match(pattern)) {
+                      form.classList.add('valid');
+                      form.classList.remove('invalid');
+                      text.innerHTML = "Your Email Address is Valid";
+                      text.style.color = "#00ff00"
+                    } else {
+                      form.classList.remove('valid');
+                      form.classList.add('invalid');
+
+                      text.innerHTML = "Please enter a valid Email";
+                      text.style.color = "#ff0000"
+                    }if (email=="") {
+                    form.classList.remove('valid');
+                    form.classList.remove('invalid');
+                    text.innerHTML = "Your Email Address is Valid";
+                    text.style.color = "#00ff00"
+                    }
+                  }
+                </script>
                 <div class="buttons">
                   <button type="submit" onclick="login()">LOGIN</button>
                   <button href="signup">SIGN UP</button></div>
