@@ -13,51 +13,31 @@ function reload() {
   location.reload();
 }
 
-function share(){
+function share() {
   if (navigator.share) {
 
-  navigator.share({
-    
-    icon: document.getElementById("favicon"),
+    navigator.share({
 
-    title: document.title,
+        icon: document.getElementById("favicon"),
 
-    text: "Check This Website -",
+        title: document.title,
 
-    url: window.location.href
+        text: "Check This Website -",
 
-  }).then(() => console.log('Successful share'))
+        url: window.location.href
 
-  .catch(error => console.log('Error sharing:', error));
+      }).then(() => console.log('Successful share'))
 
-}
-  }
-
-function exit() {
-
-
-  if (confirm("Close Window?")) {
-
-    close();
+      .catch(error => console.log('Error sharing:', error));
 
   }
 }
-
-window.onbeforeunload = function exitOnNotSavedChanges() { 
-
-       if(confirm('Are you sure to exit?')) 
-
-           return true; 
-
-      else 
-
-           return false; 
-
-};
 
 function inspectEl() {
-  javascript: (function() { var script = document.createElement('script');
+  javascript: (function() {
+    var script = document.createElement('script');
     script.src = "//cdn.jsdelivr.net/npm/eruda";
     document.body.appendChild(script);
-    script.onload = function() { eruda.init() } })();
+    script.onload = function() { eruda.init() }
+  })();
 }

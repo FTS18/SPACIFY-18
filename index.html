@@ -15,7 +15,6 @@
   <meta property="og:image" content="https://spacify.netlify.app/favicon/light.png">
   <meta property="og:type" content="website" />
   <meta name="apple-mobile-web-app-capable" content="yes">
-  
   <meta name="apple-mobile-web-app-status-bar-style" content="crimson">
   <meta name="theme-color" content="crimson">
   <meta name=viewport content="width=device-width, maximum-scale=1">
@@ -33,12 +32,12 @@
   <link rel=stylesheet href=css/all.css media=all>
   <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
   <link rel=stylesheet href=css/fonts.css media=all>
-  <link rel="shortcut icon" type="image/png" href="favicon/light.png" id="favicon"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" id="favicon"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" id="favicon"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" id="favicon"/>>
-  <link rel=icon href=favicon/dark.png media=(prefers-color-scheme:dark) type=image/png id="favicon"/>
-  <link rel=icon href=favicon/light.png media=(prefers-color-scheme:light) type=image/png id="favicon"/>>
+  <link rel="shortcut icon" type="image/png" href="favicon/light.png" id="favicon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" id="favicon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" id="favicon" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" id="favicon" />>
+  <link rel=icon href=favicon/dark.png media=(prefers-color-scheme:dark) type=image/png id="favicon" />
+  <link rel=icon href=favicon/light.png media=(prefers-color-scheme:light) type=image/png id="favicon" />>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src=https://unpkg.com/favicon-switcher@1.2/dist/index.js charset=utf-8 crossorigin=anonymous></script>
   <scropt src=js/offline.js>
@@ -54,8 +53,6 @@
     <script>
       window.OneSignal = window.OneSignal || [], OneSignal.push(function() { OneSignal.init({ appId: "7ba05272-25c1-4921-895b-294b3653aa25" }) })
     </script>
-    <link rel=preconnect href=https://fonts.gstatic.com>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel=stylesheet>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187001820-1"></script>
@@ -106,7 +103,7 @@
       <i class="fa fa-bell"></i> Notifications
     </div>
     <div class="item"><a href=admin>
-      <i class="fa fa-sign-in"></i> Login</a>
+        <i class="fa fa-sign-in"></i> Login</a>
     </div>
     <div class="item" onclick="share()">
       <i class="fa fa-share-alt-square"></i> Share
@@ -140,25 +137,25 @@
                 <li class=active1><a href=login>
                     <i class="far fa-user fa-4x"></i>
                   </a></li>
-                <li class=active><a href=home>
+                <li class=active><a href=home data-text="Home">
                     <i class="fas fa-home"></i>
                     Home</a></li>
-                <li><a href=admin>
+                <li><a href=admin data-text="Login">
                     <i class="fa fa-sign-in" aria-hidden="true"></i>
                     Login</a></li>
-                <li><a href="https://youtube.com/c/FTS-18">
+                <li><a href="https://youtube.com/c/FTS-18" data-text="Subscribe">
                     <i class="fab fa-youtube"></i>
                     Subscribe</a></li>
-                <li><a href=download>
+                <li><a href=download data-text="Download">
                     <i class="far fa-arrow-alt-circle-down"></i>
                     Download</a></li>
                 <li class="active2">
-                  <a href="contact-us">
+                  <a href="contact-us" data-text="Contact">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                    Contact Us</a>
+                    Contact</a>
                 </li>
                 <li class="active2">
-                  <a href="about">
+                  <a href="about" data-text="About">
                     <i class="fa fa-file-text-o" aria-hidden="true"></i>
                     About</a>
                 </li>
@@ -356,7 +353,7 @@
 
     const cancelBtn = document.querySelector(".cancel-btn");
 
-    document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 3250); })
+    document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 2675); })
 
     menuBtn.onclick = () => {
 
