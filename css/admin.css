@@ -121,6 +121,42 @@ body {
 
 }
 
+#toast,
+#enter,
+#unsuccessful{
+  position: fixed;
+  min-width: 100px;
+  bottom: 0;
+  align-content: center;
+  left: 25px;
+  right: 25px;
+  font-style: 20px;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.95);
+  z-index: 100000000;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
+  transform: scale(.4);
+  letter-spacing: 1.05px;
+  visibility: hidden; 
+  background: transparent;
+  transition: bottom .3s,color .45s,transform .5s,letter-spacing .55s,background .25s;
+}
+
+
+#toast.show,
+#enter.show,
+#unsuccessful.show{
+   bottom: 14vh;
+   backdrop-filter: blur(135px);
+   background: rgba(255, 255, 255, 0.95);
+   text-shadow: 0 0 50px rgba(0, 0, 0, 0.4); 
+   transform: scale(1.05);
+   visibility: visible;
+   letter-spacing: -1px;
+   color: black
+}
+
 #capt{
   outline: none;
   user-select: none;
@@ -141,7 +177,7 @@ body {
   padding: 5px;
   width: 42.5%;
   height: 45px;
-  font-size: 21px;
+  font-size: 21px;  
   background: #000;
   border: none;
   outline: none;
@@ -184,8 +220,8 @@ body {
   cursor: pointer;
   outline: none;
   color: #000;
-  background: #e91e63;
-  border: 3px solid #000;
+  background: crimson;
+  border: 3px solid #000; 
   user-select: none;
   margin-top: 15px;
   opacity: .65;
@@ -222,7 +258,7 @@ body {
   border-radius: 50%;
   top: -50%;
   left: -50%;
-  z-index: 100000;
+  z-index: 100000; 
   position: absolute;
   transition-duration: 200ms;
   transition-timing-function: ease-out;
@@ -475,7 +511,7 @@ body {
 
   position: relative;
 
-  min-height: 100vh;
+  min-height: 135vh;
 
   box-sizing: border-box;
 
@@ -539,7 +575,7 @@ body {
 
   background-repeat: no-repeat;
 
-  height: 100vh;
+  height: 135vh;
 
   width: 100%;
 
@@ -576,9 +612,11 @@ body {
   position: absolute;
   top: 50%;
   z-index: 93;
-  left: 50%;
-  width: 380px;
+  left: 50%; 
+  width: 380px;  
   margin: auto;
+  margin-top: 65px;
+  margin-bottom: 500px;
   transform: translate(-50%, -50%);
   backdrop-filter: blur(35px);
   background-color: rgba(0, 0, 0, 0.1);
@@ -587,7 +625,7 @@ body {
   box-sizing: border-box;
   padding: 50px 30px;
   box-shadow: 7px 7px 60px #000;
-  border-bottom: 3px solid crimson;
+  border-bottom: 4px solid crimson;
 }
 
 .container1 h2 {

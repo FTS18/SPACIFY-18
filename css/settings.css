@@ -596,7 +596,7 @@ input[type="checkbox"]:checked~* {
 	display: flex;
 	padding: 10px 20px;
 }
-.pagination li {
+.pagination li {    
 	line-height: 50px;
 	list-style: none;
 	margin: 0 5px
