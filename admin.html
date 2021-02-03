@@ -50,10 +50,9 @@
     })
   </script>
   <script src="js/toast.js" type="text/javascript" charset="utf-8"></script>
-  <script src="login.js" type="text/javascript" charset="utf-8"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
 </head>
 
 <body oncontextmenu="return false">
@@ -82,7 +81,7 @@
         <div class=start>
           <nav class=navbar>
             <div class=content>
-              <div class=logo><a href=home>FTS<span class="login">Admin Page</span></span></a></div>
+              <div class=logo><a href=home>SPACIFY<span class="login">Admin Page</span></span></a></div>
               <ul class=menu-list>
                 <div class="icon cancel-btn">
                   <i class="fa fa-chevron-circle-left fa-1x" aria-hidden="true"></i>
@@ -140,13 +139,12 @@
               skewed.style.transform = "skewY(" + value + "deg)"
             })
           </script>
-          <form class=container1 id="container1" action="success.html" method="get" accept-charset="utf-8">
+          <div class=container1 id="container1" action="success.html" method="get" accept-charset="utf-8">
             <h2>Login Form</h2>
             <div class="form-container">
               <div class='form'>
                 <label for="email"><b>Email</b></label>
                 <div class="inline">
-                  <i class="fa fa-google"></i>
                   <input onkeydown="validation()" autocomplete="off" minlength="6" maxlength="60" type="email" spellcheck="false" name="email" id="email" placeholder="Enter your Email..." required />
                   <span id="text2"></span>
                 </div>
@@ -165,7 +163,7 @@
                     <div class="refresh"><i class="fas fa-sync" onclick="cap()"></i>
                     </div>
                   </div>
-                  <input type="text" id="textInput" autocomplete="off" minlength="6" maxlength="6" spellcheck="false" placeholder="Captcha" />
+                  <input type="text" required id="textInput" autocomplete="off" minlength="6" maxlength="6" spellcheck="false" placeholder="Captcha" />
                   <button type="submit" onclick="checkCap();return false;">Check</button>
                   <div id="toast">RECAPTCHA Validation Successful!</div>
                   <div id="unsuccessful">Validation Unsuccessful!</div>
@@ -203,6 +201,7 @@
                       setTimeout(function() {
                         y.classList.remove("show");
                       }, 3500);
+                      cap()
                       return false;
                     }
                   }
@@ -235,9 +234,10 @@
                     }
                   }
                 </script>
+                <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
                 <div class="buttons">
-                  <button type="submit" onclick="login()" >LOGIN</button>
-                  <button href="signup"onclick="return false;">SIGN UP</button></div>
+                  <button type="submit" onclick="login()">LOGIN</button>
+                  <button onclick="signUp()" >SIGN UP</button></div>
                 <br /><br />
                 <hr id="h3" color="crimson" width="286" /><br />
                 <div class="g-signin2" data-onsuccess="onSignIn" data-width="286" data-height="47" data-longtitle="true"></div>
@@ -257,11 +257,11 @@
                   this.classList.toggle('fa-eye-slash');
                 });
               </script>
-           </div> 
-          </div>
-          <div class="user_profile">
-          </div>
-        </form>
+            </div>
+        </div>
+        <div class="user_profile">
+        </div>
+       </div>
       </section>
       <section id="sec-2">
         <style type="text/css">
