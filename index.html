@@ -35,9 +35,9 @@
   <link rel="shortcut icon" type="image/png" href="favicon/light.png" id="favicon" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" id="favicon" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" id="favicon" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" id="favicon" />>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" id="favicon" />
   <link rel=icon href=favicon/dark.png media=(prefers-color-scheme:dark) type=image/png id="favicon" />
-  <link rel=icon href=favicon/light.png media=(prefers-color-scheme:light) type=image/png id="favicon" />>
+  <link rel=icon href=favicon/light.png media=(prefers-color-scheme:light) type=image/png id="favicon" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src=https://unpkg.com/favicon-switcher@1.2/dist/index.js charset=utf-8 crossorigin=anonymous></script>
   <scropt src=js/offline.js>
@@ -121,9 +121,51 @@
       <i class="fa fa-times"></i> Exit
     </div>
   </div>
-  <div class=splash>
+  <div class=splash id="splash">
     <h1 class=fade-in>LOAD<span class=type3></span></h1>
   </div>
+  <script type="text/javascript" charset="utf-8">
+      let bg = document.getElementById("splash");
+      let count = 20;
+      for(let i=0;i<count;i++){
+          let glitchbox=document.createElement('div')
+              glitchbox.className='box';
+              bg.appendChild(glitchbox);
+      }
+      setInterval(function(){
+      let glitch=document.getElementsByClassName('box');
+      for(let i=0;i<glitch.length;i++){
+          glitch[i].style.left=Math.floor(Math.random()*100)+"vw";
+          glitch[i].style.top=Math.floor(Math.random()*100)+"vh";
+          glitch[i].style.width=Math.floor(Math.random()*400)+"px";
+          glitch[i].style.height=Math.floor(Math.random()*100)+"px";
+          glitch[i].style.backgroundPosition=Math.floor(Math.random()*50)+"vw";
+      }
+      },400)
+  </script>
+  <style type="text/css">
+      #splash{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: black;
+          background-attachment: fixed;
+      }
+      .fade-in{
+          z-index: 10000000;
+          -webkit-text-fill-color: transparent;
+          -webkit-text-stroke-width: 2px;
+      }
+      .fade-in .type3{
+          
+      }
+      .box{
+          position: absolute;
+          background: crimson;
+          background-attachment: fixed;
+      }
+  </style>
   <section id=homepage>
     <input type=checkbox>
     <section class=page>
@@ -355,7 +397,7 @@
 
     const cancelBtn = document.querySelector(".cancel-btn");
 
-    document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 2675); })
+    document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 4000); })
 
     menuBtn.onclick = () => {
 
