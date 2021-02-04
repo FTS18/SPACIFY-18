@@ -281,11 +281,13 @@ input[type="checkbox"]:checked~* {
 
 .navbar .logo a {
 
-  color: #fff;
-
   user-select: none;
+  
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 2px;
 
-  text-shadow: 0 0 5px #fff;
+  /**text-shadow: 0 0 5px #fff;**/
 
   font-size: 40px;
 
@@ -702,6 +704,10 @@ input[type="checkbox"]:checked~* {
   letter-spacing: -1px;
 
   text-transform: uppercase;
+  
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 2px;
 
   text-shadow: 0 0 50px #fff;
 
@@ -714,7 +720,6 @@ input[type="checkbox"]:checked~* {
 
   padding: 0;
   color: #999;
-
   font-size: 20px;
 
   font-weight: 400;
@@ -743,9 +748,9 @@ input[type="checkbox"]:checked~* {
 
   z-index: 10;
 
-  text-shadow: 0 0 15px #fff;
-
-  background: #f00;
+  /**text-shadow: 0 0 15px #fff;**/
+  
+  background: transparent;
 
   text-decoration: none;
 
@@ -757,7 +762,7 @@ input[type="checkbox"]:checked~* {
 
   overflow: hidden;
 
-  box-shadow: 0 0 50px #f00;
+  /**box-shadow: 0 0 50px #f00;**/
 
   display: inline-block;
 
@@ -768,60 +773,31 @@ input[type="checkbox"]:checked~* {
   transition: all .38s ease
 }
 
-.buttons .heart {
-
-  height: 90px;
-
-  width: 90px;
-
-  background: url("img.png") no-repeat;
-
-  background-position: left;
-
-  background-size: 2900%;
-
-  position: absolute;
-
-  top: 50%;
-
-  left: 21%;
-
-  transform: translate(-50%, -50%);
-
-}
-
 .caption .btn1:hover {
 
   background: #f00;
+  
+  box-shadow: 0 0 50px #f00;
 
-  text-shadow: 0 0 5px #f00;
+  text-shadow: 0 0 5px #fff;
 
-  color: black
+  color: white
 }
 
 ::-webkit-scrollbar {
 
-  width: 10px
+  width: 9px;
 }
 
 ::-webkit-scrollbar-track {
 
-  border: 6px solid #232943;
-
-  box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5)
+  border: 6px solid #222;
 }
 
 ::-webkit-scrollbar-thumb {
 
-  background: #190031;
-
-  background: -moz-linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
-
-  background: -webkit-linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
-
-  background: linear-gradient(45deg, rgba(25, 0, 49, 1) 0, rgba(62, 8, 91, 1) 23%, rgba(199, 35, 97, 1) 55%, rgba(255, 0, 122, 1) 84%, rgba(206, 5, 53, 1) 100%, rgba(255, 0, 61, 1) 100%);
-
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#190031", endColorstr="#ff003d", GradientType=1)
+  background: #111;
+  border-radius: 2px;
 }
 
 #homepage {
