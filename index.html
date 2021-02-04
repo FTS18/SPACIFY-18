@@ -122,9 +122,29 @@
     </div>
   </div>
   <div class=splash id="splash">
-    <h1 class=fade-in>LOAD<span class=type3></span></h1>
+      <div class="count" id="count"></div>
+    <h1 id="fade-in" class=fade-in>LOAD<span class=type3></span></h1>
   </div>
   <script type="text/javascript" charset="utf-8">
+  var text=document.getElementById('count');
+  var shadow='';
+  for(var i=0;i < 650; i++){
+      shadow += (shadow? ',':'')+ i*1+'px '+ i*1+ 'px 0 #111';
+  }
+  text.style.textShadow=shadow;
+  </script>
+  <script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+      var count=0;
+      var counter=setInterval(function(){
+          if(count<101){
+              $(".count").text(count+'%');
+              count++
+          }else{
+              clearInterval(counter)
+          }
+      })
+  })
       let bg = document.getElementById("splash");
       let count = 20;
       for(let i=0;i<count;i++){
@@ -151,14 +171,41 @@
           overflow: hidden;
           background: black;
           background-attachment: fixed;
+          pointer-events: none;
+      }
+      /**.loader{
+          position: absolute;
+          height:8px;
+          width: 60%;
+          top: 93%;
+          left:0;
+          right: 0;
+          pointer-events: none;
+          margin-bottom: 40px;
+          margin-left: 20px;
+          margin-right: 20px;
+          border-radius: 20px;
+          -webkit-fill-color: transparent;
+          -webkit-text-stroke-width: 2px;
+          background: white;
+      }**/
+      .count{
+          position: absolute;
+          top: 90%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          font-weight: 800;
+          -webkit-text-fill-color: transparent;
+          -webkit-text-stroke-color: white;
+          -webkit-text-stroke-width: 2px;
+          font-family: 'Josefin Sans';
+          z-index: 10000000;
+          font-size: 3em
       }
       .fade-in{
           z-index: 10000000;
           -webkit-text-fill-color: transparent;
           -webkit-text-stroke-width: 2px;
-      }
-      .fade-in .type3{
-          
       }
       .box{
           position: absolute;
