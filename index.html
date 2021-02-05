@@ -56,7 +56,6 @@
     <script src="js/toast.js" type="text/javascript" charset="utf-8"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
-    <link href="http://fonts.cdnfonts.com/css/chewer" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187001820-1"></script>
     <script>
       function gtag() { dataLayer.push(arguments) } window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "UA-187001820-1")
@@ -74,6 +73,7 @@
       })(window, document, "clarity", "script", "503em8padj");
     </script>
     <script src="js/context-menu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body oncontextmenu="return false">
@@ -388,6 +388,64 @@
           </a>
         </section>
       </section>
+      <div id="consent">
+        <p>By using this site you agree to our <a href="termsofservices.html">Terms And Conditions</a> and <a href="privacypolicy.html">Privacy Policy</a>.
+        Please <a id="openPopup" href="javascript:void(0);" onclick="consentPopup();">accept</a> these before using our site.<a id="openPopup" href="javascript:void(0);" onclick="consentPopup();"> Click here</a>
+        <button type="submit" onclick="consentPopup();">Accept</button><button id="close" onclick="consentPopup();" type="submit">Maybe Later?</button></p>
+      </div>
+      <style type="text/css">
+        #consent{
+          position: fixed;
+          display: flex;
+          bottom: 0;
+          background: #111;
+          color: #fff;
+          text-shadow: 0 0 30px 0 #fff;
+          font-size: 16px;
+          z-index: 100;
+          width: 100%;
+          padding-top: 26px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-bottom: 21px;
+          border-top-left-radius: 10px;
+          /**color: #fff;**/
+          border-top-right-radius: 10px;
+         /** background: #555;**/
+        }
+        #consent button{
+          top: 25%;
+          border:2px solid #22FF00;
+          position: absolute;
+          right: 160px;
+          outline: none;
+          color: white;
+          background: transparent;
+          border-radius: 4px;
+          padding: 9px;
+          padding-bottom: 2px;
+          transition: all .7s ease;
+        }
+        #consent button#close{
+          border:2px solid #f00;
+          position: absolute;
+          right: 30px;
+          outline: none;
+          background: transparent;
+        }
+        #consent button:hover{
+          background: #22FF00;
+        }
+         #consent button#close:hover{
+           background: #f00;
+         }
+        #consent a{
+          text-decoration: none;
+          font-size: 18px;
+          color: #999;
+          text-shadow: 0 0 30px 0 #999;
+        }
+      </style>
       <section id=sec-2>
         <div class=about>
           <div class=content data-scroll>

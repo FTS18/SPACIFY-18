@@ -14,32 +14,32 @@ const resourcesToPrecache = [
 
 self.addEventListener('install', event => {
 
-    console.log('Service worker install event!');
+  console.log('Service worker install event!');
 
-    event.waitUntil(
+  event.waitUntil(
 
-        caches.open(cacheName)
+    caches.open(cacheName)
 
-        .then(cache => {
+    .then(cache => {
 
-            return cache.addAll(resourcesToPrecache);
+      return cache.addAll(resourcesToPrecache);
 
-        })
+    })
 
-    );
+  );
 
 });
 
 self.addEventListener('fetch', event => {
 
-    event.respondWith(caches.match(event.request)
+  event.respondWith(caches.match(event.request)
 
-        .then(cachedResponse => {
+    .then(cachedResponse => {
 
-            return cachedResponse || fetch(event.request);
+      return cachedResponse || fetch(event.request);
 
-        })
+    })
 
-    );
+  );
 
 });
