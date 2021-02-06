@@ -230,16 +230,13 @@
                 <div class="icon cancel-btn">
                   <i class="fa fa-chevron-circle-left fa-1x" aria-hidden="true"></i>
                 </div>
-                <li class=active1><a href=login>
-                    <i class="far fa-user fa-4x"></i>
-                  </a></li>
                 <li class=active><a href=home data-text="Home">
                     <i class="fas fa-home"></i>
                     Home</a></li>
-                <li><a href=admin data-text="Login">
+                <li><a href=admin.html data-text="Admin">
                     <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    Login</a></li>
-                <li><a href="https://youtube.com/c/FTS-18" data-text="Subscribe">
+                    Admin</a></li>
+                <li><a href="https://youtube.com/c/SPACIFY-18" target="_blank" data-text="Subscribe">
                     <i class="fab fa-youtube"></i>
                     Subscribe</a></li>
                 <li><a href=download data-text="Download">
@@ -249,6 +246,10 @@
                   <a href="contact-us" data-text="Contact">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                     Contact</a>
+                <li class="share" onclick="share()">
+                  <a onclick="share(); javascript:void()" href="#" data-text="Share">
+                    <i class="fa fa-share-alt-square"></i>
+                    Share</a></li>
                 </li>
                 <li class="active2">
                   <a href="about" data-text="About">
@@ -261,12 +262,10 @@
                   </a>
                 </li>
               </ul>
-              <div class="icon search">, <a href=search>
+              <div class="icon search"><a href=search>
                   <i class="fa fa-search" aria-hidden=true></i>
                 </a></div>
-              <div class="icon menu-btn">
-                <i class="fas fa-bars"></i>
-              </div>
+              <div class="icon menu-btn"><i class="fas fa-bars"></i></div>
             </div>
           </nav>
           <nav class="bottom_nav">
@@ -339,7 +338,8 @@
               <source id="spm" src="songs/spacemelody.mp3" type="audio/mp3" />
               <source id="spm" src="songs/spectre.mp3" type="audio/mp3" />
               <source id="spm" src="songs/unity.mp3" type="audio/mp3" />
-              <track src="spm.vtt" srclang="en" label="English Captions" kind="captions"></track>
+              <track src="spm.vtt" srclang="en" label="English Captions" kind="captions">
+              </track>
             </audio>
             <script type="text/javascript" charset="utf-8">
               $(document).ready(function() {
@@ -347,7 +347,7 @@
                   $(this).hide();
                   $(".fa-pause-circle-o").fadeIn();
                   $("#audio")[0].play();
-                  audio.playbackRate=1.39;
+                  audio.playbackRate = 1.39;
                 });
                 $(".btn1 .fa-pause-circle-o").on('click', function() {
                   $(this).hide();
@@ -390,62 +390,86 @@
       </section>
       <div id="consent" class="">
         <p>By using this site you agree to our <a href="termsofservices.html">Terms And Conditions</a> and <a href="privacypolicy.html">Privacy Policy</a>.
-        Please <a id="openPopup" href="javascript:void(0);" onclick="consentPopup();">accept</a> these before using our site.<a id="openPopup" href="javascript:void(0);" onclick="consentPopup();"> Click here</a>
-        <button type="submit" onclick="consentPopup();">Accept</button><button id="close" onclick="consentPopup();" type="submit">Maybe Later?</button></p>
+          Please <a id="openPopup" href="javascript:void(0);" onclick="consentPopup();">accept</a> these before using our site.<a id="openPopup" href="javascript:void(0);" onclick="consentPopup();"> Click here</a></p>
+          <button type="submit" onclick="consentPopup();">Accept</button><button id="close" onclick="hidePopup();" type="submit">Maybe Later?</button>
       </div>
       <style type="text/css">
-      #consent.none{
-        display: none;
-      }
-        #consent{
+        #consent.none {
+          display: none;
+          bottom: 0;
+        }
+
+        #consent {
           position: fixed;
           display: flex;
-          bottom: 0;
+          bottom: 100px;
+          right: 20px;
           background: #111;
           color: #fff;
           text-shadow: 0 0 30px 0 #fff;
           font-size: 16px;
           z-index: 100;
-          width: 100%;
+          width: 300px;
+          height: 200px;
           padding-top: 26px;
           padding-left: 20px;
           padding-right: 20px;
+          border: 2px solid #444;
           padding-bottom: 21px;
-          border-top-left-radius: 10px;
-          /**color: #fff;**/
-          border-top-right-radius: 10px;
-         /** background: #555;**/
+          border-radius: 2px;
+          box-shadow: 0 0 4px 4px rgba(0, 0, 0, .5);
+          transition:bottom 2s ease;
         }
-        #consent button{
-          top: 25%;
-          border:2px solid #22FF00;
+        
+        #consent:before{
+          content: '';
+          border-bottom: 2px solid #444;
+          border-right: 2px solid #444;
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          background: #111;
+          bottom: -19px;
+          left: 194px;
+          transform: rotate(45deg);
+        }
+
+        #consent button {
+          bottom: 15%;
+          border: 3px solid #22FF00;
           position: absolute;
           right: 160px;
           outline: none;
           color: white;
           background: transparent;
-          border-radius: 4px;
+          border-radius: 2px;
           padding: 9px;
+          box-shadow: 3px 3px rgba(0, 0, 0, .3);
           padding-bottom: 2px;
           transition: all .7s ease;
         }
-        #consent button#close{
-          border:2px solid #f00;
+
+        #consent button#close {
+          border: 3px solid #f00;
           position: absolute;
           right: 30px;
           outline: none;
           background: transparent;
         }
-        #consent button:hover{
+
+        #consent button:hover {
           background: #22FF00;
+          color: #000;
         }
-         #consent button#close:hover{
-           background: #f00;
-         }
-        #consent a{
+
+        #consent button#close:hover {
+          background: #f00;
+        }
+
+        #consent a {
           text-decoration: none;
           font-size: 18px;
-          color: #999;
+          color: #888;
           text-shadow: 0 0 30px 0 #999;
         }
       </style>

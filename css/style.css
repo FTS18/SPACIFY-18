@@ -3,16 +3,18 @@
   padding: 0;
   box-sizing: border-box;
   letter-spacing: -2px;
-  font-family: 'Josefin Sans',sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
   width: 100%;
 }
-#homepage{
+
+#homepage {
   font-family: 'Josefin Sans';
 }
+
 #context-menu {
   position: fixed;
   z-index: 100000;
@@ -281,7 +283,7 @@ input[type="checkbox"]:checked~* {
 .navbar .logo a {
 
   user-select: none;
-  
+
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-color: white;
   -webkit-text-stroke-width: 2px;
@@ -424,7 +426,7 @@ input[type="checkbox"]:checked~* {
   background: #000;
 
   display: none;
- /**border-top: 1px solid #f00;**/
+  /**border-top: 1px solid #f00;**/
   border-top-left-radius: 15px;
 
   border-top-right-radius: 15px;
@@ -703,7 +705,7 @@ input[type="checkbox"]:checked~* {
   letter-spacing: -1px;
 
   text-transform: uppercase;
-  
+
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-color: white;
   -webkit-text-stroke-width: 2px;
@@ -748,7 +750,7 @@ input[type="checkbox"]:checked~* {
   z-index: 10;
 
   /**text-shadow: 0 0 15px #fff;**/
-  
+
   background: transparent;
 
   text-decoration: none;
@@ -775,7 +777,7 @@ input[type="checkbox"]:checked~* {
 .caption .btn1:hover {
 
   background: #f00;
-  
+
   box-shadow: 0 0 50px #f00;
 
   text-shadow: 0 0 5px #fff;
@@ -1035,7 +1037,7 @@ input[type="checkbox"]:checked~* {
 .about p {
 
   padding-top: 20px;
-  letter-spacing:-1px;
+  letter-spacing: -1px;
 
   text-align: justify;
 
@@ -1070,7 +1072,7 @@ input[type="checkbox"]:checked~* {
   position: relative;
 
   background: #000;
-   
+
   z-index: 5;
 
   display: flex;
@@ -1155,7 +1157,7 @@ input[type="checkbox"]:checked~* {
   cursor: pointer;
 
   display: none;
-  
+
   text-shadow: 0 0 10px #fff;
 
   font-size: 16px
@@ -1169,11 +1171,11 @@ input[type="checkbox"]:checked~* {
 
   border: 0;
 
-  color: #000;
+  color: #fff;
 
   right: 30px;
-  
-  text-shadow: 0 0 10px #f00;
+
+  text-shadow: 0 0 20px #fff;
 
   top: 20px
 }
@@ -1383,7 +1385,7 @@ footer p {
 
   width: calc(35% - 60px);
 
-  margin-right: 0 !important
+  margin-right: 0;
 }
 
 .contact .info {
@@ -1439,6 +1441,11 @@ footer p {
   color: #999
 }
 
+
+.share {
+  display: none
+}
+
 @media(max-width:991px) {
 
   .copyrightText {
@@ -1451,7 +1458,18 @@ footer p {
 
   }
 
+  #context-menu {
+    display: none;
+  }
+
+  .share {
+    display: block
+  }
+  
+  #consent
+
   footer {
+    bottom: 90px;
 
     padding: 40px;
 
@@ -1480,12 +1498,14 @@ footer p {
 
   .copyrightText {
 
-    padding: 8px 40px
+    padding: 8px 40px;
+    bottom: 75px
   }
 
   body.disabledScroll {
 
-    overflow: hidden
+    overflow: hidden;
+
   }
 
   .icon {
@@ -1494,7 +1514,6 @@ footer p {
   }
 
   .icon.hide {
-
     display: none
   }
 
@@ -1502,7 +1521,7 @@ footer p {
 
     position: fixed;
 
-    background: #f00;
+    background: #220243;
 
     top: 0;
 
@@ -1518,24 +1537,24 @@ footer p {
 
     box-shadow: 0 0 60px black;
 
-    width: 270px;
-    
+    width: 250px;
+
     height: 100%;
 
     text-align: center;
 
-    transition: .55s cubic-bezier(1, 1, 0, 1.00)
+    transition: .65s cubic-bezier(1, 1, 0, 1.00)
   }
-  
-  .navbar .menu-list li ,
-  .navbar .menu-list li.active{
+
+  .navbar .menu-list li,
+  .navbar .menu-list li.active {
 
     user-select: none;
-    
+
     font-weight: 900;
-    
+
     text-transform: capitalize;
-    
+
     font-size: 15px;
 
     padding: 15px;
@@ -1551,7 +1570,9 @@ footer p {
 
   .navbar.active .menu-list {
 
-    left: 0
+    left: 0;
+    overflow: hidden;
+    z-index: 101;
   }
 
   .menu-list li.active1,
@@ -1564,14 +1585,14 @@ footer p {
 
     display: block;
 
-    color: #000;
+    color: crimson;
 
   }
 
   .menu-list li.active2 {
 
     display: block;
-    color: #000;
+    color: crimson;
 
   }
 
@@ -1579,9 +1600,9 @@ footer p {
 
     border: 0;
 
-    color: #000;
+    color: crimson;
 
-    
+
 
   }
 
@@ -1602,16 +1623,14 @@ footer p {
     border-bottom: none;
 
     background: transparent;
-    
-    color: #000;
+
+    color: crimson;
 
   }
 
 
-
   .menu-list li.active a:hover {
-    color: #000
-
+    color: crimson
   }
 
   .menu-list li:hover {
@@ -1623,8 +1642,8 @@ footer p {
 
   .navbar.sticky .menu-list li a:hover {
 
-    color: #000;
-    
+    color: crimson;
+
     /*text-shadow: 0 0 8px #000;*/
 
     background: transparent;
@@ -1633,7 +1652,7 @@ footer p {
 
   .navbar.sticky .menu-list li.active a {
 
-    color: #000;
+    color: crimson;
 
     background: transparent;
 
@@ -1643,7 +1662,7 @@ footer p {
 
   .navbar .menu-list li.active a {
 
-    color: #000;
+    color: crimson;
 
     background: transparent;
 
@@ -1651,7 +1670,7 @@ footer p {
 
   .navbar.sticky .menu-list li.active a:hover {
 
-    color: #000;
+    color: crimson;
 
     background: transparent;
 
@@ -1663,14 +1682,15 @@ footer p {
     font-size: 24px;
 
     width: 100%;
-    
+
     color: white;
 
     transition: .48s cubic-bezier(0.68, -0.55, 0.265, 1.55)
   }
+
   .navbar .menu-list li a:hover,
-  .navbar.sticky .menu-list li a:hover{
-    color: #000;
+  .navbar.sticky .menu-list li a:hover {
+    color: crimson;
   }
 
   .active3 {

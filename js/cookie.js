@@ -1,13 +1,13 @@
-const storageType = sessionStorage;
+const storageType = localStorage;
 const consentPropertyName = 'jdc_consent';
 
-const shoulShowPopup = () => !storageType.getItem(consentPropertyName);
+const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
 const saveToStorage = () => storageType.getItem(consentPropertyName, true);
 
 function consentPopup(){
 
   const consentPopup=document.getElementById("consent");
-  if (shoulShowPopup()) {
+  if (shouldShowPopup()) {
     const consent = confirm('Agree to the terms and Conditions of our website?');
     if (consent) {
       saveToStorage();
@@ -19,4 +19,8 @@ function consentPopup(){
   } else {
     consentPopup.classList.add("none");
   }
+}
+function hidePopup(){
+   const consentPopup=document.getElementById("consent");
+  consentPopup.classList.add("none");
 }

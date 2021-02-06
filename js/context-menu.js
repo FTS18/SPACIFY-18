@@ -15,21 +15,13 @@ function reload() {
 
 function share() {
   if (navigator.share) {
-
     navigator.share({
-
         icon: document.getElementById("favicon"),
-
         title: document.title,
-
         text: "Check This Website -",
-
         url: window.location.href
-
       }).then(() => console.log('Successful share'))
-
-      .catch(error => console.log('Error sharing:', error));
-
+      .catch(error => alert('Error sharing:', error));
   }
 }
 
