@@ -388,12 +388,15 @@
           </a>
         </section>
       </section>
-      <div id="consent">
+      <div id="consent" class="">
         <p>By using this site you agree to our <a href="termsofservices.html">Terms And Conditions</a> and <a href="privacypolicy.html">Privacy Policy</a>.
         Please <a id="openPopup" href="javascript:void(0);" onclick="consentPopup();">accept</a> these before using our site.<a id="openPopup" href="javascript:void(0);" onclick="consentPopup();"> Click here</a>
         <button type="submit" onclick="consentPopup();">Accept</button><button id="close" onclick="consentPopup();" type="submit">Maybe Later?</button></p>
       </div>
       <style type="text/css">
+      #consent.none{
+        display: none;
+      }
         #consent{
           position: fixed;
           display: flex;
