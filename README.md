@@ -19,7 +19,7 @@ Not intended to be copied!!!🙂
 
 - 💬 Ask me about **html, css and js**
 
-- 📫 How to reach me **anandsagardubey71568@gmail.com**
+- 📫 How to reach me **fts71568@gmail.com**
 
 - ⚡ Fun fact **I think I am funny 😉😂🤣😅**
 
@@ -51,7 +51,7 @@ Not intended to be copied!!!🙂
 
 
 For queries contact me @ fts71568@gmail.com
-Visit the website@https://fts-18.netlify.app/
+Visit the website@https://spacify.netlify.app/
 
 
 
