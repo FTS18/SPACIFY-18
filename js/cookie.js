@@ -2,23 +2,24 @@ const storageType = localStorage;
 const consentPropertyName = 'jdc_consent';
 
 const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
-const saveToStorage = () => storageType.setItem(consentPropertyName, true);
+const saveToStorage = () => storageType.getItem(consentPropertyName, true);
 
 function consentPopup(){
 
-  const consentPopup=document.getElementById("consent");
+  const cPopup=document.getElementById("consent");
   if (shouldShowPopup()) {
     const consent = confirm('Agree to the terms and Conditions of our website?');
     if (consent) {
       saveToStorage();
       console.log('You have accepted our Cookie Consent Popup');
-      consentPopup.classList.add("none");
+      cPopup.classList.add("none");
     } else {
       console.log('You Dismissed the Cookie Consent Popup');
+      cPopup.classList.add("none");
     }
   } 
 };
 function hidePopup(){
-   const consentPopup=document.getElementById("consent");
-  consentPopup.classList.add("none");
+   const cPopup=document.getElementById("consent");
+  cPopup.classList.add("none");
 };
