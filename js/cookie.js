@@ -2,7 +2,7 @@ const storageType = localStorage;
 const consentPropertyName = 'jdc_consent';
 
 const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
-const saveToStorage = () => storageType.getItem(consentPropertyName, true);
+const saveToStorage = () => storageType.setItem(consentPropertyName, true);
 
 function consentPopup(){
 
