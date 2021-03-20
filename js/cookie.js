@@ -4,7 +4,7 @@ const consentPropertyName = 'jdc_consent';
 const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
 const saveToStorage = () => storageType.getItem(consentPropertyName, true);
 
-function consentPopup(){
+window.onload=()=>{
 
   const consentPopup=document.getElementById("consent");
   if (shouldShowPopup()) {
