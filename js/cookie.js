@@ -6,20 +6,20 @@ const saveToStorage = () => storageType.getItem(consentPropertyName, true);
 
 function consentPopup(){
 
-  const cPopup=document.getElementById("consent");
+  const consentPopup=document.getElementById("consent");
   if (shouldShowPopup()) {
     const consent = confirm('Agree to the terms and Conditions of our website?');
     if (consent) {
       saveToStorage();
       console.log('You have accepted our Cookie Consent Popup');
-      cPopup.classList.add("none");
+      consentPopup.classList.add("none");
     } else {
       console.log('You Dismissed the Cookie Consent Popup');
-      cPopup.classList.add("none");
+      consentPopup.classList.add("block");
     }
   } 
 };
 function hidePopup(){
-   const cPopup=document.getElementById("consent");
-  cPopup.classList.add("none");
+   const consentPopup=document.getElementById("consent");
+  consentPopup.classList.add("none");
 };
