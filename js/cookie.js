@@ -3,7 +3,7 @@ const consentPropertyName = 'jdc_consent';
 
 const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
 const saveToStorage = () => storageType.getItem(consentPropertyName, true);
-window.onload = () => {
+
 function consentPopup(){
 
   const consentPopup=document.getElementById("consent");
@@ -16,11 +16,9 @@ function consentPopup(){
     } else {
       console.log('You Dismissed the Cookie Consent Popup');
     }
-  } else {
-    consentPopup.classList.add("none");
-  }
-}
+  } 
+};
 function hidePopup(){
    const consentPopup=document.getElementById("consent");
   consentPopup.classList.add("none");
-}}
+};
