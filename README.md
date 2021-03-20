@@ -1,7 +1,7 @@
 Not intended to be copied!!!🙂
 <h1 align="center">Hi 👋, I'm Ananay Dubey</h1>
 
-<h3 align="center">A passionate class 9th web developer from India</h3>
+<h3 align="center">A passionate class 9th web designer from India</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=fts18&label=Profile%20views&color=d10046&style=flat-square" alt="fts18" /> </p>
 
