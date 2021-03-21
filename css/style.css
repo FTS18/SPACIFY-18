@@ -157,7 +157,7 @@ body {
 
   align-items: center;
 
-  background: #000;
+  background: #ff002c;
 
   width: 100%;
 
@@ -170,6 +170,7 @@ input[type="checkbox"] {
   position: fixed;
 
   z-index: 5;
+  font-family: 'Poppins', sans-serif;
 
   text-transform: uppercase;
 
@@ -205,6 +206,7 @@ input[type="checkbox"]:checked:before {
 
   position: absolute;
 
+  font-family: 'Poppins', sans-serif;
   color: #000;
 
   border-bottom: 5px solid black;
@@ -292,16 +294,25 @@ input[type="checkbox"]:checked~* {
 
   text-shadow: 0 0 5px #fff;**/
 
-  font-size: 40px;
+  font-size: 37px;
 
+  color: rgba(255,255,255,0.85);
+  
   cursor: pointer;
 
   font-weight: 600;
 
   text-decoration: none;
 
-  transition: .3s ease
+  transition: .4s ease
 }
+.navbar .logo a:hover{
+  color: #f00;
+  fontsize:41.5px
+  }
+
+.navbar.sticky .logo{
+  color: white;}
 
 .navbar .menu-list {
 
