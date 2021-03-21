@@ -311,7 +311,7 @@ input[type="checkbox"]:checked~* {
   fontsize:41.5px
   }
 
-.navbar.sticky .logo{
+.navbar.sticky .logo a{
   color: white;}
 
 .navbar .menu-list {
