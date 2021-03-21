@@ -12,7 +12,7 @@
 
         {
 
-            "src":"light.png",
+            "src":"favicon/light.png",
 
             "sizes":"192*192",
 
@@ -22,7 +22,7 @@
 
         {
 
-            "src":"dark.png",
+            "src":"favicon/dark.png",
 
             "sizes":"192*192",
 
@@ -32,7 +32,7 @@
 
         {
 
-            "src":"https://s2.aconvert.com/convert/p3r68-cdx67/ax9fa-1l50x-001.ico",
+            "src":"favicon/android-chrome-512x512.png",
 
             "sizes":"512*512",
 
