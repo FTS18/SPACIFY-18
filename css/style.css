@@ -1448,6 +1448,9 @@ footer p {
 
 @media(max-width:991px) {
 
+  .mb{
+    display: block;
+    }
   .copyrightText {
     bottom: 20vh;
   }
