@@ -314,7 +314,23 @@
           <script>
             $(function() { $(".menu-list li").on("click", function() { $(this).parent().find("li.active").removeClass("active"), $(this).addClass("active") }) })
           </script>
-          <img class=banner src=Bg4~2.png>
+          <div id="background" class="banner" style="-webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; z-index:9990;"></div>
+          <script>
+          var images = ['Bg1.png',
+
+     'Bg2.png',
+
+     'Bg4~2.png',
+     'Bg3.png'];
+
+ $('#background')
+
+     .css({
+
+     'background-image': 'url(http://asia.olympus-imaging.com/products/dslr/e520/sample/images/' + images[Math.floor(Math.random() * images.length)] + ')'
+
+ });
+            </script>
           <span class="skewed"></span>
           <script type="text/javascript" charset="utf-8">
             let image = document.querySelector('.banner');
