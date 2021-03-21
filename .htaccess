@@ -9,11 +9,11 @@ RewriteRule ^(.*)$ $1.html
 
 
 
-ErrorDocument 404 /404
+ErrorDocument 403 /403
 
 ErrorDocument 500 /500
 
-ErrorDocument 403 /403
+ErrorDocument 404 /404
 
 
 RedirectMatch 403 ^/css/.*$
