@@ -1451,6 +1451,11 @@ footer p {
   .mb{
     display: block;
     }
+  
+  .lp{
+    display:none;
+    }
+  
   .copyrightText {
     bottom: 20vh;
   }
