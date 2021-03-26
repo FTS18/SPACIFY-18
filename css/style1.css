@@ -1,21 +1,22 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Josefin Sans', sans-serif;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
 }
-.content{
+
+.content {
     max-width: 1250px;
     padding: 0px 30px;
     margin: auto;
 }
-.navbar{
+
+.navbar {
     position: fixed;
     z-index: 5;
     width: 100%;
@@ -23,18 +24,21 @@ body{
     background: black;
     transition: all 0.3s ease;
 }
-.navbar.sticky{
+
+.navbar.sticky {
     background: #000;
     padding: 16px 0;
     transition: all 0.5s ease;
 }
-.navbar .content{
+
+.navbar .content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.3 ease;
 }
-.navbar .logo a{
+
+.navbar .logo a {
     color: #fff;
     font-size: 40px;
     cursor: pointer;
@@ -42,17 +46,21 @@ body{
     text-decoration: none;
     transition: 0.3s ease;
 }
-.navbar .menu-list{
+
+.navbar .menu-list {
     display: inline-flex;
 }
-.menu-list li{
+
+.menu-list li {
     list-style: none;
 }
-.navbar.sticky .menu-list li a{
+
+.navbar.sticky .menu-list li a {
     padding: 20px;
     transition: all 0.4s ease;
 }
-.menu-list li a{
+
+.menu-list li a {
     color: #fff;
     padding: 25px;
     font-size: 15px;
@@ -61,82 +69,96 @@ body{
     text-decoration: none;
     transition: all 0.35s ease;
 }
+
 .menu-list li a.active {
     background: #C9223D;
     padding: 25px;
     transition: all 0.4s ease-in;
 }
-.menu-list li a:hover{
-  background: #C9223D;
-  transition: all 0.45s ease-in;
+
+.menu-list li a:hover {
+    background: #C9223D;
+    transition: all 0.45s ease-in;
 }
-.banner{
+
+.banner {
     height: 100vh;
     background: url(banner3.jpg) no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
-.about{
+
+.about {
     padding: 40px 0;
 }
-.about .title{
+
+.about .title {
     font-size: 35px;
     font-weight: 700;
 }
-.about p{
+
+.about p {
     padding-top: 20px;
     text-align: justify;
 }
-.icon{
+
+.icon {
     color: white;
     cursor: pointer;
     display: none;
     font-size: 20px;
 }
-.icon.cancel-btn{
+
+.icon.cancel-btn {
     position: absolute;
     color: black;
     right: 30px;
-    top:20px;
+    top: 20px;
 }
-footer{
-   position: relative;
-   color: #fff;
-   background: #000;
-   width: 100%;
-   bottom: 0px;
+
+footer {
+    position: relative;
+    color: #fff;
+    background: #000;
+    width: 100%;
+    bottom: 0px;
 }
-.main-content{
-  display: flex;
+
+.main-content {
+    display: flex;
 }
-.main-content .box{
-  flex-basis: 50%;
-  padding: 10px 20px;
+
+.main-content .box {
+    flex-basis: 50%;
+    padding: 10px 20px;
 }
-.box h2{
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-transform: uppercase;
+
+.box h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
 }
-.box .content{
-  margin: 20px 0 0 0;
-  position: relative;
+
+.box .content {
+    margin: 20px 0 0 0;
+    position: relative;
 }
+
 @media (max-width: 868px) {
-  body.disabledScroll{
-  overflow: hidden;
-}
-    .icon{
-      display: block;
+    body.disabledScroll {
+        overflow: hidden;
     }
-    .icon.hide{
-      display: none;
+    .icon {
+        display: block;
     }
-    .menu-list li a:hover{
-      color: white;
+    .icon.hide {
+        display: none;
     }
-    .navbar .menu-list{
+    .menu-list li a:hover {
+        color: white;
+    }
+    .navbar .menu-list {
         position: fixed;
         top: 0;
         left: -100%;
@@ -148,18 +170,18 @@ footer{
         text-align: center;
         display: block;
         transition: 0.55s cubic-bezier(1, 1, 0, 1.00);
-    } 
-    .navbar.active .menu-list{
-        left:0%;
     }
-    .navbar .menu-list li{
+    .navbar.active .menu-list {
+        left: 0%;
+    }
+    .navbar .menu-list li {
         margin-top: 35px;
     }
-    .navbar .menu-list li a{
+    .navbar .menu-list li a {
         font-size: 18px;
         width: 100%;
         padding-right: 30px;
         padding-left: 30px;
         transition: 0.48s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
-} 
+}

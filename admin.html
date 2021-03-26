@@ -2,404 +2,445 @@
 <html lang=en dir=ltr>
 
 <head>
-  <title>Falcon Tech Studios | Admin Panel</title>
-  <meta http-equiv=content-type content="text/html;charset=UTF-8">
-  <meta name="author" content="FTS">
-  <meta name="description" content="The official website of the YouTube channel FTS">
-  <meta name="keywords" content="FTS, Falcon Tech Studios, FALCON TECH STUDIOS, fts, fts-18, https://fts-18.netlify.app, https://fts-18.netlify, Falcon Tech Studios Homepage, https://github.com/FTS18/fts19, github.com/FTS18, FTS Official Website, Falcon Tech Studios Official website">
-  <meta property="og:site_name" content="Falcon Tech Studios| Admin Page">
-  <meta property="og:title" content="Falcon Tech Studios | Admin Panel">
-  <meta property="og:description" content="The official website of the YouTube channel FTS">
-  <meta name="msapplication-TileColor" content="#f00">
-  <meta property="og:url" content="https://fts-18.netlify.app/admin">
-  <meta property="og:image" itemprop="image" content="https://fts-18.netlify.app/favicon/light.png">
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="crimson">
-  <meta name=viewport content="width=device-width, maximum-scale=1">
-  <meta property="og:locale" content="en_GB" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:locale:alternate" content="hi" />
-  <meta property="og:locale:alternate" content="en_IN" />
-  <link rel=manifest href=json/manifest.json>
-  <link rel=stylesheet href=css/admin.css>
-  <link href=css/normalize.css rel=stylesheet>
-  <link rel=stylesheet href=css/base.css media=all>
-  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css>
-  <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.0.7/css/all.css>
-  <link rel=stylesheet href=css/all.css media=all>
-  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
-  <link rel=stylesheet href=css/fonts.css media=all>
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-  <link rel=icon href=favicon/dark.png media=(prefers-color-scheme:dark) type=image/png>
-  <link rel=icon href=favicon/light.png media=(prefers-color-scheme:light) type=image/png>
-  <script src=https://unpkg.com/favicon-switcher@1.2/dist/index.js charset=utf-8 crossorigin=anonymous></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
-  <meta name="google-signin-client_id" content="101761782700-g2hn0s9u27u6tejuc2gvg43qb4rekq33.apps.googleusercontent.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
-  <script scr=js/offline.js></script>
-  <script src=js/main.js charset=utf-8></script>
-  <script>
-    $(window).scroll(function() {
-      var n = $(window).scrollTop();
-      $(".startScreen .banner").css({ width: 100 + n / 5 + "%" })
-    })
-  </script>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyClmAvmUAdSF9SWqOrE6n8xaWrJ_82r9XU",
-    authDomain: "website-login-180745.firebaseapp.com",
-    projectId: "website-login-180745",
-    storageBucket: "website-login-180745.appspot.com",
-    messagingSenderId: "101761782700",
-    appId: "1:101761782700:web:b272d6cd249f195b9b2009",
-    measurementId: "G-0C1XHQ0VXV"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
-  <script src="js/toast.js" type="text/javascript" charset="utf-8"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <title>Falcon Tech Studios | Admin Panel</title>
+    <meta http-equiv=content-type content="text/html;charset=UTF-8">
+    <meta name="author" content="FTS">
+    <meta name="description" content="The official website of the YouTube channel FTS">
+    <meta name="keywords" content="FTS, Falcon Tech Studios, FALCON TECH STUDIOS, fts, fts-18, https://fts-18.netlify.app, https://fts-18.netlify, Falcon Tech Studios Homepage, https://github.com/FTS18/fts19, github.com/FTS18, FTS Official Website, Falcon Tech Studios Official website">
+    <meta property="og:site_name" content="Falcon Tech Studios| Admin Page">
+    <meta property="og:title" content="Falcon Tech Studios | Admin Panel">
+    <meta property="og:description" content="The official website of the YouTube channel FTS">
+    <meta name="msapplication-TileColor" content="#f00">
+    <meta property="og:url" content="https://fts-18.netlify.app/admin">
+    <meta property="og:image" itemprop="image" content="https://fts-18.netlify.app/favicon/light.png">
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="crimson">
+    <meta name=viewport content="width=device-width, maximum-scale=1">
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="hi" />
+    <meta property="og:locale:alternate" content="en_IN" />
+    <link rel=manifest href=json/manifest.json>
+    <link rel=stylesheet href=css/admin.css>
+    <link href=css/normalize.css rel=stylesheet>
+    <link rel=stylesheet href=css/base.css media=all>
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css>
+    <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.0.7/css/all.css>
+    <link rel=stylesheet href=css/all.css media=all>
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
+    <link rel=stylesheet href=css/fonts.css media=all>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel=icon href=favicon/dark.png media=(prefers-color-scheme:dark) type=image/png>
+    <link rel=icon href=favicon/light.png media=(prefers-color-scheme:light) type=image/png>
+    <script src=https://unpkg.com/favicon-switcher@1.2/dist/index.js charset=utf-8 crossorigin=anonymous>
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+    <meta name="google-signin-client_id" content="101761782700-g2hn0s9u27u6tejuc2gvg43qb4rekq33.apps.googleusercontent.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <script scr=js/offline.js>
+    </script>
+    <script src=js/main.js charset=utf-8></script>
+    <script>
+        $(window).scroll(function() {
+            var n = $(window).scrollTop();
+            $(".startScreen .banner").css({
+                width: 100 + n / 5 + "%"
+            })
+        })
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyClmAvmUAdSF9SWqOrE6n8xaWrJ_82r9XU",
+            authDomain: "website-login-180745.firebaseapp.com",
+            projectId: "website-login-180745",
+            storageBucket: "website-login-180745.appspot.com",
+            messagingSenderId: "101761782700",
+            appId: "1:101761782700:web:b272d6cd249f195b9b2009",
+            measurementId: "G-0C1XHQ0VXV"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <script src="js/toast.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
 </head>
 
 <body oncontextmenu="return false">
-  <script>
-    document.onkeydown = function(e) {
-      if (event.keyCode == 123) {
-        return false;
-      }
-      if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-      }
-      if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-      }
-      if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-      }
-      if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-      }
-    }
-  </script>
-  <section id=homepage>
-    <section class=page>
-      <section class=startScreen id=startScreen>
-        <div class=start>
-          <nav class=navbar>
-            <div class=content>
-              <div class=logo><a href=home>SPACIFY<span class="login">Admin Page</span></span></a></div>
-              <ul class=menu-list>
-                <div class="icon cancel-btn">
-                  <i class="fa fa-chevron-circle-left fa-1x" aria-hidden="true"></i>
-                </div>
-                <li class=active1><a href=login>
-                    <i class="far fa-user fa-4x"></i>
-                  </a></li>
-                <li><a href=home>
-                    <i class="fas fa-home"></i>
-                    Home</a></li>
-                <li class="active"><a href=login>
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    Admim</a></li>
-                <li><a href="https://youtube.com/c/FTS-18">
-                    <i class="fab fa-youtube"></i>
-                    Subscribe</a></li>
-                <li><a href=download>
-                    <i class="far fa-arrow-alt-circle-down"></i>
-                    Download</a></li>
-                <li class="active2">
-                  <a href="contact-us">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                    Contact Us</a>
-                </li>
-                <li class="active2">
-                  <a href="about">
-                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                    About</a>
-                </li>
-                <li class="active active3">
-                  <a href="search">
-                    <i class="fa fa-search" aria-hidden=true></i>
-                  </a>
-                </li>
-              </ul>
-              <div class="icon search"><a href=search>
-                  <i class="fa fa-search" aria-hidden=true></i>
-                </a></div>
-              <div class="icon menu-btn">
-                <i class="fas fa-bars"></i>
-              </div>
-            </div>
-          </nav>
-          <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js></script>
-          <script src=https://code.jquery.com/jquery-3.5.1.js></script>
-          <script>
-            $(function() { $(".menu-list li").on("click", function() { $(this).parent().find("li.active").removeClass("active"), $(this).addClass("active") }) })
-          </script>
-          <img class=banner src="background.jpg" width="100%" height="50vh">
-          <span class="skewed"></span>
-          <script type="text/javascript" charset="utf-8">
-            var skewed = document.querySelector('.skewed');
-            window.addEventListener('scroll', function() {
-              var value = -10 + window.scrollY / 60;
-              skewed.style.transform = "skewY(" + value + "deg)"
-            })
-          </script>
-          <div class=container1 id="container1" action="success.html" method="get" accept-charset="utf-8">
-            <h2>Login Form</h2>
-            <div class="form-container">
-              <div class='form'>
-                <label for="email"><b>Email</b></label>
-                <div class="inline">
-                  <input onkeydown="validation()" autocomplete="off" minlength="6" maxlength="60" type="email" spellcheck="false" name="email" id="email" placeholder="Enter your Email..." required />
-                  <span id="text2"></span>
-                </div>
-                <br />
-                <label for="psw"><b>Password</b></label>
-                <div class="inline1">
-                  <input autocomplete="off" minlength="8" type="password" spellcheck="false" name="psw" id="psw" placeholder="Enter your Password..." required />
-                  <i class="fa fa-eye" id="togglePassword"></i>
-                </div>
-                <br />
-                <span><input type="checkbox" value="IsRememberMe" id="rememberMe" />Remember Me</span>
-                <br /><br />
-                <div class="contain">
-                  <div class="textCode">
-                    <input type="text" id="capt" readonly="readonly" />
-                    <div class="refresh"><i class="fas fa-sync" onclick="cap()"></i>
+    <script>
+        document.onkeydown = function(e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+    </script>
+    <section id=homepage>
+        <section class=page>
+            <section class=startScreen id=startScreen>
+                <div class=start>
+                    <nav class=navbar>
+                        <div class=content>
+                            <div class=logo><a href=home>SPACIFY<span class="login">Admin Page</span></span></a></div>
+                            <ul class=menu-list>
+                                <div class="icon cancel-btn">
+                                    <i class="fa fa-chevron-circle-left fa-1x" aria-hidden="true"></i>
+                                </div>
+                                <li class=active1>
+                                    <a href=login>
+                                        <i class="far fa-user fa-4x"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href=home>
+                                        <i class="fas fa-home"></i> Home
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href=login>
+                                        <i class="fa fa-sign-in" aria-hidden="true"></i> Admim
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://youtube.com/c/FTS-18">
+                                        <i class="fab fa-youtube"></i> Subscribe
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href=download>
+                                        <i class="far fa-arrow-alt-circle-down"></i> Download
+                                    </a>
+                                </li>
+                                <li class="active2">
+                                    <a href="contact-us">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a>
+                                </li>
+                                <li class="active2">
+                                    <a href="about">
+                                        <i class="fa fa-file-text-o" aria-hidden="true"></i> About
+                                    </a>
+                                </li>
+                                <li class="active active3">
+                                    <a href="search">
+                                        <i class="fa fa-search" aria-hidden=true></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="icon search">
+                                <a href=search>
+                                    <i class="fa fa-search" aria-hidden=true></i>
+                                </a>
+                            </div>
+                            <div class="icon menu-btn">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
+                    </nav>
+                    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js>
+                    </script>
+                    <script src=https://code.jquery.com/jquery-3.5.1.js>
+                    </script>
+                    <script>
+                        $(function() {
+                            $(".menu-list li").on("click", function() {
+                                $(this).parent().find("li.active").removeClass("active"), $(this).addClass("active")
+                            })
+                        })
+                    </script>
+                    <img class=banner src="background.jpg" width="100%" height="50vh">
+                    <span class="skewed"></span>
+                    <script type="text/javascript" charset="utf-8">
+                        var skewed = document.querySelector('.skewed');
+                        window.addEventListener('scroll', function() {
+                            var value = -10 + window.scrollY / 60;
+                            skewed.style.transform = "skewY(" + value + "deg)"
+                        })
+                    </script>
+                    <div class=container1 id="container1" action="success.html" method="get" accept-charset="utf-8">
+                        <h2>Login Form</h2>
+                        <div class="form-container">
+                            <div class='form'>
+                                <label for="email"><b>Email</b></label>
+                                <div class="inline">
+                                    <input onkeydown="validation()" autocomplete="off" minlength="6" maxlength="60" type="email" spellcheck="false" name="email" id="email" placeholder="Enter your Email..." required />
+                                    <span id="text2"></span>
+                                </div>
+                                <br />
+                                <label for="psw"><b>Password</b></label>
+                                <div class="inline1">
+                                    <input autocomplete="off" minlength="8" type="password" spellcheck="false" name="psw" id="psw" placeholder="Enter your Password..." required />
+                                    <i class="fa fa-eye" id="togglePassword"></i>
+                                </div>
+                                <br />
+                                <span><input type="checkbox" value="IsRememberMe" id="rememberMe" />Remember Me</span>
+                                <br /><br />
+                                <div class="contain">
+                                    <div class="textCode">
+                                        <input type="text" id="capt" readonly="readonly" />
+                                        <div class="refresh"><i class="fas fa-sync" onclick="cap()"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" required id="textInput" autocomplete="off" minlength="6" maxlength="6" spellcheck="false" placeholder="Captcha" />
+                                    <button type="submit" onclick="checkCap();return false;">Check</button>
+                                    <div id="toast">RECAPTCHA Validation Successful!</div>
+                                    <div id="unsuccessful">Validation Unsuccessful!</div>
+                                </div><br />
+                                <hr color="crimson" width="286" /><br />
+                                <script type="text/javascript" charset="utf-8">
+                                    function cap() {
+                                        var alpha1 = ['I', 'H', 'S', 'A', 'N', 'U', 'i', 'h', 's', 'a', 'n', 'u']
+                                        var alpha = ['/', '?', '!', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                                            'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7',
+                                            '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                                            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+                                        ];
+                                        var a = alpha[Math.floor(Math.random() * 62)];
+                                        var b = alpha1[Math.floor(Math.random() * 12)];
+                                        var c = alpha[Math.floor(Math.random() * 62)];
+                                        var d = alpha[Math.floor(Math.random() * 62)];
+                                        var e = alpha[Math.floor(Math.random() * 62)];
+                                        var f = alpha[Math.floor(Math.random() * 62)];
+                                        var sum = a + b + c + d + e + f;
+                                        document.getElementById("capt").value = sum;
+                                    }
+
+                                    function checkCap() {
+                                        var x = document.getElementById("toast");
+                                        var y = document.getElementById("unsuccessful");
+                                        var s1 = document.getElementById("capt").value;
+                                        var s2 = document.getElementById("textInput").value;
+                                        if (s1 == s2) {
+                                            x.classList.add("show");
+                                            setTimeout(function() {
+                                                x.classList.remove("show");
+                                            }, 3500);
+                                            return true;
+                                        } else {
+                                            y.classList.add("show");
+                                            setTimeout(function() {
+                                                y.classList.remove("show");
+                                            }, 3500);
+                                            cap()
+                                            return false;
+                                        }
+                                    }
+                                    window.onload = cap();
+
+                                    function validation() {
+                                        var form = document.getElementById("container1");
+                                        var email = document.getElementById("email").value;
+                                        var text = document.getElementById("text2");
+                                        var pattern = /^[^  ]+@[^ ]+\.[a-z]{2,3}$/;
+                                        if (email.match(pattern)) {
+                                            form.classList.add('valid');
+                                            form.classList.remove('invalid');
+                                            text.innerHTML = "Your Email Address is Valid";
+                                            text.style.color = "#00ff00"
+                                        } else {
+                                            form.classList.remove('valid');
+                                            form.classList.add('invalid');
+                                            text.innerHTML = "Please enter a valid Email";
+                                            text.style.color = "#ff0000"
+                                        }
+                                        if (email == "") {
+                                            form.classList.remove('valid');
+                                            form.classList.remove('invalid');
+                                            text.innerHTML = "Your Email Address is Valid";
+                                            text.style.color = "#00ff00"
+                                        }
+                                    }
+                                </script>
+                                <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+                                <div class="buttons">
+                                    <button type="submit" onclick="login()">LOGIN</button>
+                                    <button onclick="signUp()">SIGN UP</button></div>
+                                <br /><br />
+                                <hr id="h3" color="crimson" width="286" /><br />
+                                <div class="g-signin2" data-onsuccess="onSignIn" data-width="286" data-height="47" data-longtitle="true"></div>
+                            </div>
+                            <div class="link">
+                                <a href="verify">Forgot Password?</a>
+                            </div>
+                            <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+                            <script type="text/javascript" charset="utf-8">
+                                const togglePassword = document.querySelector('#togglePassword');
+                                const password = document.querySelector('#psw');
+                                togglePassword.addEventListener('click', function(e) {
+                                    // toggle the type attribute
+                                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                                    password.setAttribute('type', type);
+                                    // toggle the eye slash icon
+                                    this.classList.toggle('fa-eye-slash');
+                                });
+                            </script>
+                        </div>
                     </div>
-                  </div>
-                  <input type="text" required id="textInput" autocomplete="off" minlength="6" maxlength="6" spellcheck="false" placeholder="Captcha" />
-                  <button type="submit" onclick="checkCap();return false;">Check</button>
-                  <div id="toast">RECAPTCHA Validation Successful!</div>
-                  <div id="unsuccessful">Validation Unsuccessful!</div>
-                </div><br />
-                <hr color="crimson" width="286" /><br />
-                <script type="text/javascript" charset="utf-8">
-                  function cap() {
-                    var alpha1 = ['I', 'H', 'S', 'A', 'N', 'U', 'i', 'h', 's', 'a', 'n', 'u']
-                    var alpha = ['/', '?', '!', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-                    var a = alpha[Math.floor(Math.random() * 62)];
-                    var b = alpha1[Math.floor(Math.random() * 12)];
-                    var c = alpha[Math.floor(Math.random() * 62)];
-                    var d = alpha[Math.floor(Math.random() * 62)];
-                    var e = alpha[Math.floor(Math.random() * 62)];
-                    var f = alpha[Math.floor(Math.random() * 62)];
-
-                    var sum = a + b + c + d + e + f;
-
-                    document.getElementById("capt").value = sum;
-                  }
-
-                  function checkCap() {
-                    var x = document.getElementById("toast");
-                    var y = document.getElementById("unsuccessful");
-                    var s1 = document.getElementById("capt").value;
-                    var s2 = document.getElementById("textInput").value;
-                    if (s1 == s2) {
-                      x.classList.add("show");
-                      setTimeout(function() {
-                        x.classList.remove("show");
-                      }, 3500);
-                      return true;
-                    } else {
-                      y.classList.add("show");
-                      setTimeout(function() {
-                        y.classList.remove("show");
-                      }, 3500);
-                      cap()
-                      return false;
+                    <div class="user_profile">
+                    </div>
+                </div>
+            </section>
+            <section id="sec-2">
+                <style type="text/css">
+                    .data {
+                        display: none
                     }
-                  }
-                  window.onload = cap();
-
-                  function validation() {
-                    var form = document.getElementById("container1");
-                    var email = document.getElementById("email").value;
-
-                    var text = document.getElementById("text2");
-                    var pattern = /^[^  ]+@[^ ]+\.[a-z]{2,3}$/;
-
-                    if (email.match(pattern)) {
-                      form.classList.add('valid');
-                      form.classList.remove('invalid');
-                      text.innerHTML = "Your Email Address is Valid";
-                      text.style.color = "#00ff00"
-                    } else {
-                      form.classList.remove('valid');
-                      form.classList.add('invalid');
-
-                      text.innerHTML = "Please enter a valid Email";
-                      text.style.color = "#ff0000"
+                </style>
+                <div class="data" data-scroll>
+                    <p>Profile</p>
+                    <img id="pic" class="img-circle" width="100" height="100" />
+                    <p>Email Address</p>
+                    <p id="email-address" class="alert alert-danger"></p>
+                    <a href="#" class="btn btn-danger" onclick="signOut()">Sign out</a>
+                </div>
+                <script>
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function() {
+                            alert("You have successfully signed out")
+                            console.log('User signed out.');
+                            $(".g-signin2").css("display", "block");
+                            $(".data").css("display", "none");
+                        });
                     }
-                    if (email == "") {
-                      form.classList.remove('valid');
-                      form.classList.remove('invalid');
-                      text.innerHTML = "Your Email Address is Valid";
-                      text.style.color = "#00ff00"
-                    }
-                  }
                 </script>
-                <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
-                <div class="buttons">
-                  <button type="submit" onclick="login()">LOGIN</button>
-                  <button onclick="signUp()" >SIGN UP</button></div>
-                <br /><br />
-                <hr id="h3" color="crimson" width="286" /><br />
-                <div class="g-signin2" data-onsuccess="onSignIn" data-width="286" data-height="47" data-longtitle="true"></div>
-              </div>
-              <div class="link">
-                <a href="verify">Forgot Password?</a>
-              </div>
-              <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
-              <script type="text/javascript" charset="utf-8">
-                const togglePassword = document.querySelector('#togglePassword');
-                const password = document.querySelector('#psw');
-                togglePassword.addEventListener('click', function(e) {
-                  // toggle the type attribute
-                  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-                  password.setAttribute('type', type);
-                  // toggle the eye slash icon
-                  this.classList.toggle('fa-eye-slash');
-                });
-              </script>
+            </section>
+            <section class=xyz>
+                <ul class=pagination>
+                    <li><a href=javascript:void(0); class=prev>&laquo;</a></li>
+                    <li class="pagenumber active"><a href=#>1</a></li>
+                    <li class=pagenumber><a href=#>2</a></li>
+                    <li class=pagenumber><a href=#>3</a></li>
+                    <li class=pagenumber><a href=#>4</a></li>
+                    <li class=pagenumber><a href=#>5</a></li>
+                    <li class=pagenumber><a href=#>6</a></li>
+                    <li><a href=javascript:void(0); class=next>&raquo;</a></li>
+                </ul>
+                <script src=https://code.jquery.com/jquery-3.4.1.js charset=utf-8></script>
+                <script>
+                    $(document).ready(function() {
+                        $(".next").click(function() {
+                            $(".pagination").find(".pagenumber.active").next().addClass("active"), $(".pagination").find(
+                                ".pagenumber.active").prev().removeClass("active")
+                        }), $(".prev").click(function() {
+                            $(".pagination").find(".pagenumber.active").prev().addClass("active"), $(".pagination").find(
+                                ".pagenumber.active").next().removeClass("active")
+                        })
+                    })
+                </script>
+            </section>
+        </section>
+        <section>
+            <footer>
+                <div class=container data-scroll>
+                    <div class="sec aboutus">
+                        <h2>About Us</h2>
+                        <p>Lorem ipsum dolor sit ramet, consectetur adipisicing elit. Quo impedit atque consequatur! Iusto distinctio temporibus repellendus labore odit adipisci harum ipsa beatae natus, eum eius, hic aperiam odio! Quasi molestias magnam
+                            illo voluptatem iusto ipsam blanditiis, tempore cumque reiciendis quaerat vero tenetur, sequi dolores libero voluptas vitae voluptate placeat dolorum modi ipsa nisi repellat facilis aliquam asperiores. Aut nam repellat harum
+                            quas saepe dolorum voluptates ratione, itaque consectetur explicabo a facilis rem mollitia maxime repudiandae fuga reprehenderit, odio cum incidunt labore molestiae quis non perferendis ipsam. Illum, in, deserunt. Ipsa.</p>
+                        <ul class=sci data-scroll>
+                            <li><a href="https://www.facebook.com/FTS1807"><i class="fa fa-facebook" aria-hidden=true></i></a></li>
+                            <li><a href="https://mobile.twitter.com/fts26628060"><i class="fa fa-twitter" aria-hidden=true></i></a>
+                            </li>
+                            <li><a href="https://www.instagram.com/fts1818"><i class="fa fa-instagram" aria-hidden=true></i></a></li>
+                            <li><a href="https://youtube.com/c/FTS-18"><i class="fa fa-youtube-play" aria-hidden=true></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="sec quicklinks">
+                        <h2>Quick Links</h2>
+                        <ul>
+                            <li><a href=#>About</a></li>
+                            <li><a href=#>FAQ</a></li>
+                            <li><a href=#>Privacy Policy</a></li>
+                            <li><a href=#>Help</a></li>
+                            <li><a href=#>Terms and Conditions</a></li>
+                            <li><a href=#>Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="sec contact">
+                        <h2>Contact us</h2>
+                        <ul class=info>
+                            <li>
+                                <a href="https://www.google.co.in/maps/place/Kanpur,+Uttar+Pradesh/@26.4471737,80.3383828,11z/data=!4m2!3m1!1s0x399c4770b127c46f:0x1778302a9fbe7b41" target=_blank>
+                                    <span><i class="fa fa-map-marker" aria-hidden=true></i></span>
+                                    <span class=text>Kanpur Nagar, Uttar Pradesh, India</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+91 8887685797" target=_blank>
+                                    <span><i class="fa fa-phone" aria-hidden=true></i></span>
+                                    <span class=text>Call us</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:fts71568@gmail.com?subject=Describe%20your%20issue&body=Describe%2C%20Issue%0D%0A" target=_blank>
+                                    <span><i class="fa fa-envelope" aria-hidden=true></i></span>
+                                    <span class=text>Email us</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+            <div class=copyrightText>
+                <p>Copyright © 2021 FTS. All rights reserved.</p>
             </div>
-        </div>
-        <div class="user_profile">
-        </div>
-       </div>
-      </section>
-      <section id="sec-2">
-        <style type="text/css">
-          .data {
-            display: none
-          }
-        </style>
-        <div class="data" data-scroll>
-          <p>Profile</p>
-          <img id="pic" class="img-circle" width="100" height="100" />
-          <p>Email Address</p>
-          <p id="email-address" class="alert alert-danger"></p>
-          <a href="#" class="btn btn-danger" onclick="signOut()">Sign out</a>
-        </div>
-        <script>
-          function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function() {
-              alert("You have successfully signed out")
-              console.log('User signed out.');
-              $(".g-signin2").css("display", "block");
-              $(".data").css("display", "none");
-            });
-          }
-        </script>
-      </section>
-      <section class=xyz>
-        <ul class=pagination>
-          <li><a href=javascript:void(0); class=prev>&laquo;</a></li>
-          <li class="pagenumber active"><a href=#>1</a></li>
-          <li class=pagenumber><a href=#>2</a></li>
-          <li class=pagenumber><a href=#>3</a></li>
-          <li class=pagenumber><a href=#>4</a></li>
-          <li class=pagenumber><a href=#>5</a></li>
-          <li class=pagenumber><a href=#>6</a></li>
-          <li><a href=javascript:void(0); class=next>&raquo;</a></li>
-        </ul>
-        <script src=https://code.jquery.com/jquery-3.4.1.js charset=utf-8></script>
-        <script>
-          $(document).ready(function() { $(".next").click(function() { $(".pagination").find(".pagenumber.active").next().addClass("active"), $(".pagination").find(".pagenumber.active").prev().removeClass("active") }), $(".prev").click(function() { $(".pagination").find(".pagenumber.active").prev().addClass("active"), $(".pagination").find(".pagenumber.active").next().removeClass("active") }) })
-        </script>
-      </section>
+        </section>
     </section>
-    <section>
-      <footer>
-        <div class=container data-scroll>
-          <div class="sec aboutus">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit ramet, consectetur adipisicing elit. Quo impedit atque consequatur! Iusto distinctio temporibus repellendus labore odit adipisci harum ipsa beatae natus, eum eius, hic aperiam odio! Quasi molestias magnam illo voluptatem iusto ipsam blanditiis, tempore cumque reiciendis quaerat vero tenetur, sequi dolores libero voluptas vitae voluptate placeat dolorum modi ipsa nisi repellat facilis aliquam asperiores. Aut nam repellat harum quas saepe dolorum voluptates ratione, itaque consectetur explicabo a facilis rem mollitia maxime repudiandae fuga reprehenderit, odio cum incidunt labore molestiae quis non perferendis ipsam. Illum, in, deserunt. Ipsa.</p>
-            <ul class=sci data-scroll>
-              <li><a href="https://www.facebook.com/FTS1807"><i class="fa fa-facebook" aria-hidden=true></i></a></li>
-              <li><a href="https://mobile.twitter.com/fts26628060"><i class="fa fa-twitter" aria-hidden=true></i></a></li>
-              <li><a href="https://www.instagram.com/fts1818"><i class="fa fa-instagram" aria-hidden=true></i></a></li>
-              <li><a href="https://youtube.com/c/FTS-18"><i class="fa fa-youtube-play" aria-hidden=true></i></a></li>
-            </ul>
-          </div>
-          <div class="sec quicklinks">
-            <h2>Quick Links</h2>
-            <ul>
-              <li><a href=#>About</a></li>
-              <li><a href=#>FAQ</a></li>
-              <li><a href=#>Privacy Policy</a></li>
-              <li><a href=#>Help</a></li>
-              <li><a href=#>Terms and Conditions</a></li>
-              <li><a href=#>Contact</a></li>
-            </ul>
-          </div>
-          <div class="sec contact">
-            <h2>Contact us</h2>
-            <ul class=info>
-              <li><a href="https://www.google.co.in/maps/place/Kanpur,+Uttar+Pradesh/@26.4471737,80.3383828,11z/data=!4m2!3m1!1s0x399c4770b127c46f:0x1778302a9fbe7b41" target=_blank>
-                  <span><i class="fa fa-map-marker" aria-hidden=true></i></span>
-                  <span class=text>Kanpur Nagar, Uttar Pradesh, India</span>
-                </a></li>
-              <li><a href="tel:+91 8887685797" target=_blank>
-                  <span><i class="fa fa-phone" aria-hidden=true></i></span>
-                  <span class=text>Call us</span>
-                </a></li>
-              <li><a href="mailto:fts71568@gmail.com?subject=Describe%20your%20issue&body=Describe%2C%20Issue%0D%0A" target=_blank>
-                  <span><i class="fa fa-envelope" aria-hidden=true></i></span>
-                  <span class=text>Email us</span>
-                </a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-      <div class=copyrightText>
-        <p>Copyright © 2021 FTS. All rights reserved.</p>
-      </div>
-    </section>
-  </section>
-  <script src=https://unpkg.com/scroll-out/dist/scroll-out.min.js></script>
-  <script>
-    ScrollOut({})
-  </script>
-  <script src=js/object-fit-videos.js></script>
-  <script src=js/app.js></script>
-  <script>
-    const body = document.querySelector("body");
-    const navbar = document.querySelector(".navbar");
-    const menuBtn = document.querySelector(".menu-btn");
-    const cancelBtn = document.querySelector(".cancel-btn");
-    document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 3250); })
-    menuBtn.onclick = () => {
-      navbar.classList.add("active");
-      menuBtn.classList.add("hide");
-      body.classList.add("disabledScroll");
-    }
-    cancelBtn.onclick = () => {
-      body.classList.remove("disabledScroll");
-      navbar.classList.remove("active");
-      menuBtn.classList.remove("hide");
-    }
-    window.onscroll = () => { this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky"); }
-  </script>
+    <script src=https://unpkg.com/scroll-out/dist/scroll-out.min.js>
+    </script>
+    <script>
+        ScrollOut({})
+    </script>
+    <script src=js/object-fit-videos.js>
+    </script>
+    <script src=js/app.js>
+    </script>
+    <script>
+        const body = document.querySelector("body");
+        const navbar = document.querySelector(".navbar");
+        const menuBtn = document.querySelector(".menu-btn");
+        const cancelBtn = document.querySelector(".cancel-btn");
+        document.addEventListener('DOMContentLoaded', (e) => {
+            setTimeout(() => {
+                splash.classList.add('display-none');
+            }, 3250);
+        })
+        menuBtn.onclick = () => {
+            navbar.classList.add("active");
+            menuBtn.classList.add("hide");
+            body.classList.add("disabledScroll");
+        }
+        cancelBtn.onclick = () => {
+            body.classList.remove("disabledScroll");
+            navbar.classList.remove("active");
+            menuBtn.classList.remove("hide");
+        }
+        window.onscroll = () => {
+            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+        }
+    </script>
 </body>
 
 </html>

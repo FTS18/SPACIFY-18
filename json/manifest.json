@@ -1,75 +1,37 @@
 {
-
     "author": "SPACIFY",
-
-    "background_color":"black",
-
-    "description":"SPACIFY",
-
-    "display":"standalone",
-
-    "icons":[
-
-        {
-
-            "src":"favicon/light.png",
-
-            "sizes":"192*192",
-
-            "type":"image/png"
-
+    "background_color": "black",
+    "description": "SPACIFY",
+    "display": "standalone",
+    "icons": [{
+            "src": "favicon/light.png",
+            "sizes": "192*192",
+            "type": "image/png"
         },
-
         {
-
-            "src":"favicon/dark.png",
-
-            "sizes":"192*192",
-
-            "type":"image/png"
-
+            "src": "favicon/dark.png",
+            "sizes": "192*192",
+            "type": "image/png"
         },
-
         {
-
-            "src":"favicon/android-chrome-512x512.png",
-
-            "sizes":"512*512",
-
-            "type":"image/ico"
-
+            "src": "favicon/android-chrome-512x512.png",
+            "sizes": "512*512",
+            "type": "image/ico"
         }
-
     ],
-
-    "lang":"en-IN",
-
-    "dir":"ltr",
-
-    "start_url":"https://spacify.netlify.app/",
-
-    "manifest_version":2,
-
-    "name":"SPACIFY",
-
-    "default_locale":"en",
-
-    "orientation":"portrait",
-
-    "homepage_url":"https://spacify.netlify.app/index",
-
-    "short_name":"SPACIFY",
-
-    "short_url":"https://spacify.netlify.app/",
-
-    "theme_color":"crimson",
-
-    "version":"2",
-
-    "version_name":"2 Alpha",
-
-    "prefer_related_applications":"false",
-
-    "iarc_rating_id":"e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
-
+    "lang": "en-IN",
+    "dir": "ltr",
+    "start_url": "https://spacify.netlify.app/",
+    "manifest_version": 2,
+    "name": "SPACIFY",
+    "default_locale": "en",
+    "orientation": "portrait",
+    "homepage_url": "https://spacify.netlify.app/index",
+    "short_name": "SPACIFY",
+    "short_url": "https://spacify.netlify.app/",
+    "theme_color": "crimson",
+    "version": "2",
+    "version_name": "2 Alpha",
+    "prefer_related_applications": "false",
+    "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
 }

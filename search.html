@@ -2,144 +2,91 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>SPACIFY | Search</title>
-  <link rel="stylesheet" href="css/style2.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, maximum-scale=1.0">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="js/search.js" type="text/javascript" charset="utf-8"></script>
+    <meta charset="utf-8">
+    <title>SPACIFY | Search</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="js/search.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body bgcolor="#e91e63" background="Bg~4.png">
-  <h1 class="FTS">SPACIFY</h1>
-  <div class="wrapper">
-    <div class="search-input">
-      <a href="" target="_blank" hidden></a>
-      <input class="searchBar" type="text" placeholder="Type to search..">
-      <div class="autocom-box">
-      </div>
-      <div class="icon"><button type="button"><i class="fas fa-microphone"></i></button><i class="fas fa-search"></i></div>
+    <h1 class="FTS">SPACIFY</h1>
+    <div class="wrapper">
+        <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input class="searchBar" type="text" placeholder="Type to search..">
+            <div class="autocom-box">
+            </div>
+            <div class="icon"><button type="button"><i class="fas fa-microphone"></i></button><i class="fas fa-search"></i>
+            </div>
+        </div>
     </div>
-  </div>
-  <script src="js/suggestions.js"></script>
-  <script src="js/script.js"></script>
-  <script type="text/javascript" charset="utf-8">
-    // getting all required elements
-
-    const searchWrapper = document.querySelector(".search-input");
-
-    const inputBox = searchWrapper.querySelector("input");
-
-    const suggBox = searchWrapper.querySelector(".autocom-box");
-
-    const icon = searchWrapper.querySelector(".icon");
-
-    let linkTag = searchWrapper.querySelector("a");
-
-    let webLink;
-
-    // if user press any key and release
-
-    inputBox.onkeyup = (e) => {
-
-      let userData = e.target.value; //user enetered data
-
-      let emptyArray = [];
-
-      if (userData) {
-
-        icon.onclick = () => {
-
-          webLink = "https://www.google.com/earch?q=" + userData;
-
-          linkTag.setAttribute("href", webLink);
-
-          console.log(webLink);
-
-          linkTag.click();
-
+    <script src="js/suggestions.js"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        // getting all required elements
+        const searchWrapper = document.querySelector(".search-input");
+        const inputBox = searchWrapper.querySelector("input");
+        const suggBox = searchWrapper.querySelector(".autocom-box");
+        const icon = searchWrapper.querySelector(".icon");
+        let linkTag = searchWrapper.querySelector("a");
+        let webLink;
+        // if user press any key and release
+        inputBox.onkeyup = (e) => {
+            let userData = e.target.value; //user enetered data
+            let emptyArray = [];
+            if (userData) {
+                icon.onclick = () => {
+                    webLink = "https://www.google.com/earch?q=" + userData;
+                    linkTag.setAttribute("href", webLink);
+                    console.log(webLink)
+                    linkTag.click();
+                }
+                emptyArray = suggestions.filter((data) => {
+                    //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+                    return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+                });
+                emptyArray = emptyArray.map((data) => {
+                    // passing return data inside li tag
+                    return data = '<li>' + data + '</li>';
+                });
+                searchWrapper.classList.add("active"); //show autocomplete box
+                showSuggestions(emptyArray);
+                let allList = suggBox.querySelectorAll("li");
+                for (let i = 0; i < allList.length; i++) {
+                    //adding onclick attribute in all li tag
+                    allList[i].setAttribute("onclick", "select(this)");
+                }
+            } else {
+                searchWrapper.classList.remove("active"); //hide autocomplete box
+            }
         }
 
-        emptyArray = suggestions.filter((data) => {
+        function select(element) {
+            let selectData = element.textContent;
+            inputBox.value = selectData;
+            icon.onclick = () => {
+                webLink = "https://www.google.com/search?q=" + selectData;
+                linkTag.setAttribute("href", webLink);
+                linkTag.click();
+            }
+            searchWrapper.classList.remove("active");
 
-          //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
-
-          return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
-
-        });
-
-        emptyArray = emptyArray.map((data) => {
-
-          // passing return data inside li tag
-
-          return data = '<li>' + data + '</li>';
-
-        });
-
-        searchWrapper.classList.add("active"); //show autocomplete box
-
-        showSuggestions(emptyArray);
-
-        let allList = suggBox.querySelectorAll("li");
-
-        for (let i = 0; i < allList.length; i++) {
-
-          //adding onclick attribute in all li tag
-
-          allList[i].setAttribute("onclick", "select(this)");
-
-        }
-
-      } else {
-
-        searchWrapper.classList.remove("active"); //hide autocomplete box
-
-      }
-
-    }
-
-    function select(element) {
-
-      let selectData = element.textContent;
-
-      inputBox.value = selectData;
-
-      icon.onclick = () => {
-
-        webLink = "https://www.google.com/search?q=" + selectData;
-
-        linkTag.setAttribute("href", webLink);
-
-        linkTag.click();
-
-      }
-
-      searchWrapper.classList.remove("active");
-
-    }
-
-    function showSuggestions(list) {
-
-      let listData;
-
-      if (!list.length) {
-
-        userValue = inputBox.value;
-
-        listData = '<li>' + userValue + '</li>';
-
-      } else {
-
-        listData = list.join('');
-
-      }
-
-      suggBox.innerHTML = listData;
-
-    }
-  </script>
+            function showSuggestions(list) {
+                let listData;
+                if (!list.length) {
+                    userValue = inputBox.value;
+                    listData = '<li>' + userValue + '</li>';
+                } else {
+                    listData = list.join('');
+                }
+                suggBox.innerHTML = listData;
+            }
+        };
+    </script>
 </body>
 
 </html>

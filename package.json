@@ -52,6 +52,13 @@
 
         "url": "https://github.com/FTS18/fts19"
 
+    },
+
+    "dependencies": {
+
+        "purgecss": "^4.0.3"
+
     }
 
 }
+
