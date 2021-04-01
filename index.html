@@ -602,7 +602,7 @@
     document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 4000); })
 
     document.onclick = function (e){
-      if(e.target.id !== 'navbar' && e.target.id !== 'toggle' && e.target.id !== "menu")
+      if(e.target.id !== 'navbar' && e.target.id !== 'toggle')
         {
           body.classList.remove("disabledScroll");
           navbar.classList.remove("active");
