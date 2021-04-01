@@ -235,15 +235,15 @@
     <section class=page>
       <section class=startScreen id=startScreen>
         <section class=nav>
-          <nav class=navbar>
+          <nav class=navbar id="navbar">
             <div class=content>
               <div class=logo><a href=https://youtube.com/c/spacify18>SPACIFY</a></div>
               <ul class=menu-list>
-                <div class="icon cancel-btn">
+                <div class="icon cancel-btn" id = "toggle">
                   <i class="fa fa-chevron-circle-left fa-1x" aria-hidden="true"></i>
                 </div>
                 <li class=active><a href=index data-text="Home">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-home"></i> 
                   
                     Home</a></li>
                 <li><a href=admin data-text="Login">
@@ -601,6 +601,17 @@
 
     document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 4000); })
 
+    document.onclick = function (e){
+      if(e.target.id !== 'navbar' && e.target.id !== 'toggle')
+        {
+          body.classList.remove("disabledScroll");
+          navbar.classList.remove("active");
+          menuBtn.classList.remove("hide");
+          }
+      }
+
+          
+    
     menuBtn.onclick = () => {
 
       navbar.classList.add("active");
@@ -614,13 +625,13 @@
     cancelBtn.onclick = () => {
 
       body.classList.remove("disabledScroll");
-
+      
       navbar.classList.remove("active");
 
       menuBtn.classList.remove("hide");
 
     }
-
+ 
     window.onscroll = () => { this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky"); }
   </script>
   <script>
