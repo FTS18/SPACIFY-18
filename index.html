@@ -278,7 +278,7 @@
               <div class="icon search"><a href=search>
                   <i class="fa fa-search" aria-hidden=true></i>
                 </a></div>
-              <div class="icon menu-btn"><i class="fas fa-bars"></i></div>
+              <div class="icon menu-btn" id ="menu"><i class="fas fa-bars"></i></div>
             </div>
           </nav>
           <nav class="bottom_nav">
@@ -602,11 +602,11 @@
     document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 4000); })
 
     document.onclick = function (e){
-      if(e.target.id !== 'navbar' && e.target.id !== 'toggle')
+      if(e.target.id !== 'navbar' && e.target.id !== 'toggle' && e.target.id !== "menu")
         {
           body.classList.remove("disabledScroll");
           navbar.classList.remove("active");
-          menuBtn.classList.remove("hide");
+          menuBtn.classList.remove("hide")
           }
       }
 
