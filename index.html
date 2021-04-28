@@ -601,17 +601,9 @@
 
     document.addEventListener('DOMContentLoaded', (e) => { setTimeout(() => { splash.classList.add('display-none'); }, 4000); })
 
-    document.onclick = function (e){
-      if(e.target.id !== 'navbar' && e.target.id !== 'toggle')
-        {
-          body.classList.remove("disabledScroll");
-          navbar.classList.remove("active");
-          menuBtn.classList.remove("hide")
-          }
-      }
-
+  
           
-    
+ 
     menuBtn.onclick = () => {
 
       navbar.classList.add("active");
