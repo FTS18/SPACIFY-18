@@ -5,7 +5,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=fts18&label=Profile%20views&color=d10046&style=flat-square" alt="fts18" /> </p>
 
-<p align="left"> <a href="https://twitter.com/fts26628060" target="blank"><img src="https://img.shields.io/twitter/follow/fts26628060?logo=twitter&style=for-the-badge" alt="fts26628060" /></a> </p>
+<p align="left"> <a href="https://twitter.com/spacify18" target="blank"><img src="https://img.shields.io/twitter/follow/fts26628060?logo=twitter&style=for-the-badge" alt="fts26628060" /></a> </p>
 
 - 🔭 I’m currently working on [My Youtube channel's official website](https://spacify.netlify.app/)
 
