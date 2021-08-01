@@ -1,27 +1,23 @@
 Not intended to be copied!!!🙂
 <h1 align="center">Hi 👋, I'm Ananay Dubey</h1>
 
-<h3 align="center">A passionate class 9th web designer from India</h3>
+<h3 align="center">A passionate class 10th web designer from India</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=fts18&label=Profile%20views&color=d10046&style=flat-square" alt="fts18" /> </p>
 
 <p align="left"> <a href="https://twitter.com/fts26628060" target="blank"><img src="https://img.shields.io/twitter/follow/fts26628060?logo=twitter&style=for-the-badge" alt="fts26628060" /></a> </p>
 
-- 🔭 I’m currently working on [My Youtube channel's official website](https://fts-18.netlify.app/)
+- 🔭 I’m currently working on [My Youtube channel's official website](https://spacify.netlify.app/)
 
 - 🌱 I’m currently learning **HTML, CSS, JS, JQUERY AND PHP**
 
-- 🤝 I’m looking for help with [https://github.com/FTS18/fts19](https://github.com/FTS18/fts19)
-
 - 👨‍💻 All of my projects are available at [https://github.com/FTS18/](https://github.com/FTS18/)
 
-- 🎥 I regularly post videos on [https://youtube.com/c/FTS-18](https://youtube.com/c/FTS-18)
+- 🎥 I regularly post videos on [https://youtube.com/c/spacify18](https://youtube.com/c/spacify18)
 
 - 💬 Ask me about **html, css and js**
 
 - 📫 How to reach me **fts71568@gmail.com**
-
-- ⚡ Fun fact **I think I am funny 😉😂🤣😅**
 
 <h3 align="left">Connect with me:</h3>
 
