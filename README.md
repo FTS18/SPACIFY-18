@@ -23,14 +23,14 @@
 
 <p align="left">
 
-<a href="https://twitter.com/fts26628060" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="fts26628060" height="30" width="40" /> Twitter</a>
+<a href="https://twitter.com/spacify18" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="fts26628060" height="30" width="40" /> Twitter</a>
 
-<a href="https://fb.com/fts1807" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="fts1807" height="30" width="40" /> Facebook
+<a href="https://fb.com/spacify18" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="fts1807" height="30" width="40" /> Facebook
 </a>
 
-<a href="https://instagram.com/fts1818" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="fts1818" height="30" width="40" /> Instagram</a>
+<a href="https://instagram.com/spacify18" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="fts1818" height="30" width="40" /> Instagram</a>
 
-<a href="https://www.youtube.com/c/fts" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/youtube.svg" alt="fts" height="30" width="40" /> Youtube</a>
+<a href="https://www.youtube.com/c/spacify18" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/youtube.svg" alt="fts" height="30" width="40" /> Youtube</a>
 
 </p>
 
@@ -48,27 +48,6 @@
 
 For queries contact me @ fts71568@gmail.com
 Visit the website@https://spacify.netlify.app/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
