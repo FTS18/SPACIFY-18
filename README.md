@@ -1,5 +1,5 @@
-Not intended to be copied!!!🙂
-<h1 align="center">Hi 👋, I'm Ananay Dubey</h1>
+
+<h1 align="center">Hi 👋, I'm Ananay</h1>
 
 <h3 align="center">A passionate class 10th web designer from India</h3>
 
