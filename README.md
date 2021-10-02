@@ -13,7 +13,7 @@
 
 - 👨‍💻 All of my projects are available at [https://github.com/FTS18/](https://github.com/FTS18/)
 
-- 🎥 I regularly post videos on [https://youtube.com/c/spacify18](https://youtube.com/c/spacify18)
+- 🎥 I irregularly post videos on [https://youtube.com/c/spacify18](https://youtube.com/c/spacify18)
 
 - 💬 Ask me about **html, css and js**
 
