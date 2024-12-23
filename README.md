@@ -46,11 +46,16 @@
 
 
 
-For queries contact me at:
-dubeyananay@gmail.com
+For queries contact me at:<br>
+
+dubeyananay@gmail.com<br>
+
 Visit the website:
-V1: https://spacify-v1.netlify.app/
-V2: https://spacify.netlify.app/
+<br>
+V1: https://spacify-v1.netlify.app/<br>
+
+V2: https://spacify.netlify.app/<br>
+
 
 
 
