@@ -47,13 +47,11 @@
 
 
 For queries contact me at:<br>
-
 dubeyananay@gmail.com<br>
 
 Visit the website:
 <br>
 V1: https://spacify-v1.netlify.app/<br>
-
 V2: https://spacify.netlify.app/<br>
 
 
